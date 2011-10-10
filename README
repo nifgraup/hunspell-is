@@ -1,0 +1,45 @@
+Hunspell-is - The Icelandic spelling dictionary project
+
+
+Introduction
+------------
+This project aims to provide and maintain an Icelandic Hunspell spelling
+dictionary. It's based on two sources: Jörgen Pind's wordlist from here
+http://elias.rhi.hi.is/pub/is/ordalisti and the Icelandic Wiktionary Project,
+http://is.wiktionary.org. Hunspell-is provides scripts to merge the sources.
+New words are added _only_ through Wiktionary. Hunspell-is maintains a list of
+banned words from the base wordlist file for removal.
+
+Other languages can be added, see the langs/ folder.
+
+
+General dependencies
+--------------------
+bzip2				http://www.bzip.org/
+GNU awk				http://www.gnu.org/software/gawk/
+GNU Bash			http://www.gnu.org/software/bash/
+GNU ed				http://www.gnu.org/software/ed/
+GNU Core Utilities		http://www.gnu.org/software/coreutils/
+GNU Wget			http://www.gnu.org/software/wget/
+Hunspell			http://hunspell.sf.net/
+iconv
+
+Usage Instructions
+------------------
+makedict.sh list		lists supported languages
+makedict.sh LANGUAGE		generates a dictionary for LANGUAGE, e.g. is
+makedict.sh check		checks for dependencies
+makedict.sh cleantmp		remove temporary files
+makedict.sh cleandicts		removes dictionaries previously generated
+
+
+Download Packages
+-----------------
+This is a list of projects using hunspell-is
+
+Openoffice.org	    http://extensions.services.openoffice.org/project/dict-is
+
+
+Authors
+-------
+Björgvin Ragnarsson, nifgraup@gmail.com

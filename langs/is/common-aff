@@ -1,0 +1,116 @@
+SET UTF-8
+
+#Letter frequency based on all Icelandic text from www.snerpa.is/net
+TRY arniesutðglmkofhvþádíójbúyöæépÞHSEGýBAVKNOFMJDLRÍÁTÓxIÉUzPÖcÚÆYÐCqXwÝQWZ
+WORDCHARS "-./=
+KEY qwertyuiopð|asdfghjklæ|zxcvbnm,.þ
+
+#Splitted suggestions are most likely compound words
+NOSPLITSUGS
+
+# rules from http://www2.hu-berlin.de/bragi/b5/b5framburdarreglur.htm
+REP 57
+REP i y
+REP y i
+REP í ý
+REP ý í
+REP áng ang
+REP eing eng
+REP eyng eng
+REP íng ing
+REP ýng ing
+REP úng ung
+REP íng yng
+REP ýng yng
+REP aung öng
+REP ánk ank
+REP eink enk
+REP eynk enk
+REP ínk ink
+REP ýnk ink
+REP únk unk
+REP ínk ynk
+REP ýnk ynk
+REP aunk önk
+REP ægi agi
+REP eigi egi
+REP eygi egi
+REP ígi igi
+REP ýgi igi
+REP oji ogi
+REP uji ugi
+REP yji ygi
+REP augi ögi
+REP v f
+REP kv hv
+REP dl ll
+REP dn nn
+REP md fnd
+REP mt fnd
+REP bl fl
+REP bn fn
+REP rdl rl
+REP rdn rn
+REP sdl sl
+REP sdn sn
+REP gt t
+REP kt t
+REP ói ófi
+REP óa ófa
+REP úa úfa
+REP ngl nl
+REP lgd gld
+REP nd rnd
+REP st rst
+REP ð þ
+REP gs x
+REP ks x
+REP x gs
+REP x ks
+
+FLAG num
+
+#kk et agr
+SFX 10 N 12
+SFX 10	ur	0	ur
+SFX 10	n	0	nn
+SFX 10	ur	i	ur
+SFX 10	n	i	nn
+SFX 10	0	i	u[^r]
+SFX 10	0	i	n[^n]
+SFX 10	0	i	[^un].
+SFX 10	ur	s	ur
+SFX 10	n	s	nn
+SFX 10	0	s	u[^r]
+SFX 10	0	s	n[^n]
+SFX 10	0	s	[^un].
+
+#kk et gr
+SFX 11 N 13
+SFX 11	0	inn	.
+SFX 11	ur	inn	ur
+SFX 11	n	inn	nn
+SFX 11	ur	inum	ur
+SFX 11	n	inum	nn
+SFX 11	0	inum	u[^r]
+SFX 11	0	inum	n[^n]
+SFX 11	0	inum	[^un].
+SFX 11	ur	sins	ur
+SFX 11	n	sins	nn
+SFX 11	0	sins	u[^r]
+SFX 11	0	sins	n[^n]
+SFX 11	0	sins	[^un].
+
+#kk ft agr
+SFX 12 N 3
+SFX 12	0	ar	.
+SFX 12	0	a	.
+SFX 12	0	um	.
+
+#kk ft agr
+SFX 13 N 4
+SFX 13	0	arnir	.
+SFX 13	0	ana	.
+SFX 13	0	unum	.
+SFX 13	0	anna	.
+
