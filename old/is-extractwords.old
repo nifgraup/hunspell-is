@@ -1,0 +1,41 @@
+#!/usr/bin/perl
+
+# Author: Björgvin Ragnarsson
+# License: Public Domain
+
+use utf8;
+use open IN => ':utf8', OUT => ':encoding(iso-8859-1)';
+
+use XML::Twig;
+
+sub parse_page {
+    my ($twig, $ele) = @_;
+
+    my $title_node = $ele->first_child('title');
+    my $title = $title_node->text;
+
+    if(!($title =~ m/ |:/))
+    {
+      my $revision_node = $title_node->next_sibling('id')->next_sibling('revision');
+      my $text = $revision_node->last_child_text('text');
+
+      if(($text =~ m/{{-is-}}/) &&
+	!($text =~ m/tubbur|\[\[skáldamál\]\]|forn|stafrófið|{{-tölustafur-}}|{{-is-forskeyti-}}|{{-is-forliður-}}/))
+      {
+#      if($text =~ m/{{-is-nafnorð-}}/)
+#      {
+#	  ef inniheldur fallbeygingu, þá nota hana
+#      }
+#      else
+	print "$title\n";
+      #print "$text\n";
+      }
+    }
+}
+
+my $roots = { mediawiki => 1};
+my $handlers = { 'mediawiki/page' => \&parse_page};
+my $twig = new XML::Twig(TwigRoots => $roots,
+                         TwigHandlers => $handlers);
+
+$twig->parse(\*STDIN);
