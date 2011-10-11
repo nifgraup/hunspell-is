@@ -20,13 +20,16 @@
 #is-extractwords.old tekur of mikið minni (140mb)
 #Raða skilyrðum í is-extractwords.old í röð svo algengustu til að faila komi fyrst. (optimization)
 
+TMP="tmp"
+mkdir -p ${TMP}
+
 insertHead() {
   printf '%s\n' H 1i "$1" . w | ed -s "$2"
 }
 
 if [ "$1" = "clean" ]; then
   rm -f wiktionary.dic wiktionary.aff wiktionary.extracted wordlist.diff wordlist.sorted
-  rm -f huntest.aff huntest.dic
+  rm -f ${TMP}/huntest.aff ${TMP}/huntest.dic
   rm -f dicts/*.dic dicts/*.aff
 #  rm -f wordlist.orig ??wiktionary-latest-pages-articles.xml ??
   rmdir dicts
@@ -51,17 +54,17 @@ elif [ "$1" = "test" ]; then
   echo "Testing known words..."
   for i in $( ls langs/$2/*.good); do
     TESTNAME="`basename $i .good`"
-    cat langs/$2/common-aff langs/$2/$TESTNAME.aff > huntest.aff
-    cp langs/$2/$TESTNAME.dic huntest.dic
-    test -z "`hunspell -l -d huntest < langs/$2/$TESTNAME.good`" || { echo "Good word test for $TESTNAME failed: `hunspell -l -d huntest < langs/$2/$TESTNAME.good`"; exit 1; }
+    cat langs/$2/common-aff langs/$2/$TESTNAME.aff > ${TMP}/huntest.aff
+    cp langs/$2/$TESTNAME.dic ${TMP}/huntest.dic
+    test -z "`hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`" || { echo "Good word test for $TESTNAME failed: `hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`"; exit 1; }
   done
   echo "All known words passed."
   echo "Testing bad words..."
   for i in $( ls langs/$2/*.bad); do
     TESTNAME="`basename $i .bad`"
-    cat langs/$2/common-aff langs/$2/$TESTNAME.aff > huntest.aff
-    cp langs/$2/$TESTNAME.dic huntest.dic
-    test -z "`hunspell -G -d huntest < langs/$2/$TESTNAME.bad`" || { echo "Bad word test for $TESTNAME failed: `hunspell -G -d huntest < langs/$2/$TESTNAME.bad`"; exit 1; }
+    cat langs/$2/common-aff langs/$2/$TESTNAME.aff > ${TMP}/huntest.aff
+    cp langs/$2/$TESTNAME.dic ${TMP}/huntest.dic
+    test -z "`hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`" || { echo "Bad word test for $TESTNAME failed: `hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`"; exit 1; }
   done
   echo "Passed."
 
