@@ -103,14 +103,14 @@ SFX 11	0	sins	[^un].
 
 #kk ft agr
 SFX 12 N 3
-SFX 12	0	ar	.
-SFX 12	0	a	.
-SFX 12	0	um	.
+SFX 12	0	0	.
+SFX 12	r	0	.
+SFX 12	ar	um	.
 
 #kk ft agr
 SFX 13 N 4
-SFX 13	0	arnir	.
-SFX 13	0	ana	.
-SFX 13	0	unum	.
-SFX 13	0	anna	.
+SFX 13	0	nir	.
+SFX 13	r	na	.
+SFX 13	ar	unum	.
+SFX 13	r	nna	.
 

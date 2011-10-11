@@ -4,11 +4,10 @@
 # License: Public Domain
 
 #todo:
-#bad words test
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu
 #setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
-#búa til "makedict.sh rebasegood" til að minnka orðalistann sem fylgir hunspell-is eftir því sem
-#     wiktionary stækkar.
+#     Svo búa til "makedict.sh rebasegood" til að minnka orðalistann sem fylgir
+#     hunspell-is eftir því sem wiktionary stækkar.
 #gera jafn- að -is-forskeyti-, rímnaflæði er hvk
 #profile automatic affix compression for speed, memory.
 #add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
@@ -29,7 +28,7 @@ if [ "$1" = "clean" ]; then
   rm -f wiktionary.dic wiktionary.aff wiktionary.extracted wordlist.diff wordlist.sorted
   rm -f huntest.aff huntest.dic
   rm -f dicts/*.dic dicts/*.aff
-#  rm -f wordlist.orig ??wiktionary-latest-pages-articles.xml ??wiktionary-latest-pages-articles.xml.bz2
+#  rm -f wordlist.orig ??wiktionary-latest-pages-articles.xml ??
   rmdir dicts
 
 elif [ "$1" = "check" ]; then
@@ -68,19 +67,17 @@ elif [ "$1" = "test" ]; then
 
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
-#  wget --timestamping http://elias.rhi.hi.is/pub/is/ordalisti -O wordlist.orig
-#  wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2
-
+  test -e wordlist.orig || wget --timestamping http://elias.rhi.hi.is/pub/is/ordalisti -O wordlist.orig
+  test -e ${1}wiktionary-latest-pages-articles.xml || wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O - | bunzip2 > ${1}wiktionary-latest-pages-articles.xml
   echo "Extracting valid words from the wiktionary dump..."
-#  bunzip2 -k ${1}wiktionary-latest-pages-articles.xml.bz2
   rm -f wiktionary.extracted
   cp langs/$1/common-aff wiktionary.aff
-  TAG=1
+  FLAG=1
   for i in $( ls langs/$1/*.aff); do
     RULE="`basename $i .aff | sed 's/_/ /g'`"
-    cat $i | sed "s/SFX X/SFX $TAG/g" >> wiktionary.aff
-    grep -o "^{{$RULE|[^}]*" ${1}wiktionary-latest-pages-articles.xml | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$TAG"'}' >> wiktionary.extracted
-    TAG=`expr $TAG + 1`
+    cat $i | sed "s/SFX X/SFX $FLAG/g" >> wiktionary.aff
+    grep -o "^{{$RULE|[^}]*" ${1}wiktionary-latest-pages-articles.xml | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> wiktionary.extracted
+    FLAG=`expr $FLAG + 1`
   done
   gawk '{print $1"/c"}' wiktionary.extracted > wiktionary.dic
   insertHead `wc -l < wiktionary.dic` wiktionary.dic
