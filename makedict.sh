@@ -12,7 +12,6 @@
 #profile automatic affix compression for speed, memory.
 #add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
 #remove lower case word in dicts/*.dic when a capitalized word exists
-#bæta við TMP breytu sem vísar á möppuna /tmp/ eða annað.
 #wget -N does not work on cygwin - downloads every time.
 #enforce & print dictionary license
 #clean iswiktionary xml and wordlist.org
@@ -28,11 +27,12 @@ insertHead() {
 }
 
 if [ "$1" = "clean" ]; then
-  rm -f wiktionary.dic wiktionary.aff wiktionary.extracted wordlist.diff wordlist.sorted
+  rm -f ${TMP}/wiktionary.dic ${TMP}/wiktionary.aff ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff ${TMP}/wordlist.sorted
   rm -f ${TMP}/huntest.aff ${TMP}/huntest.dic
   rm -f dicts/*.dic dicts/*.aff
-#  rm -f wordlist.orig ??wiktionary-latest-pages-articles.xml ??
+#  rm -f wordlist.orig ${TMP}/??wiktionary-latest-pages-articles.xml
   rmdir dicts
+  rmdir tmp
 
 elif [ "$1" = "check" ]; then
   for i in $( echo "hunspell gawk bash ed sort bunzip2 iconv wget"); do
@@ -71,28 +71,28 @@ elif [ "$1" = "test" ]; then
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
   test -e wordlist.orig || wget --timestamping http://elias.rhi.hi.is/pub/is/ordalisti -O wordlist.orig
-  test -e ${1}wiktionary-latest-pages-articles.xml || wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O - | bunzip2 > ${1}wiktionary-latest-pages-articles.xml
+  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O - | bunzip2 > ${TMP}/${1}wiktionary-latest-pages-articles.xml
   echo "Extracting valid words from the wiktionary dump..."
-  rm -f wiktionary.extracted
-  cp langs/$1/common-aff wiktionary.aff
+  rm -f ${TMP}/wiktionary.extracted
+  cp langs/$1/common-aff ${TMP}/wiktionary.aff
   FLAG=1
   for i in $( ls langs/$1/*.aff); do
     RULE="`basename $i .aff | sed 's/_/ /g'`"
-    cat $i | sed "s/SFX X/SFX $FLAG/g" >> wiktionary.aff
-    grep -o "^{{$RULE|[^}]*" ${1}wiktionary-latest-pages-articles.xml | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> wiktionary.extracted
+    cat $i | sed "s/SFX X/SFX $FLAG/g" >> ${TMP}/wiktionary.aff
+    grep -o "^{{$RULE|[^}]*" ${TMP}/${1}wiktionary-latest-pages-articles.xml | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     FLAG=`expr $FLAG + 1`
   done
-  gawk '{print $1"/c"}' wiktionary.extracted > wiktionary.dic
-  insertHead `wc -l < wiktionary.dic` wiktionary.dic
-  echo "KEEPCASE c" >> wiktionary.aff
+  gawk '{print $1"/c"}' ${TMP}/wiktionary.extracted > ${TMP}/wiktionary.dic
+  insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
+  echo "KEEPCASE c" >> ${TMP}/wiktionary.aff
 
   echo "Finding extra words in the wordlist..."
-  iconv -f iso8859-1 -t utf-8 wordlist.orig | sort | comm - langs/$1.banned -2 -3 > wordlist.sorted
-  hunspell -i utf8 -l -d wiktionary < wordlist.sorted > wordlist.diff
+  iconv -f iso8859-1 -t utf-8 wordlist.orig | sort | comm - langs/$1.banned -2 -3 > ${TMP}/wordlist.sorted
+  hunspell -i utf8 -l -d ${TMP}/wiktionary < ${TMP}/wordlist.sorted > ${TMP}/wordlist.diff
 
   echo "Merging the wordlist and the wiktionary words..."
   mkdir -p dicts
-  LC_ALL=$1.UTF-8 sort wiktionary.extracted wordlist.diff > dicts/$1.dic
+  LC_ALL=$1.UTF-8 sort ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff > dicts/$1.dic
   insertHead `wc -l < dicts/$1.dic` dicts/$1.dic
   cp langs/$1/common-aff dicts/$1.aff
   for i in $( ls langs/$1/*.aff); do
