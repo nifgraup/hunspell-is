@@ -4,20 +4,20 @@
 # License: Public Domain
 
 #todo:
-#bæta bókstöfum við try? - nota nútímalegri texa en snerpu
+#bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
 #setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
-#     Svo búa til "makedict.sh rebasegood" til að minnka orðalistann sem fylgir
-#     hunspell-is eftir því sem wiktionary stækkar.
-#gera jafn- að -is-forskeyti-, rímnaflæði er hvk
-#profile automatic affix compression for speed, memory.
+#rangfærslur á is.wiktionar.org?
+#	gera jafn- að -is-forskeyti-, rímnaflæði er hvk
 #add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
+#	profile automatic affix compression for speed, memory.
 #remove lower case word in dicts/*.dic when a capitalized word exists
 #wget -N does not work on cygwin - downloads every time.
 #enforce & print dictionary license
 #clean iswiktionary xml and wordlist.org
 #make firefox/openoffice/chrome/opera dictionary packages
-#is-extractwords.old tekur of mikið minni (140mb)
-#Raða skilyrðum í is-extractwords.old í röð svo algengustu til að faila komi fyrst. (optimization)
+#is-extractwords.old
+#	tekur of mikið minni (140mb)
+#	Raða skilyrðum í röð svo algengustu til að faila komi fyrst. (optimization)
 
 TMP="tmp"
 mkdir -p ${TMP}
