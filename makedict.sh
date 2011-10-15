@@ -19,6 +19,14 @@
 #	tekur of mikið minni (140mb)
 #	Raða skilyrðum í röð svo algengustu til að faila komi fyrst. (optimization)
 
+# Check dependencies
+for i in $( echo "hunspell gawk bash ed sort bunzip2 iconv wget"); do
+  if [ "`type $i | grep -o "not found"`" = "not found" ]; then
+    echo "Program $i is required but it's not installed or not in path.  Aborting."
+    exit 1
+  fi
+done
+
 TMP="tmp"
 mkdir -p ${TMP}
 
@@ -33,15 +41,6 @@ if [ "$1" = "clean" ]; then
 #  rm -f wordlist.orig ${TMP}/??wiktionary-latest-pages-articles.xml
   rmdir dicts
   rmdir tmp
-
-elif [ "$1" = "check" ]; then
-  for i in $( echo "hunspell gawk bash ed sort bunzip2 iconv wget"); do
-    if [ "`type $i | grep -o "not found"`" = "not found" ]; then
-      echo "I require $i but it's not installed.  Aborting."
-      exit 1
-    fi
-  done
-  echo "All dependencies fullfilled."
 
 elif [ "$1" = "list" ]; then
   basename langs/*.conf .conf
@@ -103,6 +102,6 @@ elif [ "$1" != "" ]; then
 
 else
   echo "Usage:"
-  echo "        $0 is | check | test is | list | clean"
+  echo "        $0 is | test is | list | clean"
 fi
 
