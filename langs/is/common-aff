@@ -101,6 +101,32 @@ SFX 11	0	sins	u[^r]
 SFX 11	0	sins	n[^n]
 SFX 11	0	sins	[^un].
 
+#kk et agr -s
+SFX 14 N 7
+SFX 14	ur	0	ur
+SFX 14	n	0	nn
+SFX 14	ur	i	ur
+SFX 14	n	i	nn
+SFX 14	0	i	u[^r]
+SFX 14	0	i	n[^n]
+SFX 14	0	i	[^un].
+
+#kk et gr -s
+SFX 15 N 13
+SFX 15	0	inn	.
+SFX 15	ur	inn	ur
+SFX 15	n	inn	nn
+SFX 15	ur	inum	ur
+SFX 15	n	inum	nn
+SFX 15	0	inum	u[^r]
+SFX 15	0	inum	n[^n]
+SFX 15	0	inum	[^un].
+SFX 15	ur	ins	ur
+SFX 15	n	ins	nn
+SFX 15	0	ins	u[^r]
+SFX 15	0	ins	n[^n]
+SFX 15	0	ins	[^un].
+
 #kk ft agr
 SFX 12 N 3
 SFX 12	0	0	.
