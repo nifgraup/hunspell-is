@@ -114,11 +114,11 @@ SFX 13	r	na	.
 SFX 13	ar	unum	.
 SFX 13	r	nna	.
 
-SFX 100 N 30
+#lo frumstig
+SFX 100 N 13
 SFX 100	0	an	.
 SFX 100	0	um	.
 SFX 100	0	s	.
-SFX 100	0	ur	.
 SFX 100	0	a	.
 SFX 100	0	ri	.
 SFX 100	0	rar	.
@@ -129,20 +129,24 @@ SFX 100	0	ra	.
 SFX 100	0	ar	.
 SFX 100	0	i	.
 SFX 100	0	u	.
-SFX 100	0	ari	.
-SFX 100	0	ara	.
-SFX 100	0	astur	.
-SFX 100	0	astan	.
-SFX 100	0	ustum	.
-SFX 100	0	asts	.
-SFX 100	0	ust	.
-SFX 100	0	asta	.
-SFX 100	0	astri	.
-SFX 100	0	astrar	.
-SFX 100	0	ast	.
-SFX 100	0	ustu	.
-SFX 100	0	astir	.
-SFX 100	0	astra	.
-SFX 100	0	astar	.
-SFX 100	0	asti	.
+
+#lo miðstig & efsta stig
+SFX 101 N 16
+SFX 101	0	ari	.
+SFX 101	0	ara	.
+SFX 101	0	astur	.
+SFX 101	0	astan	.
+SFX 101	0	ustum	.
+SFX 101	0	asts	.
+SFX 101	0	ust	.
+SFX 101	0	asta	.
+SFX 101	0	astri	.
+SFX 101	0	astrar	.
+SFX 101	0	ast	.
+SFX 101	0	ustu	.
+SFX 101	0	astir	.
+SFX 101	0	astra	.
+SFX 101	0	astar	.
+SFX 101	0	asti	.
+
 

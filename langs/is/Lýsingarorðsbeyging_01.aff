@@ -1,5 +1,5 @@
 SFX X N 3
-SFX X	ur	0/100	ur
-SFX X   0	0/100	u[^r]
-SFX X   0	0/100	[^u].
+SFX X	ur	0/100,101	ur
+SFX X   0	0/100,101	u[^r]
+SFX X   0	0/100,101	[^u].
 
