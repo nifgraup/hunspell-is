@@ -4,6 +4,7 @@
 # License: Public Domain
 
 #todo:
+#sækja bara texta úr xml-inu. Lagar tvöfalt "dýr" is.dic og kannski líka tóma-entryið.
 #Only add KEEPCASE 1 when word starts with a lower case letter.
 #Ákveða númeringu á common-aff reglum.
 #Stúdera samsett orð (COMPOUND* reglurnar)
@@ -45,7 +46,9 @@ if [ "$1" = "clean" ]; then
   rmdir tmp
 
 elif [ "$1" = "list" ]; then
-  basename langs/*.conf .conf
+  for i in $( ls -d langs/*/ ); do
+    echo `basename $i`
+  done
 
 elif [ "$1" = "test" ]; then
   if [ "$2" = "" ]; then
