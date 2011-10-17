@@ -1,4 +1,3 @@
-SFX X N 2
-SFX X	0	0/12	.
-SFX X	0	0/13	.
+SFX X N 1
+SFX X	0	0/12,13	.
 

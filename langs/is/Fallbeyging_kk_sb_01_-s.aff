@@ -1,14 +1,8 @@
-SFX X N 12
-SFX X	0	0/14	.
-SFX X	0	0/15	.
-SFX X	ur	ar/12    ur
-SFX X	n	ar/12	nn
-SFX X   0	ar/12	u[^r] 
-SFX X   0	ar/12	n[^n] 
-SFX X   0	ar/12	[^un].
-SFX X	ur	ar/13    ur
-SFX X	n	ar/13	nn
-SFX X   0	ar/13	u[^r] 
-SFX X   0	ar/13	n[^n] 
-SFX X   0	ar/13	[^un].
+SFX X N 6
+SFX X	0	0/14,15		.
+SFX X	ur	ar/12,13	ur
+SFX X	n	ar/12,13	nn
+SFX X   0	ar/12,13	u[^r] 
+SFX X   0	ar/12,13	n[^n] 
+SFX X   0	ar/12,13	[^un].
 

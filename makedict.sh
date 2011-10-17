@@ -80,7 +80,7 @@ elif [ "$1" != "" ]; then
   rm -f ${TMP}/wiktionary.extracted
   mkdir -p dicts
   cp langs/$1/common-aff dicts/$1.aff
-  FLAG=2
+  FLAG=1
   for i in $( ls langs/$1/*.aff); do
     RULE="`basename $i .aff | sed 's/_/ /g'`"
     echo "#$RULE" >> dicts/$1.aff
