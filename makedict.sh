@@ -4,6 +4,8 @@
 # License: Public Domain
 
 #todo:
+#Ákveða númeringu á common-aff reglum.
+#Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
 #setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
 #rangfærslur á is.wiktionar.org?
@@ -75,7 +77,7 @@ elif [ "$1" != "" ]; then
   rm -f ${TMP}/wiktionary.extracted
   mkdir -p dicts
   cp langs/$1/common-aff dicts/$1.aff
-  FLAG=1
+  FLAG=2
   for i in $( ls langs/$1/*.aff); do
     RULE="`basename $i .aff | sed 's/_/ /g'`"
     echo "#$RULE" >> dicts/$1.aff
@@ -83,10 +85,10 @@ elif [ "$1" != "" ]; then
     grep -o "^{{$RULE|[^}]*" ${TMP}/${1}wiktionary-latest-pages-articles.xml | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     FLAG=`expr $FLAG + 1`
   done
-  gawk '{print $1"/c"}' ${TMP}/wiktionary.extracted > ${TMP}/wiktionary.dic
+  gawk '{print $1",1"}' ${TMP}/wiktionary.extracted > ${TMP}/wiktionary.dic
   insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
   cp dicts/$1.aff ${TMP}/wiktionary.aff
-  echo "KEEPCASE c" >> ${TMP}/wiktionary.aff
+  echo "KEEPCASE 1" >> ${TMP}/wiktionary.aff
 
   echo "Finding extra words in the wordlist..."
   iconv -f iso8859-1 -t utf-8 wordlist.orig | sort | comm - langs/$1.banned -2 -3 > ${TMP}/wordlist.sorted
