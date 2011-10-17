@@ -4,12 +4,11 @@
 # License: Public Domain
 
 #todo:
-#laga tóma færslu í wiktionary.dic: /7,1
-#Only add KEEPCASE 1 when word starts with a lower case letter.
 #Ákveða númeringu á common-aff reglum.
 #Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
 #setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
+#replace gawk with printf?
 #rangfærslur á is.wiktionar.org?
 #	gera jafn- að -is-forskeyti-, rímnaflæði er hvk
 #add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
@@ -86,13 +85,12 @@ elif [ "$1" != "" ]; then
     RULE="`basename $i .aff | sed 's/_/ /g'`"
     echo "#$RULE" >> dicts/$1.aff
     cat $i | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
-    grep -o "^{{$RULE|[^}]*" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
+    grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     FLAG=`expr $FLAG + 1`
   done
-  gawk '{print $1",1"}' ${TMP}/wiktionary.extracted > ${TMP}/wiktionary.dic
+  cp ${TMP}/wiktionary.extracted ${TMP}/wiktionary.dic
   insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
   cp dicts/$1.aff ${TMP}/wiktionary.aff
-  echo "KEEPCASE 1" >> ${TMP}/wiktionary.aff
 
   echo "Finding extra words in the wordlist..."
   iconv -f iso8859-1 -t utf-8 wordlist.orig | sort | comm - langs/$1.banned -2 -3 > ${TMP}/wordlist.sorted
