@@ -4,6 +4,7 @@
 # License: Public Domain
 
 #todo:
+#Only add KEEPCASE 1 when word starts with a lower case letter.
 #Ákveða númeringu á common-aff reglum.
 #Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
@@ -12,7 +13,6 @@
 #	gera jafn- að -is-forskeyti-, rímnaflæði er hvk
 #add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
 #	profile automatic affix compression for speed, memory.
-#remove lower case word in dicts/*.dic when a capitalized word exists
 #wget -N does not work on cygwin - downloads every time.
 #enforce & print dictionary license
 #clean iswiktionary xml and wordlist.org
