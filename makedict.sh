@@ -4,7 +4,7 @@
 # License: Public Domain
 
 #todo:
-#sækja bara texta úr xml-inu. Lagar tvöfalt "dýr" is.dic og kannski líka tóma-entryið.
+#laga tóma færslu í wiktionary.dic: /7,1
 #Only add KEEPCASE 1 when word starts with a lower case letter.
 #Ákveða númeringu á common-aff reglum.
 #Stúdera samsett orð (COMPOUND* reglurnar)
@@ -41,7 +41,7 @@ if [ "$1" = "clean" ]; then
   rm -f ${TMP}/wiktionary.dic ${TMP}/wiktionary.aff ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff ${TMP}/wordlist.sorted
   rm -f ${TMP}/huntest.aff ${TMP}/huntest.dic
   rm -f dicts/*.dic dicts/*.aff
-#  rm -f wordlist.orig ${TMP}/??wiktionary-latest-pages-articles.xml
+#  rm -f wordlist.orig ${TMP}/??wiktionary-latest-pages-articles.xml ${TMP}/??wiktionary-latest-pages-articles.xml.texts
   rmdir dicts
   rmdir tmp
 
@@ -76,6 +76,7 @@ elif [ "$1" != "" ]; then
   echo "Downloading files..."
   test -e wordlist.orig || wget --timestamping http://elias.rhi.hi.is/pub/is/ordalisti -O wordlist.orig
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O - | bunzip2 > ${TMP}/${1}wiktionary-latest-pages-articles.xml
+  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || sed -n '/<text/,/<\/text>/p' ${TMP}/iswiktionary-latest-pages-articles.xml > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
   mkdir -p dicts
@@ -85,7 +86,7 @@ elif [ "$1" != "" ]; then
     RULE="`basename $i .aff | sed 's/_/ /g'`"
     echo "#$RULE" >> dicts/$1.aff
     cat $i | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
-    grep -o "^{{$RULE|[^}]*" ${TMP}/${1}wiktionary-latest-pages-articles.xml | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
+    grep -o "^{{$RULE|[^}]*" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     FLAG=`expr $FLAG + 1`
   done
   gawk '{print $1",1"}' ${TMP}/wiktionary.extracted > ${TMP}/wiktionary.dic
