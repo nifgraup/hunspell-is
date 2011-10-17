@@ -73,16 +73,19 @@ elif [ "$1" != "" ]; then
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O - | bunzip2 > ${TMP}/${1}wiktionary-latest-pages-articles.xml
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
-  cp langs/$1/common-aff ${TMP}/wiktionary.aff
+  mkdir -p dicts
+  cp langs/$1/common-aff dicts/$1.aff
   FLAG=1
   for i in $( ls langs/$1/*.aff); do
     RULE="`basename $i .aff | sed 's/_/ /g'`"
-    cat $i | sed "s/SFX X/SFX $FLAG/g" >> ${TMP}/wiktionary.aff
+    echo "#$RULE" >> dicts/$1.aff
+    cat $i | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
     grep -o "^{{$RULE|[^}]*" ${TMP}/${1}wiktionary-latest-pages-articles.xml | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     FLAG=`expr $FLAG + 1`
   done
   gawk '{print $1"/c"}' ${TMP}/wiktionary.extracted > ${TMP}/wiktionary.dic
   insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
+  cp dicts/$1.aff ${TMP}/wiktionary.aff
   echo "KEEPCASE c" >> ${TMP}/wiktionary.aff
 
   echo "Finding extra words in the wordlist..."
@@ -90,13 +93,8 @@ elif [ "$1" != "" ]; then
   hunspell -i utf8 -l -d ${TMP}/wiktionary < ${TMP}/wordlist.sorted > ${TMP}/wordlist.diff
 
   echo "Merging the wordlist and the wiktionary words..."
-  mkdir -p dicts
   LC_ALL=$1.UTF-8 sort ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff > dicts/$1.dic
   insertHead `wc -l < dicts/$1.dic` dicts/$1.dic
-  cp langs/$1/common-aff dicts/$1.aff
-  for i in $( ls langs/$1/*.aff); do
-    cat $i >> dicts/$1.aff
-  done
 
   echo "Done building dictionary, see dicts/$1.dic and dicts/$1.aff."
 
