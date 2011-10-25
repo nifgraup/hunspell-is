@@ -23,10 +23,7 @@
 
 # Check dependencies
 for i in $( echo "hunspell gawk bash ed sort bunzip2 iconv wget"); do
-  if [ "`type $i | grep -o "not found"`" = "not found" ]; then
-    echo "Program $i is required but it's not installed or not in path.  Aborting."
-    exit 1
-  fi
+  command -v $i &>/dev/null || { echo "I require $i but it's not installed. Aborting." >&2; exit 1; }
 done
 
 TMP="tmp"
