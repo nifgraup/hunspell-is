@@ -80,7 +80,9 @@ elif [ "$1" != "" ]; then
   FLAG=1
   for i in $( ls langs/$1/*.aff); do
     RULE="`basename $i .aff | sed 's/_/ /g'`"
+    LINECOUNT="`grep -cve '^\s*$' $i`"
     echo "#$RULE" >> dicts/$1.aff
+    echo "SFX $FLAG N $LINECOUNT" >> dicts/$1.aff
     cat $i | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
     grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     FLAG=`expr $FLAG + 1`
