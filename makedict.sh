@@ -52,18 +52,14 @@ elif [ "$1" = "test" ]; then
     exit 1
   fi
   echo "Testing known words..."
-  for i in $( ls langs/$2/*.good); do
-    TESTNAME="`basename $i .good`"
-    cat langs/$2/common-aff langs/$2/$TESTNAME.aff > ${TMP}/huntest.aff
+  for i in $( ls langs/$2/*.aff); do
+    cp langs/$2/common-aff ${TMP}/huntest.aff
+    LINECOUNT="`grep -cve '^\s*$' $i`"
+    echo "SFX X N $LINECOUNT" >> ${TMP}/huntest.aff
+    cat $i >> ${TMP}/huntest.aff
+    TESTNAME="`basename $i .aff`"
     cp langs/$2/$TESTNAME.dic ${TMP}/huntest.dic
     test -z "`hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`" || { echo "Good word test for $TESTNAME failed: `hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`"; exit 1; }
-  done
-  echo "All known words passed."
-  echo "Testing bad words..."
-  for i in $( ls langs/$2/*.bad); do
-    TESTNAME="`basename $i .bad`"
-    cat langs/$2/common-aff langs/$2/$TESTNAME.aff > ${TMP}/huntest.aff
-    cp langs/$2/$TESTNAME.dic ${TMP}/huntest.dic
     test -z "`hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`" || { echo "Bad word test for $TESTNAME failed: `hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`"; exit 1; }
   done
   echo "Passed."
