@@ -51,18 +51,19 @@ elif [ "$1" = "test" ]; then
     echo "Usage: $0 test is"
     exit 1
   fi
-  echo "Testing known words..."
+  echo "Testing rules..."
   for i in $( ls langs/$2/*.aff); do
     cp langs/$2/common-aff ${TMP}/huntest.aff
     LINECOUNT="`grep -cve '^\s*$' $i`"
     echo "SFX X N $LINECOUNT" >> ${TMP}/huntest.aff
     cat $i >> ${TMP}/huntest.aff
     TESTNAME="`basename $i .aff`"
+    echo "Testing rule $TESTNAME"
     cp langs/$2/$TESTNAME.dic ${TMP}/huntest.dic
     test -z "`hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`" || { echo "Good word test for $TESTNAME failed: `hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`"; exit 1; }
     test -z "`hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`" || { echo "Bad word test for $TESTNAME failed: `hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`"; exit 1; }
   done
-  echo "Passed."
+  echo "All passed."
 
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
