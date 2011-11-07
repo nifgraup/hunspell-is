@@ -73,15 +73,15 @@ elif [ "$1" != "" ]; then
   rm -f ${TMP}/wiktionary.extracted
   mkdir -p dicts
   cp langs/$1/common-aff dicts/$1.aff
-  FLAG=1
+  FLAG=`grep -o [[:space:]][[:digit:]]*[[:space:]]N[[:space:]] langs/$1/common-aff | gawk 'BEGIN {max = 0} {if($1>max) max=$1} END {print max}'`
   for i in $( ls langs/$1/*.aff); do
+    FLAG=`expr $FLAG + 1`
     RULE="`basename $i .aff | sed 's/_/ /g'`"
     LINECOUNT="`grep -cve '^\s*$' $i`"
     echo "#$RULE" >> dicts/$1.aff
     echo "SFX $FLAG N $LINECOUNT" >> dicts/$1.aff
     cat $i | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
     grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
-    FLAG=`expr $FLAG + 1`
   done
   cp ${TMP}/wiktionary.extracted ${TMP}/wiktionary.dic
   insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
