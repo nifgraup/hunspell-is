@@ -71,108 +71,108 @@ REP x ks
 FLAG num
 
 #kk et agr
-SFX 10 N 12
-SFX 10	ur	0	ur
-SFX 10	n	0	nn
-SFX 10	ur	i	ur
-SFX 10	n	i	nn
-SFX 10	0	i	u[^r]
-SFX 10	0	i	n[^n]
-SFX 10	0	i	[^un].
-SFX 10	ur	s	ur
-SFX 10	n	s	nn
-SFX 10	0	s	u[^r]
-SFX 10	0	s	n[^n]
-SFX 10	0	s	[^un].
+SFX 1	N 12
+SFX 1	ur	0	ur
+SFX 1	n	0	nn
+SFX 1	ur	i	ur
+SFX 1	n	i	nn
+SFX 1	0	i	u[^r]
+SFX 1	0	i	n[^n]
+SFX 1	0	i	[^un].
+SFX 1	ur	s	ur
+SFX 1	n	s	nn
+SFX 1	0	s	u[^r]
+SFX 1	0	s	n[^n]
+SFX 1	0	s	[^un].
 
 #kk et gr
-SFX 11 N 13
-SFX 11	0	inn	.
-SFX 11	ur	inn	ur
-SFX 11	n	inn	nn
-SFX 11	ur	inum	ur
-SFX 11	n	inum	nn
-SFX 11	0	inum	u[^r]
-SFX 11	0	inum	n[^n]
-SFX 11	0	inum	[^un].
-SFX 11	ur	sins	ur
-SFX 11	n	sins	nn
-SFX 11	0	sins	u[^r]
-SFX 11	0	sins	n[^n]
-SFX 11	0	sins	[^un].
+SFX 2	N 13
+SFX 2	0	inn	.
+SFX 2	ur	inn	ur
+SFX 2	n	inn	nn
+SFX 2	ur	inum	ur
+SFX 2	n	inum	nn
+SFX 2	0	inum	u[^r]
+SFX 2	0	inum	n[^n]
+SFX 2	0	inum	[^un].
+SFX 2	ur	sins	ur
+SFX 2	n	sins	nn
+SFX 2	0	sins	u[^r]
+SFX 2	0	sins	n[^n]
+SFX 2	0	sins	[^un].
 
 #kk et agr -s
-SFX 14 N 7
-SFX 14	ur	0	ur
-SFX 14	n	0	nn
-SFX 14	ur	i	ur
-SFX 14	n	i	nn
-SFX 14	0	i	u[^r]
-SFX 14	0	i	n[^n]
-SFX 14	0	i	[^un].
+SFX 3	N 7
+SFX 3	ur	0	ur
+SFX 3	n	0	nn
+SFX 3	ur	i	ur
+SFX 3	n	i	nn
+SFX 3	0	i	u[^r]
+SFX 3	0	i	n[^n]
+SFX 3	0	i	[^un].
 
 #kk et gr -s
-SFX 15 N 13
-SFX 15	0	inn	.
-SFX 15	ur	inn	ur
-SFX 15	n	inn	nn
-SFX 15	ur	inum	ur
-SFX 15	n	inum	nn
-SFX 15	0	inum	u[^r]
-SFX 15	0	inum	n[^n]
-SFX 15	0	inum	[^un].
-SFX 15	ur	ins	ur
-SFX 15	n	ins	nn
-SFX 15	0	ins	u[^r]
-SFX 15	0	ins	n[^n]
-SFX 15	0	ins	[^un].
+SFX 4	N 13
+SFX 4	0	inn	.
+SFX 4	ur	inn	ur
+SFX 4	n	inn	nn
+SFX 4	ur	inum	ur
+SFX 4	n	inum	nn
+SFX 4	0	inum	u[^r]
+SFX 4	0	inum	n[^n]
+SFX 4	0	inum	[^un].
+SFX 4	ur	ins	ur
+SFX 4	n	ins	nn
+SFX 4	0	ins	u[^r]
+SFX 4	0	ins	n[^n]
+SFX 4	0	ins	[^un].
 
 #kk ft agr
-SFX 12 N 3
-SFX 12	0	0	.
-SFX 12	r	0	.
-SFX 12	ar	um	.
+SFX 5	N 3
+SFX 5	0	0	.
+SFX 5	r	0	.
+SFX 5	ar	um	.
 
 #kk ft agr
-SFX 13 N 4
-SFX 13	0	nir	.
-SFX 13	r	na	.
-SFX 13	ar	unum	.
-SFX 13	r	nna	.
+SFX 6	N 4
+SFX 6	0	nir	.
+SFX 6	r	na	.
+SFX 6	ar	unum	.
+SFX 6	r	nna	.
 
 #lo frumstig
-SFX 100 N 13
-SFX 100	0	an	.
-SFX 100	0	um	.
-SFX 100	0	s	.
-SFX 100	0	a	.
-SFX 100	0	ri	.
-SFX 100	0	rar	.
-SFX 100	0	t	.
-SFX 100	0	u	.
-SFX 100	0	ir	.
-SFX 100	0	ra	.
-SFX 100	0	ar	.
-SFX 100	0	i	.
-SFX 100	0	u	.
+SFX 7	N 13
+SFX 7	0	an	.
+SFX 7	0	um	.
+SFX 7	0	s	.
+SFX 7	0	a	.
+SFX 7	0	ri	.
+SFX 7	0	rar	.
+SFX 7	0	t	.
+SFX 7	0	u	.
+SFX 7	0	ir	.
+SFX 7	0	ra	.
+SFX 7	0	ar	.
+SFX 7	0	i	.
+SFX 7	0	u	.
 
 #lo miðstig & efsta stig
-SFX 101 N 16
-SFX 101	0	ari	.
-SFX 101	0	ara	.
-SFX 101	0	astur	.
-SFX 101	0	astan	.
-SFX 101	0	ustum	.
-SFX 101	0	asts	.
-SFX 101	0	ust	.
-SFX 101	0	asta	.
-SFX 101	0	astri	.
-SFX 101	0	astrar	.
-SFX 101	0	ast	.
-SFX 101	0	ustu	.
-SFX 101	0	astir	.
-SFX 101	0	astra	.
-SFX 101	0	astar	.
-SFX 101	0	asti	.
+SFX 8	N 16
+SFX 8	0	ari	.
+SFX 8	0	ara	.
+SFX 8	0	astur	.
+SFX 8	0	astan	.
+SFX 8	0	ustum	.
+SFX 8	0	asts	.
+SFX 8	0	ust	.
+SFX 8	0	asta	.
+SFX 8	0	astri	.
+SFX 8	0	astrar	.
+SFX 8	0	ast	.
+SFX 8	0	ustu	.
+SFX 8	0	astir	.
+SFX 8	0	astra	.
+SFX 8	0	astar	.
+SFX 8	0	asti	.
 
 

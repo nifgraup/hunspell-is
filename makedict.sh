@@ -4,7 +4,7 @@
 # License: Public Domain
 
 #todo:
-#Ákveða númeringu á common-aff reglum.
+#tools/insert-common-rule
 #Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
 #setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
