@@ -1,0 +1,26 @@
+﻿Original Word List By:
+  The University of Iceland
+  Elías Halldór Ágústsson (elias at hi is)
+Copyright Terms: GPL
+Wordlist URL: http://elias.rhi.hi.is/pub/is/ordalisti
+Last Modified: 09-Feb-2006
+
+******* BEGIN LICENSE BLOCK *******
+istr: The Big Icelandic Wordlist
+Copyright © 1992, 2003 The University of Iceland
+<adm@hi.is>.
+
+    This dictionary is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This dictionary is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this dictionary; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+******* END LICENSE BLOCK *******

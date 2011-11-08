@@ -65,6 +65,23 @@ elif [ "$1" = "test" ]; then
   done
   echo "All passed."
 
+elif [ "$1" = "packages" ]; then
+  if [ "$2" = "" ]; then
+    echo "Usage: $0 packages is"
+    exit 1
+  fi
+  echo "Making Libreoffice extension..."
+  TODAY=`date +%Y-%m-%d`
+  rm -f dicts/hunspel-is-$TODAY.oxt
+  rm -rf tmp/libreoffice
+  cp -rf packages/libreoffice tmp/
+  cd tmp/libreoffice
+  sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' description.xml
+  zip -r ../../dicts/hunspel-is-$TODAY.oxt *
+  cd ../../
+  zip dicts/hunspel-is-$TODAY.oxt dicts/is.dic dicts/is.aff
+  cd ..
+
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
   test -e wordlist.orig || wget --timestamping http://elias.rhi.hi.is/pub/is/ordalisti -O wordlist.orig
@@ -100,6 +117,6 @@ elif [ "$1" != "" ]; then
 
 else
   echo "Usage:"
-  echo "        $0 is | test is | list | clean"
+  echo "        $0 is | packages is | test is | list | clean"
 fi
 
