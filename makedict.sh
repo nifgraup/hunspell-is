@@ -16,7 +16,7 @@
 #wget -N does not work on cygwin - downloads every time.
 #enforce & print dictionary license
 #clean iswiktionary xml and wordlist.org
-#make firefox/openoffice/chrome/opera dictionary packages
+#make firefox/chrome/opera dictionary packages
 #is-extractwords.old
 #	tekur of mikið minni (140mb)
 #	Raða skilyrðum í röð svo algengustu til að faila komi fyrst. (optimization)
