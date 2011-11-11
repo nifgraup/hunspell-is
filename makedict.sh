@@ -8,6 +8,7 @@
 #Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
 #setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
+#profile utf8 vs. iso-8859-1
 #replace gawk with printf?
 #rangfærslur á is.wiktionar.org?
 #	gera jafn- að -is-forskeyti-, rímnaflæði er hvk
