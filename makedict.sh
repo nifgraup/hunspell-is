@@ -100,7 +100,7 @@ elif [ "$1" != "" ]; then
     echo "#$RULE" >> dicts/$1.aff
     echo "SFX $FLAG N $LINECOUNT" >> dicts/$1.aff
     cat $i | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
-    grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | tr -d "|" | gawk '{print $1"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
+    grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{print $1$2$3"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
   done
   cp ${TMP}/wiktionary.extracted ${TMP}/wiktionary.dic
   insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
