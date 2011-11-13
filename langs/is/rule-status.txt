@@ -1,6 +1,6 @@
    2626 {{Fallbeyging (tímabundin)|
-    670 {{Lýsingarorðsbeyging 01 -legur|
-    476 {{Fallbeyging hk sb 01|
+X   670 {{Lýsingarorðsbeyging 01 -legur|
+X   476 {{Fallbeyging hk sb 01|
     435 {{Sagnbeyging|
     258 {{Fallbeyging kvenmannsnafn 01 i|
     258 {{Fallbeyging hk sb 01 et|

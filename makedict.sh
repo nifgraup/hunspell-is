@@ -10,6 +10,7 @@
 #setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
 #profile utf8 vs. iso-8859-1
 #replace gawk with printf?
+#eð/ cover-ar eða, viljum við halda eða inni sem sér orði? (Sama á við sérnöfn)
 #rangfærslur á is.wiktionar.org?
 #	gera jafn- að -is-forskeyti-, rímnaflæði er hvk
 #add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
