@@ -73,8 +73,8 @@ elif [ "$1" = "packages" ]; then
     exit 1
   fi
   echo "Making Libreoffice extension..."
-  TODAY=`date +%Y-%m-%d`
-  rm -f dicts/hunspel-is-$TODAY.oxt
+  TODAY=`date +%Y.%m.%d`
+  rm -f dicts/hunspell-is-$TODAY.oxt
   rm -rf tmp/libreoffice
   cp -rf packages/libreoffice tmp/
   cd tmp/libreoffice
