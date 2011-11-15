@@ -88,7 +88,7 @@ elif [ "$1" != "" ]; then
   echo "Downloading files..."
   test -e wordlist.orig || wget --timestamping http://elias.rhi.hi.is/pub/is/ordalisti -O wordlist.orig
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O - | bunzip2 > ${TMP}/${1}wiktionary-latest-pages-articles.xml
-  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || grep -o "{{[^.]*|[^.}]*" ${TMP}/iswiktionary-latest-pages-articles.xml | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
+  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || grep -o "{{[^.]*|[^-.][^}]*" ${TMP}/iswiktionary-latest-pages-articles.xml | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
   mkdir -p dicts
