@@ -19,7 +19,7 @@ Other languages can be added, see the langs/ folder.
 Dependencies
 ---------------------
 bzip2                          http://www.bzip.org/
-GNU awk                                http://www.gnu.org/software/gawk/
+GNU awk                        http://www.gnu.org/software/gawk/
 GNU Bash                       http://www.gnu.org/software/bash/
 GNU ed                         http://www.gnu.org/software/ed/
 GNU Core Utilities             http://www.gnu.org/software/coreutils/
@@ -33,6 +33,7 @@ Usage Instructions
 makedict.sh list		lists supported languages
 makedict.sh LANGUAGE		generates a dictionary for LANGUAGE, e.g. is
 makedict.sh packages LANGUAGE	Creates spell checking extensions for applications
+makedict.sh test LANGUAGE	Runs test cases for wiktionary extraction rules
 makedict.sh clean		remove temporary files
 
 
