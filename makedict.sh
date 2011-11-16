@@ -7,7 +7,6 @@
 #tools/insert-common-rule
 #Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
-#setja orðalistann inn í is.good bannorðalistann í is.bad ? ekki download-a orðalista.
 #profile utf8 vs. iso-8859-1
 #replace gawk with printf?
 #eð/ cover-ar eða, viljum við halda eða inni sem sér orði? (Sama á við sérnöfn)
@@ -17,7 +16,6 @@
 #	profile automatic affix compression for speed, memory.
 #wget -N does not work on cygwin - downloads every time.
 #enforce & print dictionary license
-#clean iswiktionary xml and wordlist.org
 #make firefox/chrome/opera dictionary packages
 #is-extractwords.old
 #	tekur of mikið minni (140mb)
@@ -36,10 +34,10 @@ insertHead() {
 }
 
 if [ "$1" = "clean" ]; then
-  rm -f ${TMP}/wiktionary.dic ${TMP}/wiktionary.aff ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff ${TMP}/wordlist.sorted
+  rm -f ${TMP}/wiktionary.dic ${TMP}/wiktionary.aff ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff
   rm -f ${TMP}/huntest.aff ${TMP}/huntest.dic
   rm -f dicts/*.dic dicts/*.aff
-#  rm -f wordlist.orig ${TMP}/??wiktionary-latest-pages-articles.xml ${TMP}/??wiktionary-latest-pages-articles.xml.texts
+#  rm -f ${TMP}/??wiktionary-latest-pages-articles.xml ${TMP}/??wiktionary-latest-pages-articles.xml.texts
   rmdir dicts
   rmdir tmp
 
@@ -86,7 +84,6 @@ elif [ "$1" = "packages" ]; then
 
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
-  test -e wordlist.orig || wget --timestamping http://elias.rhi.hi.is/pub/is/ordalisti -O wordlist.orig
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || wget --timestamping http://download.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O - | bunzip2 > ${TMP}/${1}wiktionary-latest-pages-articles.xml
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || grep -o "{{[^.]*|[^-.][^}]*" ${TMP}/iswiktionary-latest-pages-articles.xml | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
   echo "Extracting valid words from the wiktionary dump..."
@@ -117,8 +114,7 @@ elif [ "$1" != "" ]; then
   cp dicts/$1.aff ${TMP}/wiktionary.aff
 
   echo "Finding extra words in the wordlist..."
-  iconv -f iso8859-1 -t utf-8 wordlist.orig | sort | comm - langs/$1.banned -2 -3 > ${TMP}/wordlist.sorted
-  hunspell -i utf8 -l -d ${TMP}/wiktionary < ${TMP}/wordlist.sorted > ${TMP}/wordlist.diff
+  hunspell -i utf8 -l -d ${TMP}/wiktionary < langs/$1/wordlist > ${TMP}/wordlist.diff
 
   echo "Merging the wordlist and the wiktionary words..."
   LC_ALL=$1.UTF-8 sort ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff > dicts/$1.dic
