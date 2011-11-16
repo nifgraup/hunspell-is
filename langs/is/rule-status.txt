@@ -68,7 +68,7 @@ X    24 {{Fallbeyging kk sb 01 et|
      23 {{Fallbeyging kvk sb 03 æ|
      22 {{Fallbeyging kk sb 01 og 01a|
      20 {{Fallbeyging kk sb 02a ö|
-     20 {{Fallbeyging hk sb 01 ft|
+X    20 {{Fallbeyging hk sb 01 ft|
      19 {{Fallbeyging kvk sb örnefni ft 02|
      19 {{Fallbeyging kk vb 02 e|
      19 {{Fallbeyging hk sb 05|
