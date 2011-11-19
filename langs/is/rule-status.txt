@@ -180,7 +180,7 @@ X    11 {{Fallbeyging kk sb 01 ft|
       5 {{Lýsingarorðsbeyging 01 t frumstig|
       5 {{Lýsingarorðsbeyging 01 -inn t ö|
       5 {{Fallbeyging vo|
-      5 {{Fallbeyging kvk vb 01 ft|
+X     5 {{Fallbeyging kvk vb 01 ft|
       5 {{Fallbeyging kvk sb systir|
       5 {{Fallbeyging kvk sb 10|
       5 {{Fallbeyging kvk sb 06 og 07|

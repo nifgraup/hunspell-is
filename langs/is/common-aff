@@ -219,12 +219,12 @@ SFX 15	a	unnar	.
 
 #kvk vb ft agr
 SFX 16	N 2
-SFX 16	a	ur	.
-SFX 16	a	um	.
+SFX 16	r	m	.
+SFX 16	ur	a	.
 
 #kvk vb ft gr
 SFX 17	N 3
-SFX 17	a	urnar	.
-SFX 17	a	unum	.
-SFX 17	0	nna	.
+SFX 17	0	nar	.
+SFX 17	r	num	.
+SFX 17	ur	anna	.
 
