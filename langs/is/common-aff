@@ -197,3 +197,12 @@ SFX 12	0	in	.
 SFX 12	0	unum	.
 SFX 12	0	anna	.
 
+#kvk et agr i
+SFX 13	N 6
+SFX 13	ur      i       ur
+SFX 13	0       i       u[^r]
+SFX 13	0       i       [^u].
+SFX 13	ur      ar       ur
+SFX 13	0       ar       u[^r]
+SFX 13	0       ar       [^u].
+

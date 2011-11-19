@@ -2,7 +2,7 @@
 X   670 {{Lýsingarorðsbeyging 01 -legur|
 X   476 {{Fallbeyging hk sb 01|
     435 {{Sagnbeyging|
-    258 {{Fallbeyging kvenmannsnafn 01 i|
+X   258 {{Fallbeyging kvenmannsnafn 01 i|
 X   258 {{Fallbeyging hk sb 01 et|
     255 {{Fallbeyging|
     253 {{Fallbeyging kvk vb 01|
