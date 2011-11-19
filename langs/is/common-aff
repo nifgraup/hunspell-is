@@ -240,14 +240,13 @@ SFX 19  0       inni    .
 SFX 19	0	arinnar	.
 
 #kvk sb ft agr
-SFX 20	N 3
-SFX 20  0       ir	.
-SFX 20  0       um	.
-SFX 20  0       a	.
+SFX 20	N 2
+SFX 20  ir       um	.
+SFX 20  ir       a	.
 
 #kvk sb ft gr
 SFX 21	N 3
-SFX 21  0       irnar      .
-SFX 21  0       unum      .
-SFX 21  0       anna       .
+SFX 21  0       nar      .
+SFX 21  ir       unum      .
+SFX 21  ir       anna       .
 

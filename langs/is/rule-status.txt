@@ -162,7 +162,7 @@ X    11 {{Fallbeyging kk sb 01 ft|
       6 {{Lýsingarorðsbeyging 01 t ö|
       6 {{Lýsingarorðsbeyging 01 -inn frumstig|
       6 {{Fallbeyging kvk sb 07 æ og 07 æ -a|
-      6 {{Fallbeyging kvk sb 01 ft|
+X     6 {{Fallbeyging kvk sb 01 ft|
       6 {{Fallbeyging kk sb 10a et|
       6 {{Fallbeyging kk sb 03 og 03a|
       6 {{Fallbeyging kk sb 03a og 01a|
