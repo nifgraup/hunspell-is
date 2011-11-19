@@ -206,3 +206,25 @@ SFX 13	ur      ar       ur
 SFX 13	0       ar       u[^r]
 SFX 13	0       ar       [^u].
 
+#kvk vb et agr
+SFX 14	N 1
+SFX 14	a	u	.
+
+#kvk vb et gr
+SFX 15	N 4
+SFX 15	0	n	.
+SFX 15	a	una	.
+SFX 15	a	unni	.
+SFX 15	a	unnar	.
+
+#kvk vb ft agr
+SFX 16	N 2
+SFX 16	a	ur	.
+SFX 16	a	um	.
+
+#kvk vb ft gr
+SFX 17	N 3
+SFX 17	a	urnar	.
+SFX 17	a	unum	.
+SFX 17	0	nna	.
+

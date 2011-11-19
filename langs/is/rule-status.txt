@@ -5,7 +5,7 @@ X   476 {{Fallbeyging hk sb 01|
 X   258 {{Fallbeyging kvenmannsnafn 01 i|
 X   258 {{Fallbeyging hk sb 01 et|
     255 {{Fallbeyging|
-    253 {{Fallbeyging kvk vb 01|
+X   253 {{Fallbeyging kvk vb 01|
     245 {{Fallbeyging kvk vb 01 et|
 X   242 {{Fallbeyging karlmannsnafn 01|
     231 {{Fallbeyging kvk sb 01|
