@@ -228,3 +228,26 @@ SFX 17	0	nar	.
 SFX 17	r	num	.
 SFX 17	ur	anna	.
 
+#kvk sb et agr
+SFX 18	N 1
+SFX 18	0	ar	.
+
+#kvk sb et gr
+SFX 19	N 4
+SFX 19  0       in      .
+SFX 19  0       ina     .
+SFX 19  0       inni    .
+SFX 19	0	arinnar	.
+
+#kvk sb ft agr
+SFX 20	N 3
+SFX 20  0       ir	.
+SFX 20  0       um	.
+SFX 20  0       a	.
+
+#kvk sb ft gr
+SFX 21	N 3
+SFX 21  0       irnar      .
+SFX 21  0       unum      .
+SFX 21  0       anna       .
+
