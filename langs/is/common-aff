@@ -127,13 +127,12 @@ SFX 4	0	ins	u[^r]
 SFX 4	0	ins	n[^n]
 SFX 4	0	ins	[^un].
 
-#kk ft agr
-SFX 5	N 3
-SFX 5	0	0	.
+#kk sb/vb ft agr
+SFX 5	N 2
 SFX 5	r	0	.
 SFX 5	ar	um	.
 
-#kk ft agr
+#kk sb/vb ft gr
 SFX 6	N 4
 SFX 6	0	nir	.
 SFX 6	r	na	.
@@ -249,4 +248,15 @@ SFX 21	N 3
 SFX 21  0       nar      .
 SFX 21  ir       unum      .
 SFX 21  ir       anna       .
+
+#kk vb et agr
+SFX 22	N 1
+SFX 22	i	a	.
+
+#kk vb et gr
+SFX 23	N 4
+SFX 23	0	nn	.
+SFX 23	i	ann	.
+SFX 23	i	anum	.
+SFX 23	i	ans	.
 
