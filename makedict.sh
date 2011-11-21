@@ -96,18 +96,24 @@ elif [ "$1" != "" ]; then
     BASENAME="`basename $i .aff`"
     RULE="`echo $BASENAME | sed 's/_/ /g'`"
     LINECOUNT="`grep -cve '^\s*$' $i`"
+    echo "   Extracting rule $RULE"
+
     echo "#$RULE" >> dicts/$1.aff
     echo "SFX $FLAG N $LINECOUNT" >> dicts/$1.aff
     cat $i | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
-    if [ -e "langs/$1/$BASENAME.format" ]; then
-    	REFORMATSTRING="`cat langs/$1/$BASENAME.format`"
+
+    if [ -e "langs/$1/$BASENAME.print-dic-entry" ]; then
+        grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | ./langs/${1}/$BASENAME.print-dic-entry $FLAG >> ${TMP}/wiktionary.extracted
     else
-	REFORMATSTRING="%s%s%s"
+        if [ -e "langs/$1/$BASENAME.format" ]; then
+    	    REFORMATSTRING="`cat langs/$1/$BASENAME.format`"
+        else
+	    REFORMATSTRING="%s%s%s"
+        fi
+    #    echo "BASENAME $BASENAME"
+    #    echo "REFORMAT $REFORMATSTRING"
+        grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{printf "'$REFORMATSTRING'\n", $1, $2, $3"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     fi
-    echo "   Extracting rule $RULE"
-#    echo "BASENAME $BASENAME"
-#    echo "REFORMAT $REFORMATSTRING"
-    grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{printf "'$REFORMATSTRING'\n", $1, $2, $3"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
   done
   cp ${TMP}/wiktionary.extracted ${TMP}/wiktionary.dic
   insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
