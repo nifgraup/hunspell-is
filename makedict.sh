@@ -52,16 +52,17 @@ elif [ "$1" = "test" ]; then
     exit 1
   fi
   echo "Testing rules..."
-  for i in $( ls langs/$2/*.aff); do
+  find langs/$2 -type f|grep "\.aff$" |while read i
+  do
     cp langs/$2/common-aff ${TMP}/huntest.aff
-    LINECOUNT="`grep -cve '^\s*$' $i`"
+    LINECOUNT="`grep -cve '^\s*$' "$i"`"
     echo "SFX X N $LINECOUNT" >> ${TMP}/huntest.aff
-    cat $i >> ${TMP}/huntest.aff
-    TESTNAME="`basename $i .aff`"
+    cat "$i" >> ${TMP}/huntest.aff
+    TESTNAME="`basename "$i" .aff`"
     echo "Testing rule $TESTNAME"
-    cp langs/$2/$TESTNAME.dic ${TMP}/huntest.dic
-    test -z "`hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`" || { echo "Good word test for $TESTNAME failed: `hunspell -l -d ${TMP}/huntest < langs/$2/$TESTNAME.good`"; exit 1; }
-    test -z "`hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`" || { echo "Bad word test for $TESTNAME failed: `hunspell -G -d ${TMP}/huntest < langs/$2/$TESTNAME.bad`"; exit 1; }
+    cp "langs/$2/$TESTNAME.dic" ${TMP}/huntest.dic
+    test -z "`hunspell -l -d ${TMP}/huntest < "langs/$2/$TESTNAME.good"`" || { echo "Good word test for $TESTNAME failed: `hunspell -l -d ${TMP}/huntest < "langs/$2/$TESTNAME.good"`"; exit 1; }
+    test -z "`hunspell -G -d ${TMP}/huntest < "langs/$2/$TESTNAME.bad"`" || { echo "Bad word test for $TESTNAME failed: `hunspell -G -d ${TMP}/huntest < "langs/$2/$TESTNAME.bad"`"; exit 1; }
   done
   echo "All passed."
 
