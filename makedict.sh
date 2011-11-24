@@ -5,6 +5,8 @@
 
 #todo:
 #tools/insert-common-rule
+#Remove words containing (fornt) and skáldamál
+#check if unconfirmed revision of pages end upp in the dictionary
 #Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
 #profile utf8 vs. iso-8859-1

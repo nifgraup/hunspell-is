@@ -176,25 +176,32 @@ SFX 8	0	asti	.
 
 #hk et agr
 SFX 9	N 2
-SFX 9	0	i	.
+SFX 9	0	i	[^i]
 SFX 9	0	s	.
 
 #hk et gr
-SFX 10	N 3
-SFX 10	0	ið	.
-SFX 10	0	inu	.
+SFX 10	N 5
+SFX 10	0	ið	[^i]
+SFX 10	0	ð	i
+SFX 10	0	inu	[^i]
+SFX 10	0	nu	i
 SFX 10	0	sins	.
 
 #hk ft agr
-SFX 11	N 2
-SFX 11	0	um	.
-SFX 11	0	a	.
+SFX 11	N 4
+SFX 11	0	um	[^i]
+SFX 11	i	um	i
+SFX 11	0	a	[^i]
+SFX 11	i	a	i
 
 #hk ft gr
-SFX 12	N 3
-SFX 12	0	in	.
-SFX 12	0	unum	.
-SFX 12	0	anna	.
+SFX 12	N 6
+SFX 12	0	in	[^i]
+SFX 12  0	n	i
+SFX 12	0	unum	[^i]
+SFX 12 	i	unum	i
+SFX 12	0	anna	[^i]
+SFX 12	i	anna	i
 
 #kvk et agr i
 SFX 13	N 6
