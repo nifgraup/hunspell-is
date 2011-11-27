@@ -17,7 +17,7 @@ X   110 {{Fallbeyging kvenmannsnafn 01 vb|
 X   100 {{Lýsingarorðsbeyging 01|
      97 {{Fallbeyging kk vb 01 ö|
      92 {{Fallbeyging kk sb 01 n|
-     88 {{Fallbeyging kvk vb örnefni|
+X    88 {{Fallbeyging kvk vb örnefni|
      88 {{Fallbeyging kvk sb 01 a|
      86 {{Fallbeyging kvk vb 01a|
      83 {{Fallbeyging kvk sb 02 u|
