@@ -24,7 +24,7 @@ X    88 {{Fallbeyging kvk vb örnefni|
 X    82 {{Fallbeyging kvk sb 01 et|
      80 {{Fallbeyging kvenmannsnafn 01 a u|
      75 {{Fallbeyging kvk sb 08 et|
-     71 {{Fallbeyging hk sb 03 et|
+X    71 {{Fallbeyging hk sb 03 et|
      70 {{Fallbeyging kvk vb 01 og 01a|
      66 {{Fallbeyging kk sb 01b|
      65 {{Fallbeyging hk sb örnefni 02|
