@@ -10,7 +10,7 @@ X   245 {{Fallbeyging kvk vb 01 et|
 X   242 {{Fallbeyging karlmannsnafn 01|
 X   231 {{Fallbeyging kvk sb 01|
 X   219 {{Fallbeyging kk vb 01|
-    196 {{Fallbeyging hk sb 01 ö|
+X   196 {{Fallbeyging hk sb 01 ö|
 X   189 {{Fallbeyging kk sb 01|
 X   170 {{Fallbeyging hk sb 03|
 X   110 {{Fallbeyging kvenmannsnafn 01 vb|
