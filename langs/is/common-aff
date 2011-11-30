@@ -267,3 +267,14 @@ SFX 23	i	ann	.
 SFX 23	i	anum	.
 SFX 23	i	ans	.
 
+#kvk vb ft agr
+SFX 24	N 2
+SFX 24	r       m       .
+SFX 24	ur      na       .
+
+#kvk vb ft gr
+SFX 25	N 3
+SFX 25	0       nar     .
+SFX 25	r       num     .
+SFX 25	ur      nanna    .
+

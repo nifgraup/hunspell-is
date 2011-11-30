@@ -4,6 +4,7 @@
 # License: Public Domain
 
 #todo:
+#reorder common rules
 #tools/insert-common-rule
 #Remove words containing (fornt) and skáldamál
 #check if unconfirmed revision of pages end upp in the dictionary
