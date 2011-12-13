@@ -278,3 +278,17 @@ SFX 25	0       nar     .
 SFX 25	r       num     .
 SFX 25	ur      nanna    .
 
+#son/dóttir
+SFX 26	N 11
+SFX 26	0	son
+SFX 26	0	syni
+SFX 26	0	sonar
+SFX 26	0	synir
+SFX 26	0	sonum
+SFX 26	0	sona
+SFX 26	0	dóttir
+SFX 26	0	dóttur
+SFX 26	0	dætur
+SFX 26	0	dætrum
+SFX 26	0	dætra
+

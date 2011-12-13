@@ -1,2 +1,7 @@
 SFX X	0	0/1	.
+SFX X   ur      s/26	ur
+SFX X   n       s/26	nn
+SFX X   0       s/26	u[^r]
+SFX X   0       s/26	n[^n]
+SFX X   0       s/26	[^un].
 
