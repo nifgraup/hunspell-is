@@ -44,7 +44,7 @@ X    52 {{Fallbeyging kk vb 01 et|
      41 {{Fallbeyging karlmannsnafn 03 i|
      40 {{Fallbeyging kvk sb 01 un|
      40 {{Fallbeyging kk sb maður|
-     39 {{Fallbeyging kvk sb 02|
+X    39 {{Fallbeyging kvk sb 02|
      39 {{Fallbeyging kk sb 01 og 01b|
      38 {{Fallbeyging hk sb örnefni|
      37 {{Fallbeyging kk sb 03 i|
