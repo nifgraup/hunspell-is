@@ -201,6 +201,13 @@ SFX 11	N 2
 SFX 11	0	i	.
 SFX 11	0	a	.
 
+#kk et gr b
+SFX 12	N 4
+SFX 12	0       inn	ur
+SFX 12	ur      inn	ur
+SFX 12	ur      num	ur
+SFX 12	ur      sins	ur
+
 #kvk et agr i
 SFX 13	N 6
 SFX 13	ur      i       ur
