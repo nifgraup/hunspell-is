@@ -139,7 +139,7 @@ SFX 6	r	na	.
 SFX 6	ar	unum	.
 SFX 6	r	nna	.
 
-#lo frumstig
+#lo frumstig 1
 SFX 7	N 13
 SFX 7	0	an	.
 SFX 7	0	um	.
@@ -155,53 +155,51 @@ SFX 7	0	ar	.
 SFX 7	0	i	.
 SFX 7	0	u	.
 
-#lo miðstig & efsta stig
-SFX 8	N 16
+#lo miðstig 1
+SFX 8	N 2
 SFX 8	0	ari	.
 SFX 8	0	ara	.
-SFX 8	0	astur	.
-SFX 8	0	astan	.
-SFX 8	0	ustum	.
-SFX 8	0	asts	.
-SFX 8	0	ust	.
-SFX 8	0	asta	.
-SFX 8	0	astri	.
-SFX 8	0	astrar	.
-SFX 8	0	ast	.
-SFX 8	0	ustu	.
-SFX 8	0	astir	.
-SFX 8	0	astra	.
-SFX 8	0	astar	.
-SFX 8	0	asti	.
 
-#hk et agr
-SFX 9	N 2
-SFX 9	0	i	[^i]
-SFX 9	0	s	.
+#lo efsta stig
+SFX 9	N 14
+SFX 9	0	astur	.
+SFX 9	0	astan	.
+SFX 9	0	ustum	.
+SFX 9	0	asts	.
+SFX 9	0	ust	.
+SFX 9	0	asta	.
+SFX 9	0	astri	.
+SFX 9	0	astrar	.
+SFX 9	0	ast	.
+SFX 9	0	ustu	.
+SFX 9	0	astir	.
+SFX 9	0	astra	.
+SFX 9	0	astar	.
+SFX 9	0	asti	.
 
-#hk et gr
-SFX 10	N 5
-SFX 10	0	ið	[^i]
-SFX 10	0	ð	i
-SFX 10	0	inu	[^i]
-SFX 10	0	nu	i
-SFX 10	0	sins	.
+#lo frumstig 3
+SFX 10	N 16
+SFX 10	0	an	.
+SFX 10	0	um	.
+SFX 10	0	s	.
+SFX 10	0	a	.
+SFX 10	0	ni	n
+SFX 10	0	li	l
+SFX 10	0	nar	n
+SFX 10	0	lar	l
+SFX 10	0	t	.
+SFX 10	0	u	.
+SFX 10	0	ir	.
+SFX 10	0	na	n
+SFX 10	0	la	l
+SFX 10	0	ar	.
+SFX 10	0	i	.
+SFX 10	0	u	.
 
-#hk ft agr
-SFX 11	N 4
-SFX 11	0	um	[^i]
-SFX 11	i	um	i
-SFX 11	0	a	[^i]
-SFX 11	i	a	i
-
-#hk ft gr
-SFX 12	N 6
-SFX 12	0	in	[^i]
-SFX 12  0	n	i
-SFX 12	0	unum	[^i]
-SFX 12 	i	unum	i
-SFX 12	0	anna	[^i]
-SFX 12	i	anna	i
+#lo miðstig 3
+SFX 11	N 2
+SFX 11	0	i	.
+SFX 11	0	a	.
 
 #kvk et agr i
 SFX 13	N 6
@@ -295,4 +293,33 @@ SFX 26	0	dóttur
 SFX 26	0	dætur
 SFX 26	0	dætrum
 SFX 26	0	dætra
+
+#hk et agr
+SFX 27	N 2
+SFX 27	0	i	[^i]
+SFX 27	0	s	.
+
+#hk et gr
+SFX 28	N 5
+SFX 28	0	ið	[^i]
+SFX 28	0	ð	i
+SFX 28	0	inu	[^i]
+SFX 28	0	nu	i
+SFX 28	0	sins	.
+
+#hk ft agr
+SFX 29	N 4
+SFX 29	0	um	[^i]
+SFX 29	i	um	i
+SFX 29	0	a	[^i]
+SFX 29	i	a	i
+
+#hk ft gr
+SFX 30	N 6
+SFX 30	0	in	[^i]
+SFX 30	 0	n	i
+SFX 30	0	unum	[^i]
+SFX 30		i	unum	i
+SFX 30	0	anna	[^i]
+SFX 30	i	anna	i
 
