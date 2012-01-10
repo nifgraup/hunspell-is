@@ -126,7 +126,7 @@ elif [ "$1" != "" ]; then
   hunspell -i utf8 -l -d ${TMP}/wiktionary < langs/$1/wordlist > ${TMP}/wordlist.diff
 
   echo "Merging the wordlist and the wiktionary words..."
-  LC_ALL=$1.UTF-8 sort ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff > dicts/$1.dic
+  LC_ALL=$1.UTF-8 sort ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff | uniq > dicts/$1.dic
   insertHead `wc -l < dicts/$1.dic` dicts/$1.dic
 
   echo "Done building dictionary, see dicts/$1.dic and dicts/$1.aff."
