@@ -330,3 +330,15 @@ SFX 30		i	unum	i
 SFX 30	0	anna	[^i]
 SFX 30	i	anna	i
 
+#kvk sb et agr u
+SFX 31	N 2
+SFX 31	0	ar	.
+SFX 31	0	u	.
+
+#kvk sb et gr u
+SFX 32	N 4
+SFX 32	0	in	.
+SFX 32	0	una	.
+SFX 32	0	unni	.
+SFX 32	0	arinnar	.
+

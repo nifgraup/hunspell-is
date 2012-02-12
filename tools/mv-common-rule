@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if [ "$3" != "" ] && [ $2 -eq $2 2> /dev/null ] && [ $3 -eq $3 2> /dev/null ]; then
-	sed -i 's/SFX[[:space:]]'$2'[[:space:]]/SFX '$3'\t/g' langs/$1/common-aff
-	find langs/$1/ -type f | grep "/aff" | while read ruleaff
+	sed -i 's/SFX[[:space:]]'$2'[[:space:]]/SFX '$3'\t/g' langs/$1/common-aff.d/*
+	find langs/$1/rules/ -type f | grep "/aff" | while read ruleaff
 	do
 		sed -i '/[^0-9]'$2'[^0-9]/s/'$2'/'$3'/g' "$ruleaff"
 	done
