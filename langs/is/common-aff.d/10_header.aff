@@ -1,0 +1,72 @@
+SET UTF-8
+
+#Letter frequency based on all Icelandic text from www.snerpa.is/net
+TRY arniesutðglmkofhvþádíójbúyöæépÞHSEGýBAVKNOFMJDLRÍÁTÓxIÉUzPÖcÚÆYÐCqXwÝQWZ
+WORDCHARS "-./=
+KEY qwertyuiopð|asdfghjklæ|zxcvbnm,.þ
+
+#Splitted suggestions are most likely compound words
+NOSPLITSUGS
+
+# rules from http://www2.hu-berlin.de/bragi/b5/b5framburdarreglur.htm
+REP 57
+REP i y
+REP y i
+REP í ý
+REP ý í
+REP áng ang
+REP eing eng
+REP eyng eng
+REP íng ing
+REP ýng ing
+REP úng ung
+REP íng yng
+REP ýng yng
+REP aung öng
+REP ánk ank
+REP eink enk
+REP eynk enk
+REP ínk ink
+REP ýnk ink
+REP únk unk
+REP ínk ynk
+REP ýnk ynk
+REP aunk önk
+REP ægi agi
+REP eigi egi
+REP eygi egi
+REP ígi igi
+REP ýgi igi
+REP oji ogi
+REP uji ugi
+REP yji ygi
+REP augi ögi
+REP v f
+REP kv hv
+REP dl ll
+REP dn nn
+REP md fnd
+REP mt fnd
+REP bl fl
+REP bn fn
+REP rdl rl
+REP rdn rn
+REP sdl sl
+REP sdn sn
+REP gt t
+REP kt t
+REP ói ófi
+REP óa ófa
+REP úa úfa
+REP ngl nl
+REP lgd gld
+REP nd rnd
+REP st rst
+REP ð þ
+REP gs x
+REP ks x
+REP x gs
+REP x ks
+
+FLAG num
+

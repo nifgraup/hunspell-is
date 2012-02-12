@@ -1,0 +1,101 @@
+#kk et agr
+SFX 1	N 12
+SFX 1	ur	0	ur
+SFX 1	n	0	nn
+SFX 1	ur	i	ur
+SFX 1	n	i	nn
+SFX 1	0	i	u[^r]
+SFX 1	0	i	n[^n]
+SFX 1	0	i	[^un].
+SFX 1	ur	s	ur
+SFX 1	n	s	nn
+SFX 1	0	s	u[^r]
+SFX 1	0	s	n[^n]
+SFX 1	0	s	[^un].
+
+#kk et gr
+SFX 2	N 13
+SFX 2	0	inn	.
+SFX 2	ur	inn	ur
+SFX 2	n	inn	nn
+SFX 2	ur	inum	ur
+SFX 2	n	inum	nn
+SFX 2	0	inum	u[^r]
+SFX 2	0	inum	n[^n]
+SFX 2	0	inum	[^un].
+SFX 2	ur	sins	ur
+SFX 2	n	sins	nn
+SFX 2	0	sins	u[^r]
+SFX 2	0	sins	n[^n]
+SFX 2	0	sins	[^un].
+
+#kk et agr -s
+SFX 3	N 7
+SFX 3	ur	0	ur
+SFX 3	n	0	nn
+SFX 3	ur	i	ur
+SFX 3	n	i	nn
+SFX 3	0	i	u[^r]
+SFX 3	0	i	n[^n]
+SFX 3	0	i	[^un].
+
+#kk et gr -s
+SFX 4	N 13
+SFX 4	0	inn	.
+SFX 4	ur	inn	ur
+SFX 4	n	inn	nn
+SFX 4	ur	inum	ur
+SFX 4	n	inum	nn
+SFX 4	0	inum	u[^r]
+SFX 4	0	inum	n[^n]
+SFX 4	0	inum	[^un].
+SFX 4	ur	ins	ur
+SFX 4	n	ins	nn
+SFX 4	0	ins	u[^r]
+SFX 4	0	ins	n[^n]
+SFX 4	0	ins	[^un].
+
+#kk sb/vb ft agr
+SFX 5	N 2
+SFX 5	r	0	.
+SFX 5	ar	um	.
+
+#kk sb/vb ft gr
+SFX 6	N 4
+SFX 6	0	nir	.
+SFX 6	r	na	.
+SFX 6	ar	unum	.
+SFX 6	r	nna	.
+
+#kk et gr b
+SFX 12	N 4
+SFX 12	0       inn	ur
+SFX 12	ur      inn	ur
+SFX 12	ur      num	ur
+SFX 12	ur      sins	ur
+
+#kk vb et agr
+SFX 22	N 1
+SFX 22	i	a	.
+
+#kk vb et gr
+SFX 23	N 4
+SFX 23	0	nn	.
+SFX 23	i	ann	.
+SFX 23	i	anum	.
+SFX 23	i	ans	.
+
+#son/dóttir
+SFX 26	N 11
+SFX 26	0	son
+SFX 26	0	syni
+SFX 26	0	sonar
+SFX 26	0	synir
+SFX 26	0	sonum
+SFX 26	0	sona
+SFX 26	0	dóttir
+SFX 26	0	dóttur
+SFX 26	0	dætur
+SFX 26	0	dætrum
+SFX 26	0	dætra
+

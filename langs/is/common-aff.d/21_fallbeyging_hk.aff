@@ -1,0 +1,29 @@
+#hk et agr
+SFX 27	N 2
+SFX 27	0	i	[^i]
+SFX 27	0	s	.
+
+#hk et gr
+SFX 28	N 5
+SFX 28	0	ið	[^i]
+SFX 28	0	ð	i
+SFX 28	0	inu	[^i]
+SFX 28	0	nu	i
+SFX 28	0	sins	.
+
+#hk ft agr
+SFX 29	N 4
+SFX 29	0	um	[^i]
+SFX 29	i	um	i
+SFX 29	0	a	[^i]
+SFX 29	i	a	i
+
+#hk ft gr
+SFX 30	N 6
+SFX 30	0	in	[^i]
+SFX 30	 0	n	i
+SFX 30	0	unum	[^i]
+SFX 30		i	unum	i
+SFX 30	0	anna	[^i]
+SFX 30	i	anna	i
+

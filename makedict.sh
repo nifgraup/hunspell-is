@@ -57,7 +57,7 @@ elif [ "$1" = "test" ]; then
   echo "Testing rules..."
   find langs/$2/rules/* -type d | while read i
   do
-    cat langs/$2/common-aff.d/* > ${TMP}/huntest.aff
+    cat langs/$2/common-aff.d/*.aff > ${TMP}/huntest.aff
     LINECOUNT="`grep -cve '^\s*$' "$i/aff"`"
     echo "SFX X N $LINECOUNT" >> ${TMP}/huntest.aff
     cat "$i/aff" >> ${TMP}/huntest.aff
@@ -93,8 +93,8 @@ elif [ "$1" != "" ]; then
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
   mkdir -p dicts
-  cat langs/$1/common-aff.d/* > dicts/$1.aff
-  FLAG=`grep -o [[:space:]][[:digit:]]*[[:space:]]N[[:space:]] langs/$1/common-aff.d/*  | gawk 'BEGIN {max = 0} {if($1>max) max=$1} END {print max}'`
+  cat langs/$1/common-aff.d/*.aff > dicts/$1.aff
+  FLAG=`grep -h -o [[:space:]][[:digit:]]*[[:space:]]N[[:space:]] langs/$1/common-aff.d/*.aff  | gawk 'BEGIN {max = 0} {if($1>max) max=$1} END {print max}'`
 
   find langs/$1/rules/* -type d | while read i
   do
