@@ -57,7 +57,7 @@ X    39 {{Fallbeyging kvk sb 02|
      31 {{Fallbeyging kvk vb 01 og 01a ö|
 X    30 {{Lýsingarorðsbeyging 03|
      30 {{Fallbeyging mannsnafn|
-     27 {{Sagnbeyging 01 vb -aði|
+X    27 {{Sagnbeyging 01 vb -aði|
      27 {{Fallbeyging kk vb 01 u|
      27 {{Fallbeyging kk sb 01a og 01b|
      26 {{Fallbeyging kk sb 01 e ö|
