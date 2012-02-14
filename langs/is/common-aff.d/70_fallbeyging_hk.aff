@@ -21,9 +21,20 @@ SFX 29	i	a	i
 #hk ft gr
 SFX 30	N 6
 SFX 30	0	in	[^i]
-SFX 30	 0	n	i
+SFX 30	0	n	i
 SFX 30	0	unum	[^i]
-SFX 30		i	unum	i
+SFX 30	i	unum	i
 SFX 30	0	anna	[^i]
 SFX 30	i	anna	i
+
+#hk ft agr
+SFX 74	N 2
+SFX 74	0	jum
+SFX 74	0	ja
+
+#hk ft gr
+SFX 75	N 3
+SFX 75	0	in
+SFX 75	0	junum
+SFX 75	0	janna
 
