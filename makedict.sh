@@ -4,6 +4,7 @@
 # License: Public Domain
 
 #todo:
+#skammstafanir
 #reorder common rules
 #tools/insert-common-rule
 #Remove words containing (fornt) and skáldamál
