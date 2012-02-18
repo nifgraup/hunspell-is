@@ -4,10 +4,10 @@
 # License: Public Domain
 
 #todo:
-#skammstafanir
 #reorder common rules
 #tools/insert-common-rule
 #Remove words containing (fornt) and skáldamál
+#remove format, just use print-dic-entry
 #check if unconfirmed revision of pages end upp in the dictionary
 #Stúdera samsett orð (COMPOUND* reglurnar)
 #bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
@@ -91,12 +91,14 @@ elif [ "$1" != "" ]; then
   echo "Downloading files..."
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || ( wget http://dumps.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O ${TMP}/${1}wiktionary-latest-pages-articles.xml.bz2 && bunzip2 ${TMP}/${1}wiktionary-latest-pages-articles.xml.bz2 )
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || grep -o "{{[^.]*|[^-.][^}]*" ${TMP}/iswiktionary-latest-pages-articles.xml | grep -v "{{.*|.*[ =]" | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
+
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
   mkdir -p dicts
   cat langs/$1/common-aff.d/*.aff > dicts/$1.aff
   FLAG=`grep -h -o [[:space:]][[:digit:]]*[[:space:]]N[[:space:]] langs/$1/common-aff.d/*.aff  | gawk 'BEGIN {max = 0} {if($1>max) max=$1} END {print max}'`
 
+  #extracting from wiki-templates based on defined rules
   find langs/$1/rules/* -type d | while read i
   do
     FLAG=`expr $FLAG + 1`
@@ -122,6 +124,9 @@ elif [ "$1" != "" ]; then
   cp ${TMP}/wiktionary.extracted ${TMP}/wiktionary.dic
   insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
   cp dicts/$1.aff ${TMP}/wiktionary.aff
+
+  #extracting abbreviations
+  grep -C 3 "{{-is-}}" ${TMP}/iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''" | grep -o "[^']*" >> ${TMP}/wiktionary.extracted
 
   echo "Finding extra words in the wordlist..."
   hunspell -i utf8 -l -d ${TMP}/wiktionary < langs/$1/wordlist > ${TMP}/wordlist.diff
