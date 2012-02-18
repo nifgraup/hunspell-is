@@ -4,6 +4,8 @@
 # License: Public Domain
 
 #todo:
+#move language specific extraction of words to langs/is
+#ad morphological info to adverbs
 #reorder common rules
 #tools/insert-common-rule
 #Remove words containing (fornt) and skáldamál
