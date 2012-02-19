@@ -5,7 +5,6 @@
 
 #todo:
 #move language specific extraction of words to langs/is
-#ad morphological info to adverbs
 #reorder common rules
 #tools/insert-common-rule
 #Remove words containing (fornt) and skáldamál
@@ -131,7 +130,7 @@ elif [ "$1" != "" ]; then
   grep -C 3 "{{-is-}}" ${TMP}/iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''" | grep -o "[^']*" >> ${TMP}/wiktionary.extracted
 
   #extracting adverbs
-  grep -C 3 "{{-is-}}" ${TMP}/iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-atviksorð-}}" | grep "'''[^ ]*'''$" | grep -o "[^']*" >> ${TMP}/wiktionary.extracted
+  grep -C 3 "{{-is-}}" ${TMP}/iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-atviksorð-}}" | grep "'''[^ ]*'''$" | grep -o "[^']*" | xargs printf "%s\tpo:a\n" >> ${TMP}/wiktionary.extracted
 
   echo "Finding extra words in the wordlist..."
   hunspell -i utf8 -l -d ${TMP}/wiktionary < langs/$1/wordlist > ${TMP}/wordlist.diff
