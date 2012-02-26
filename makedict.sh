@@ -122,15 +122,16 @@ elif [ "$1" != "" ]; then
         grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{printf "'$REFORMATSTRING'\n", $1, $2, $3"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     fi
   done
-  cp ${TMP}/wiktionary.extracted ${TMP}/wiktionary.dic
-  insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
-  cp dicts/$1.aff ${TMP}/wiktionary.aff
 
   #extracting abbreviations
   grep -C 3 "{{-is-}}" ${TMP}/iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''" | grep -o "[^']*" >> ${TMP}/wiktionary.extracted
 
   #extracting adverbs
   grep -C 3 "{{-is-}}" ${TMP}/iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-atviksorð-}}" | grep "'''[^ ]*'''$" | grep -o "[^']*" | xargs printf "%s\tpo:a\n" >> ${TMP}/wiktionary.extracted
+
+  cp ${TMP}/wiktionary.extracted ${TMP}/wiktionary.dic
+  insertHead `wc -l < ${TMP}/wiktionary.dic` ${TMP}/wiktionary.dic
+  cp dicts/$1.aff ${TMP}/wiktionary.aff
 
   echo "Finding extra words in the wordlist..."
   hunspell -i utf8 -l -d ${TMP}/wiktionary < langs/$1/wordlist > ${TMP}/wordlist.diff
