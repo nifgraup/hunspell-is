@@ -4,10 +4,10 @@
 # License: Public Domain
 
 #todo:
+#Remove words containing (fornt) and skáldamál
 #move language specific extraction of words to langs/is
 #reorder common rules
 #tools/insert-common-rule
-#Remove words containing (fornt) and skáldamál
 #remove format, just use print-dic-entry
 #check if unconfirmed revision of pages end upp in the dictionary
 #Stúdera samsett orð (COMPOUND* reglurnar)
