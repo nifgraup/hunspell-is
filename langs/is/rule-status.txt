@@ -16,7 +16,7 @@ X   170 {{Fallbeyging hk sb 03|
 X   110 {{Fallbeyging kvenmannsnafn 01 vb|
 X   100 {{Lýsingarorðsbeyging 01|
      97 {{Fallbeyging kk vb 01 ö|
-     92 {{Fallbeyging kk sb 01 n|
+X    92 {{Fallbeyging kk sb 01 n|
 X    88 {{Fallbeyging kvk vb örnefni|
      88 {{Fallbeyging kvk sb 01 a|
 X    86 {{Fallbeyging kvk vb 01a|
@@ -167,7 +167,7 @@ X     6 {{Fallbeyging kvk sb 01 ft|
       6 {{Fallbeyging kk sb 03 og 03a|
       6 {{Fallbeyging kk sb 03a og 01a|
       6 {{Fallbeyging kk sb 02a j og 01a|
-      6 {{Fallbeyging kk sb 01 n et|
+X     6 {{Fallbeyging kk sb 01 n et|
       6 {{Fallbeyging kk sb 01a v|
       6 {{Fallbeyging hk sb örnefni með greini|
       6 {{Fallbeyging hk sb 03 j ft|
@@ -200,7 +200,7 @@ X     5 {{Fallbeyging kvk vb 01 ft|
       5 {{Fallbeyging karlmannsnafn 05|
       5 {{Fallbeyging karlmannsnafn 01 og 03|
       5 {{Fallbeyging karlmannsnafn 01 og 01a|
-      5 {{Fallbeyging karlmannsnafn 01 n|
+X     5 {{Fallbeyging karlmannsnafn 01 n|
       5 {{Fallbeyging hk vb 01|
       5 {{Fallbeyging hk sb 01 -s ö|
       5 {{Fallbeyging hk sb 01 og 01a|

@@ -1,19 +1,21 @@
 #kk et agr
-SFX 1	N 19
-SFX 1	ur	0	ur
+SFX 1	N 21
+SFX 1	ur	0
 SFX 1	n	0	nn
 SFX 1	l	0	ll
-SFX 1	ur	i	ur
+SFX 1	ur	i
 SFX 1	n	i	einn
 SFX 1	n	i	ónn
 SFX 1	inn	ni	[^e]inn
-SFX 1	ill	li	ill
-SFX 1	all	li	all
+SFX 1	unn	ni
+SFX 1	ill	li
+SFX 1	all	li
+SFX 1	ull	li
 SFX 1	0	i	u[^r]
 SFX 1	0	i	n[^n]
 SFX 1	0	i	[^unl][^l]
 SFX 1	0	i	[^l]l
-SFX 1	ur	s	ur
+SFX 1	ur	s
 SFX 1	n	s	nn
 SFX 1	l	s	ll
 SFX 1	0	s	u[^r]
@@ -21,20 +23,24 @@ SFX 1	0	s	n[^n]
 SFX 1	0	s	[^un].
 
 #kk et gr
-SFX 2	N 18
+SFX 2	N 22
 SFX 2	0	inn
-SFX 2	ur	inn	ur
+SFX 2	ur	inn
 SFX 2	n	inn	nn
 SFX 2	l	inn	ll
-SFX 2	ur	inum	ur
-SFX 2	n	inum	nn
-SFX 2	ill	linum	ill
-SFX 2	all	linum	all
+SFX 2	ur	inum
+SFX 2	n	inum	einn
+SFX 2	n	inum	ónn
+SFX 2	inn	ninum	[^e]inn
+SFX 2	unn	ninum
+SFX 2	ill	linum
+SFX 2	all	linum
+SFX 2	ull	linum
 SFX 2	0	inum	u[^r]
 SFX 2	0	inum	n[^n]
 SFX 2	0	inum	[^unl][^l]
 SFX 2	0	inum	[^l]l
-SFX 2	ur	sins	ur
+SFX 2	ur	sins
 SFX 2	n	sins	nn
 SFX 2	l	sins	ll
 SFX 2	0	sins	u[^r]
