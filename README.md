@@ -16,7 +16,7 @@ Other languages can be added, see the langs/ folder.
 
 
 Dependencies
----------------------
+------------
 bzip2                          http://www.bzip.org/
 GNU awk                        http://www.gnu.org/software/gawk/
 GNU Bash                       http://www.gnu.org/software/bash/
