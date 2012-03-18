@@ -76,17 +76,30 @@ elif [ "$1" = "packages" ]; then
     echo "Usage: $0 packages is"
     exit 1
   fi
-  echo "Making Libreoffice extension..."
+
   TODAY=`date +%Y.%m.%d`
+
+  echo "Making Libreoffice extension..."
   rm -f dicts/hunspell-is-$TODAY.oxt
   rm -rf tmp/libreoffice
-  cp -rf packages/libreoffice tmp/
+  cp -rf packages/libreoffice ${TMP}/
   cd tmp/libreoffice
   sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' description.xml
-  zip -r ../../dicts/hunspel-is-$TODAY.oxt *
+  zip -r ../../dicts/hunspell-is-$TODAY.oxt *
   cd ../../
-  zip dicts/hunspel-is-$TODAY.oxt dicts/is.dic dicts/is.aff
-  cd ..
+  zip dicts/hunspell-is-$TODAY.oxt dicts/is.dic dicts/is.aff
+
+  echo "Making Mozilla extension..."
+  rm -f dicts/hunspell-is-$TODAY.xpi
+  rm -rf tmp/mozilla
+  cp -rf packages/mozilla ${TMP}/
+  cd ${TMP}/mozilla
+  sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' install.js
+  sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' install.rdf
+  mkdir dictionaries
+  cp ../../dicts/is.dic ../../dicts/is.aff dictionaries/
+  zip -r ../../dicts/hunspell-is-$TODAY.xpi *
+  cd ../../
 
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
