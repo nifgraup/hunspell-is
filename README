@@ -41,10 +41,23 @@ Download Packages
 -----------------
 This is a list of projects using hunspell-is
 
-Openoffice.org	    http://extensions.services.openoffice.org/project/dict-is
+Openoffice.org		http://extensions.services.openoffice.org/project/dict-is
+LibreOffice		http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project
 
 
-Authors
+Project maintainer
+------------------
+Björgvin Ragnarsson
+
+
+Content contributors
+--------------------
+Contributors to the Icelandic Wiktionary,
+Orðabók Háskóla Íslands,
+Reiknistofnun Háskóla Íslands.
+
+
+Contact
 -------
-Björgvin Ragnarsson, nifgraup@gmail.com
+https://groups.google.com/group/hunspell-is
 
