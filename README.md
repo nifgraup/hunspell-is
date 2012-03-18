@@ -31,11 +31,11 @@ Dependencies
 Usage Instructions
 ------------------
 
-	makedict.sh list			# lists supported languages
+	makedict.sh list				# lists supported languages
 	makedict.sh LANGUAGE			# generates a dictionary for LANGUAGE, e.g. is
 	makedict.sh packages LANGUAGE	# Creates spell checking extensions for applications
 	makedict.sh test LANGUAGE		# Runs test cases for wiktionary extraction rules
-	makedict.sh clean			# remove temporary files
+	makedict.sh clean				# remove temporary files
 
 
 Download Packages
