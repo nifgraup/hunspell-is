@@ -10,8 +10,7 @@ nineties and was released into the public domain. The declension rules are
 from the Icelandic Wiktionary Project, http://is.wiktionary.org. Hunspell-is
 provides scripts to merge the sources. The wordlist will continue to be static
 (maintainers are welcome to step forward) except for removal of non-word. All
-new entries are added from Wiktionary. Hunspell-is maintains a list of banned
-words for removal from the base wordlist.
+new entries are added from Wiktionary.
 
 Other languages can be added, see the langs/ folder.
 
