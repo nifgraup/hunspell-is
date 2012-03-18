@@ -18,14 +18,14 @@ Other languages can be added, see the langs/ folder.
 Dependencies
 ------------
 
-	bzip2                          http://www.bzip.org/
-	GNU awk                        http://www.gnu.org/software/gawk/
-	GNU Bash                       http://www.gnu.org/software/bash/
-	GNU ed                         http://www.gnu.org/software/ed/
-	GNU Core Utilities             http://www.gnu.org/software/coreutils/
-	GNU Wget                       http://www.gnu.org/software/wget/
-	Hunspell                       http://hunspell.sf.net/
-	iconv
+*  bzip2                          http://www.bzip.org/
+*  GNU awk                        http://www.gnu.org/software/gawk/
+*  GNU Bash                       http://www.gnu.org/software/bash/
+*  GNU ed                         http://www.gnu.org/software/ed/
+*  GNU Core Utilities             http://www.gnu.org/software/coreutils/
+*  GNU Wget                       http://www.gnu.org/software/wget/
+*  Hunspell                       http://hunspell.sf.net/
+*  iconv
 
 
 Usage Instructions
@@ -42,8 +42,8 @@ Download Packages
 -----------------
 This is a list of projects using hunspell-is
 
-	Openoffice.org		http://extensions.services.openoffice.org/project/dict-is
-	LibreOffice		http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project
+*  Openoffice.org		http://extensions.services.openoffice.org/project/dict-is
+*  LibreOffice		http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project
 
 
 Project maintainer
@@ -53,9 +53,9 @@ Björgvin Ragnarsson
 
 Content contributors
 --------------------
-	Contributors to the Icelandic Wiktionary,
-	Orðabók Háskóla Íslands,
-	Reiknistofnun Háskóla Íslands.
+*  Contributors to the Icelandic Wiktionary,
+*  Orðabók Háskóla Íslands,
+*  Reiknistofnun Háskóla Íslands.
 
 
 Contact
