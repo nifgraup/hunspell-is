@@ -25,7 +25,6 @@ Dependencies
 *  GNU Core Utilities             http://www.gnu.org/software/coreutils/
 *  GNU Wget                       http://www.gnu.org/software/wget/
 *  Hunspell                       http://hunspell.sf.net/
-*  iconv
 
 
 Usage Instructions

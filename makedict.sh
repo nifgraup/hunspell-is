@@ -27,7 +27,7 @@
 #	Raða skilyrðum í röð svo algengustu til að faila komi fyrst. (optimization)
 
 # Check dependencies
-for i in hunspell gawk bash ed sort bunzip2 iconv wget zip; do
+for i in hunspell gawk bash ed sort bunzip2 wget zip; do
   command -v $i &>/dev/null || { echo "I require $i but it's not installed. Aborting." >&2; exit 1; }
 done
 
