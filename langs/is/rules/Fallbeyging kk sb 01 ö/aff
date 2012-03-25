@@ -1,0 +1,7 @@
+SFX X	0	0/1,2
+SFX X	ur	ar/7,8	ur
+SFX X	n	ar/7,8	nn
+SFX X   0	ar/7,8	u[^r] 
+SFX X   0	ar/7,8	n[^n] 
+SFX X   0	ar/7,8	[^un].
+
