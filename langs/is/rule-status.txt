@@ -28,7 +28,7 @@ X    71 {{Fallbeyging hk sb 03 et|
 X    70 {{Fallbeyging kvk vb 01 og 01a|
 X    66 {{Fallbeyging kk sb 01b|
 X    65 {{Fallbeyging hk sb örnefni 02|
-     59 {{Fallbeyging karlmannsnafn 01a|
+X    59 {{Fallbeyging karlmannsnafn 01a|
 X    57 {{Fallbeyging kvenmannsnafn 01|
 X    57 {{Fallbeyging kk sb 01 ö|
      55 {{Fallbeyging kvk vb 01 ö|
