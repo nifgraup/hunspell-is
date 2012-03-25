@@ -85,6 +85,16 @@ SFX 6	r	na	.
 SFX 6	ar	unum	.
 SFX 6	r	nna	.
 
+#kk sb/vb ft agr
+SFX 7	N 1
+SFX 7	r	0	.
+
+#kk sb/vb ft gr
+SFX 8	N 3
+SFX 8	0	nir	.
+SFX 8	r	na	.
+SFX 8	r	nna	.
+
 #kk et gr b
 SFX 12	N 4
 SFX 12	0       inn	ur
