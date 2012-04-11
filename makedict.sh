@@ -130,12 +130,7 @@ elif [ "$1" != "" ]; then
     if [ -e "$i/print-dic-entry" ]; then
         grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | "./$i/print-dic-entry" $FLAG >> ${TMP}/wiktionary.extracted
     else
-        if [ -e "$i/format" ]; then
-    	    REFORMATSTRING="`cat "$i/format"`"
-        else
-	    REFORMATSTRING="%s%s%s"
-        fi
-        grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{printf "'$REFORMATSTRING'\n", $1, $2, $3"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
+        grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{printf "%s%s%s\n", $1, $2, $3"/"'"$FLAG"'}' >> ${TMP}/wiktionary.extracted
     fi
   done
 
