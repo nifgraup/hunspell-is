@@ -4,27 +4,30 @@
 # License: Public Domain
 
 #todo:
-#Remove words containing (fornt) and skáldamál
-#move language specific extraction of words to langs/is
-#reorder common rules
-#tools/insert-common-rule
-#remove format, just use print-dic-entry
-#check if unconfirmed revision of pages end upp in the dictionary
-#Stúdera samsett orð (COMPOUND* reglurnar)
-#bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
-#profile utf8 vs. iso-8859-1
-#replace gawk with printf?
-#eð/ cover-ar eða, viljum við halda eða inni sem sér orði? (Sama á við sérnöfn)
-#rangfærslur á is.wiktionar.org?
-#	gera jafn- að -is-forskeyti-, rímnaflæði er hvk
-#add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
-#	profile automatic affix compression for speed, memory.
-#wget -N does not work on cygwin - downloads every time.
-#enforce & print dictionary license
-#make firefox/chrome/opera dictionary packages
+#
+#Invalid entries:
+#	Remove words containing (fornt) and skáldamál
+#	check if unconfirmed revision of pages end upp in the dictionary
+#	rangfærslur á is.wiktionar.org? gera jafn- að -is-forskeyti-, rímnaflæði er hvk
+#	eð/ cover-ar eða, viljum við halda eða inni sem sér orði? (Sama á við sérnöfn)
+#Refactoring:
+#	move language specific extraction of words to langs/is
+#	remove format, just use print-dic-entry
+#	remove first parameter, $1 of print-dic-entry
+#	reorder common rules
+#	replace gawk with printf?
+#Features:
+#	Stúdera samsett orð (COMPOUND* reglurnar)
+#	make chrome/opera dictionary packages
+#Optimizations:
+#	bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
+#	profile utf8 vs. iso-8859-1
+#	add automatic affix compression (affixcompress, doubleaffixcompress, makealias)
+#		- profile automatic affix compression for speed, memory.
 #is-extractwords.old
 #	tekur of mikið minni (140mb)
 #	Raða skilyrðum í röð svo algengustu til að faila komi fyrst. (optimization)
+
 
 # Check dependencies
 for i in hunspell gawk bash ed sort bunzip2 wget zip; do
