@@ -74,16 +74,20 @@ SFX 4	0	ins	n[^n]
 SFX 4	0	ins	[^un].
 
 #kk sb/vb ft agr
-SFX 5	N 2
-SFX 5	r	0	.
-SFX 5	ar	um	.
+SFX 5	N 4
+SFX 5	r	0
+SFX 5	ar	um
+SFX 5	ir	um
+SFX 5	ir	a
 
 #kk sb/vb ft gr
-SFX 6	N 4
-SFX 6	0	nir	.
-SFX 6	r	na	.
-SFX 6	ar	unum	.
-SFX 6	r	nna	.
+SFX 6	N 6
+SFX 6	0	nir
+SFX 6	r	na
+SFX 6	ar	unum
+SFX 6	ir	unum
+SFX 6	ar	anna
+SFX 6	ir	anna
 
 #kk sb/vb ft agr
 SFX 7	N 1

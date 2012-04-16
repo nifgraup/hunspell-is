@@ -34,7 +34,7 @@ X    57 {{Fallbeyging kk sb 01 ö|
      55 {{Fallbeyging kvk vb 01 ö|
 X    53 {{Fallbeyging hk sb 01 j|
 X    52 {{Fallbeyging kk vb 01 et|
-     51 {{Fallbeyging karlmannsnafn 04|
+X    51 {{Fallbeyging karlmannsnafn 04|
      50 {{Fallbeyging kk sb 01a|
      48 {{Fallbeyging kvenmannsnafn 01 vb ö|
      46 {{Fallbeyging kvk vb 01 ö et|
@@ -103,7 +103,7 @@ X    14 {{Fallbeyging kk sb 01 -s|
      12 {{Fallbeyging kk sb 05 ö|
      12 {{Fallbeyging kk sb 05 et|
      12 {{Fallbeyging kk sb 02a j|
-     12 {{Fallbeyging kk sb 02|
+X    12 {{Fallbeyging kk sb 02|
      11 {{Lýsingarorðsbeyging góður|
      11 {{Fallbeyging kvk sb 01 og 02|
      11 {{Fallbeyging kvenmannsnafn 01 j|
