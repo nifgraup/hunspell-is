@@ -59,7 +59,7 @@ SFX 3	0	i	[^un].
 
 #kk et gr -s
 SFX 4	N 13
-SFX 4	0	inn	.
+SFX 4	0	inn
 SFX 4	ur	inn	ur
 SFX 4	n	inn	nn
 SFX 4	ur	inum	ur
@@ -91,31 +91,50 @@ SFX 6	ir	anna
 
 #kk sb/vb ft agr
 SFX 7	N 1
-SFX 7	r	0	.
+SFX 7	r	0
 
 #kk sb/vb ft gr
 SFX 8	N 3
-SFX 8	0	nir	.
-SFX 8	r	na	.
-SFX 8	r	nna	.
+SFX 8	0	nir
+SFX 8	r	na
+SFX 8	r	nna
+
+#kk sb et agr a
+SFX 11	N 7
+SFX 11	ur	0	[^a]ur
+SFX 11	l	0	ll
+SFX 11	ur	s	[^a]ur
+SFX 11	0	s	aur
+SFX 11	0	s	[^rl]
+SFX 11	0	s	[^ul].
+SFX 11	l	s	ll
 
 #kk et gr b
-SFX 12	N 4
-SFX 12	0       inn	ur
-SFX 12	ur      inn	ur
-SFX 12	ur      num	ur
-SFX 12	ur      sins	ur
+SFX 12	N 13
+SFX 12	0	inn
+SFX 12	ur	inn	[^a]ur
+SFX 12	l	inn	ll
+SFX 12	ur	num	[^a]ur
+SFX 12	0	num	aur
+SFX 12	l	num	ll
+SFX 12	0	num	[^rl]
+SFX 12	0	num	[^ul].
+SFX 12	ur	sins	[^a]ur
+SFX 12	0	sins	aur
+SFX 12	0	sins	[^rl]
+SFX 12	0	sins	[^ul].
+SFX 12	l	sins	ll
 
 #kk vb et agr
 SFX 22	N 1
-SFX 22	i	a	.
+SFX 22	i	a
 
 #kk vb et gr
 SFX 23	N 4
-SFX 23	0	nn	.
-SFX 23	i	ann	.
-SFX 23	i	anum	.
-SFX 23	i	ans	.
+SFX 23	0	nn
+SFX 23	i	ann
+SFX 23	i	anum
+SFX 23	i	ans
 
 #son/dóttir
 SFX 26	N 11
@@ -130,4 +149,4 @@ SFX 26	0	dóttur
 SFX 26	0	dætur
 SFX 26	0	dætrum
 SFX 26	0	dætra
-
+	
