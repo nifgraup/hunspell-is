@@ -107,7 +107,7 @@ elif [ "$1" = "packages" ]; then
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || ( wget http://dumps.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O ${TMP}/${1}wiktionary-latest-pages-articles.xml.bz2 && bunzip2 ${TMP}/${1}wiktionary-latest-pages-articles.xml.bz2 )
-  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || tr -d "\r\n" < ${TMP}/iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.][^} ]*}}" | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
+  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || tr -d "\r\n" < ${TMP}/iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.][^}]*" | sed "s/mynd=.*//g" | sed "s/lo.nf.et.ó=.*//g" | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
 
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
