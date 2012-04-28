@@ -63,9 +63,11 @@ elif [ "$1" = "test" ]; then
   find langs/$2/rules/* -type d | while read i
   do
     cat langs/$2/common-aff.d/*.aff > ${TMP}/huntest.aff
-    LINECOUNT="`grep -cve '^\s*$' "$i/aff"`"
-    echo "SFX X N $LINECOUNT" >> ${TMP}/huntest.aff
-    cat "$i/aff" >> ${TMP}/huntest.aff
+    if [ -f "$i/aff" ]; then
+      LINECOUNT="`grep -cve '^\s*$' "$i/aff"`"
+      echo "SFX X N $LINECOUNT" >> ${TMP}/huntest.aff
+      cat "$i/aff" >> ${TMP}/huntest.aff
+    fi
     TESTNAME="`basename "$i"`"
     echo "Testing rule $TESTNAME"
     cp "$i/dic" ${TMP}/huntest.dic
@@ -120,12 +122,14 @@ elif [ "$1" != "" ]; then
   do
     FLAG=`expr $FLAG + 1`
     RULE="`basename "$i"`"
-    LINECOUNT="`grep -cve '^\s*$' "$i/aff"`"
-    echo "   Extracting rule $RULE"
-
-    echo "#$RULE" >> dicts/$1.aff
-    echo "SFX $FLAG N $LINECOUNT" >> dicts/$1.aff
-    cat "$i/aff" | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
+   
+    if [ -f "$i/aff" ]; then
+	    LINECOUNT="`grep -cve '^\s*$' "$i/aff"`"
+	    echo "   Extracting rule $RULE"
+	    echo "#$RULE" >> dicts/$1.aff
+	    echo "SFX $FLAG N $LINECOUNT" >> dicts/$1.aff
+	    cat "$i/aff" | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
+    fi
 
     if [ -e "$i/print-dic-entry" ]; then
         grep -o "^{{$RULE|[^}]\+" ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | "./$i/print-dic-entry" $FLAG >> ${TMP}/wiktionary.extracted
