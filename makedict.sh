@@ -6,19 +6,20 @@
 #todo:
 #
 #Invalid entries:
-#	Remove words containing (fornt) and skáldamál
-#	check if unconfirmed revision of pages end upp in the dictionary
+#	Remove words containing {{fornt}}
+#		remove skáldamál?
 #	rangfærslur á is.wiktionar.org? gera jafn- að -is-forskeyti-, rímnaflæði er hvk
 #	eð/ cover-ar eða, viljum við halda eða inni sem sér orði? (Sama á við sérnöfn)
+#	check if unconfirmed revision of pages end upp in the dictionary
 #Refactoring:
 #	move language specific extraction of words to langs/is
-#	remove format, just use print-dic-entry
 #	remove first parameter, $1 of print-dic-entry
 #	reorder common rules
 #	replace gawk with printf?
 #Features:
 #	Stúdera samsett orð (COMPOUND* reglurnar)
 #	make chrome/opera dictionary packages
+#	test print-dic-entry
 #Optimizations:
 #	bæta bókstöfum við try? - nota nútímalegri texa en snerpu (ath. að wikipedia segir aldrei "ég")
 #	profile utf8 vs. iso-8859-1
@@ -109,7 +110,7 @@ elif [ "$1" = "packages" ]; then
 elif [ "$1" != "" ]; then
   echo "Downloading files..."
   test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml || ( wget http://dumps.wikimedia.org/${1}wiktionary/latest/${1}wiktionary-latest-pages-articles.xml.bz2 -O ${TMP}/${1}wiktionary-latest-pages-articles.xml.bz2 && bunzip2 ${TMP}/${1}wiktionary-latest-pages-articles.xml.bz2 )
-  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || tr -d "\r\n" < ${TMP}/iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.][^ }]*[}|][^}]*" | sed "s/mynd=.*//g" | sed "s/lo.nf.et.ó=.*//g" | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
+  test -e ${TMP}/${1}wiktionary-latest-pages-articles.xml.texts || tr -d "\r\n" < ${TMP}/iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.}][^ }]*[}|][^}]*" | sed "s/mynd=.*//g" | sed "s/lo.nf.et.ó=.*//g" | sort | uniq > ${TMP}/iswiktionary-latest-pages-articles.xml.texts
 
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
