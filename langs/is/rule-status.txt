@@ -39,10 +39,10 @@ X    50 {{Fallbeyging kk sb 01a|
      48 {{Fallbeyging kvenmannsnafn 01 vb ö|
      46 {{Fallbeyging kvk vb 01 ö et|
      42 {{Fallbeyging kvenmannsnafn 01 u|
-     41 {{Lýsingarorðsbeyging óbeygt|
+X    41 {{Lýsingarorðsbeyging óbeygt|
      41 {{Fallbeyging kk sb 03 e|
      41 {{Fallbeyging karlmannsnafn 03 i|
-     40 {{Fallbeyging kvk sb 01 un|
+X    40 {{Fallbeyging kvk sb 01 un|
      40 {{Fallbeyging kk sb maður|
 X    39 {{Fallbeyging kvk sb 02|
      39 {{Fallbeyging kk sb 01 og 01b|

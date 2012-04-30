@@ -41,16 +41,20 @@ SFX 19  0       inni
 SFX 19	0	arinnar
 
 #kvk sb ft agr
-SFX 20	N 4
-SFX 20  ir	um
+SFX 20	N 6
+SFX 20  ir	um	[^a]nir
+SFX 20  ir	um	[^n]ir
+SFX 20  anir	unum
 SFX 20	ar	um
 SFX 20  ir	a
 SFX 20	ar	a
 
 #kvk sb ft gr
-SFX 21	N 5
+SFX 21	N 7
 SFX 21  0	nar
-SFX 21  ir	unum
+SFX 21  ir	unum	[^a]nir
+SFX 21  ir	unum	[^n]ir
+SFX 21	anir	ununum
 SFX 21	ar	unum
 SFX 21  ir	anna
 SFX 21	ar	anna
