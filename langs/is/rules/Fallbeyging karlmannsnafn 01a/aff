@@ -1,6 +1,6 @@
-SFX X	0	s	[^u]r
-SFX X	0	s	[^u][^r]
-SFX X	0	s	u[^r]
-SFX X	ur	s	ur
+SFX X	0	s/26	[^u]r
+SFX X	0	s/26	[^u][^r]
+SFX X	0	s/26	u[^r]
+SFX X	ur	s/26	ur
 SFX X	ur	0	ur
 
