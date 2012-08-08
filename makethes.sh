@@ -1,4 +1,8 @@
+
 #!/bin/sh
+
+TMP=tmp
+LANG=is
 
 gawk -F " " '
 {
@@ -8,23 +12,39 @@ gawk -F " " '
 		icelandic=0;
 	}
 
-	if(match($0, /.*{{-is-}}/))
-		icelandic=1;
-
+	if(match($0, /{{-..-}}/))
+		if(match($0, /{{-is-}}/))
+			icelandic=1;
+		else
+			icelandic=0;
+		
 	if((icelandic == 1) && match($1, /{{-samheiti-}}/))
 	{
-		lines = 0;
+		nlines = 0;
+		lines = "";
 		getline;
 		while($2 != "")
 		{
-			lines++;
-			print $0;
+			nlines++;
+			thes = $0;
+			sub(/:\[[0-9,-]+\] /, "", thes);
+			gsub(/, */, "|", thes);
+			gsub(/[\[\]]/, "", thes);
+			gsub(/{{/, "(", thes);
+			gsub(/}}/, ")", thes);
+			gsub(/''\(/, "(", thes);
+
+			if(lines == "")
+				lines=lines thes;
+			else
+				lines=lines "\n"thes;
 			getline;
 		}
-		if(lines > 0)
+		if(nlines > 0)
 		{
-			print title"|"lines;
+			print title"|"nlines;
+			print lines;
 		}
 	}
-} ' tmp/iswiktionary-latest-pages-articles.xml
+} ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml
 
