@@ -4,8 +4,6 @@
 TMP=tmp
 LANG=is
 
-echo "UTF-8"
-
 gawk -F " " '
 {
 	if(match($0, /<title>.*<\/title>/))
@@ -30,10 +28,15 @@ gawk -F " " '
 			nlines++;
 			thes = $0;
 			sub(/:(\[[0-9,-]+\] )?/, "", thes);
-			gsub(/, */, "|", thes); #todo: ekki skipta út í texta sem fer í sviga
 			gsub(/\[\[([[:alnum:]]+\|)?|\]/, "", thes);
-			sub(/(\047|\(|{)+/, "(", thes);
-			sub(/(\)|:|\047|})+/, ")", thes);
+			gsub(/, */, "|", thes); #todo: ekki skipta út í texta sem fer í sviga
+			while(match(thes, /(\047|{|}|:)+/))
+			{
+				sub(/(\047|{)+/, "(", thes);
+				sub(/(\047|}|:)+/, ")", thes);
+			}
+			gsub(/\(+/, "(", thes);
+			gsub(/\)+/, ")", thes);
 
 			if(lines == "|")
 				lines=lines thes;
@@ -47,5 +50,7 @@ gawk -F " " '
 			print lines;
 		}
 	}
-} ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml
+} ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml > dicts/is.dat
+
+./idxdict -o dicts/is.idx < dicts/is.dat
 
