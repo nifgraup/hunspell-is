@@ -4,6 +4,8 @@
 TMP=tmp
 LANG=is
 
+echo "UTF-8"
+
 gawk -F " " '
 {
 	if(match($0, /<title>.*<\/title>/))
@@ -21,23 +23,22 @@ gawk -F " " '
 	if((icelandic == 1) && match($1, /{{-samheiti-}}/))
 	{
 		nlines = 0;
-		lines = "";
+		lines = "|";
 		getline;
 		while($2 != "")
 		{
 			nlines++;
 			thes = $0;
-			sub(/:\[[0-9,-]+\] /, "", thes);
-			gsub(/, */, "|", thes);
-			gsub(/[\[\]]/, "", thes);
-			gsub(/{{/, "(", thes);
-			gsub(/}}/, ")", thes);
-			gsub(/''\(/, "(", thes);
+			sub(/:(\[[0-9,-]+\] )?/, "", thes);
+			gsub(/, */, "|", thes); #todo: ekki skipta út í texta sem fer í sviga
+			gsub(/\[\[([[:alnum:]]+\|)?|\]/, "", thes);
+			sub(/(\047|\(|{)+/, "(", thes);
+			sub(/(\)|:|\047|})+/, ")", thes);
 
-			if(lines == "")
+			if(lines == "|")
 				lines=lines thes;
 			else
-				lines=lines "\n"thes;
+				lines=lines "\n|"thes;
 			getline;
 		}
 		if(nlines > 0)
