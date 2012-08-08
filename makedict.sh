@@ -93,7 +93,7 @@ elif [ "$1" = "packages" ]; then
   sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' description.xml
   zip -r ../../dicts/hunspell-is-$TODAY.oxt *
   cd ../../
-  zip dicts/hunspell-is-$TODAY.oxt dicts/is.dic dicts/is.aff
+  zip dicts/hunspell-is-$TODAY.oxt dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
   echo "Making Mozilla extension..."
   rm -f dicts/hunspell-is-$TODAY.xpi

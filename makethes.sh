@@ -4,6 +4,8 @@
 TMP=tmp
 LANG=is
 
+echo "UTF-8" > dicts/th_is.dat
+
 gawk -F " " '
 {
 	if(match($0, /<title>.*<\/title>/))
@@ -50,7 +52,7 @@ gawk -F " " '
 			print lines;
 		}
 	}
-} ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml > dicts/is.dat
+} ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml >> dicts/th_is.dat
 
-./idxdict -o dicts/is.idx < dicts/is.dat
+LC_ALL=is_IS.utf8 /usr/share/mythes/th_gen_idx.pl -o dicts/th_is.idx < dicts/th_is.dat
 

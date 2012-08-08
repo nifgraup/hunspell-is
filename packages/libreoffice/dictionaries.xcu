@@ -13,6 +13,17 @@
                 <value>is is-IS</value>
             </prop>
         </node>
+        <node oor:name="ThesDic_is" oor:op="fuse">
+            <prop oor:name="Locations" oor:type="oor:string-list">
+                <value>%origin%/dicts/th_is.dat %origin%/dicts/th_is.idx</value>
+            </prop>
+            <prop oor:name="Format" oor:type="xs:string">
+                <value>DICT_THES</value>
+            </prop>
+            <prop oor:name="Locales" oor:type="oor:string-list">
+                <value>is is-IS</value>
+            </prop>
+        </node>
     </node>
  </node>  
 </oor:component-data>
