@@ -29,7 +29,8 @@ LC_ALL=is_IS.utf8 gawk -F " " '
 			nMeanings++;
 			thes = $0;
 			sub(/:+(\[([[:alnum:]]|,|-)+\])? */, "", thes);
-			gsub(/\[\[(([[:alnum:]]| )*\|)?|\]/, "", thes);
+			gsub(/\[\[(([[:alnum:]]| )*\|)?|\]/, "", thes); #remove links
+			gsub(/ *&lt;sup&gt;[^;]*&lt;\/sup&gt;/, "", thes); #remove super-scripted text
 			gsub(/, */, "|", thes); #todo: ekki skipta út í texta sem fer í sviga
 			while(match(thes, /\047|{|}|:/))
 			{
