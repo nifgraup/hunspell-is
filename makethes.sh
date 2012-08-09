@@ -1,4 +1,3 @@
-
 #!/bin/sh
 
 TMP=tmp
@@ -6,7 +5,7 @@ LANG=is
 
 echo "UTF-8" > dicts/th_is.dat
 
-gawk -F " " '
+LC_ALL=is_IS.utf8 gawk -F " " '
 {
 	if(match($0, /<title>.*<\/title>/))
 	{
@@ -19,20 +18,20 @@ gawk -F " " '
 			icelandic=1;
 		else
 			icelandic=0;
-		
+
 	if((icelandic == 1) && match($1, /{{-samheiti-}}/))
 	{
-		nlines = 0;
-		lines = "|";
+		nMeanings = 0;
+		lines = "";
 		getline;
-		while($2 != "")
+		while(NF > 1)
 		{
-			nlines++;
+			nMeanings++;
 			thes = $0;
-			sub(/:(\[[0-9,-]+\] )?/, "", thes);
-			gsub(/\[\[([[:alnum:]]+\|)?|\]/, "", thes);
+			sub(/:+(\[([[:alnum:]]|,|-)+\])? */, "", thes);
+			gsub(/\[\[(([[:alnum:]]| )*\|)?|\]/, "", thes);
 			gsub(/, */, "|", thes); #todo: ekki skipta út í texta sem fer í sviga
-			while(match(thes, /(\047|{|}|:)+/))
+			while(match(thes, /\047|{|}|:/))
 			{
 				sub(/(\047|{)+/, "(", thes);
 				sub(/(\047|}|:)+/, ")", thes);
@@ -40,16 +39,16 @@ gawk -F " " '
 			gsub(/\(+/, "(", thes);
 			gsub(/\)+/, ")", thes);
 
-			if(lines == "|")
+			if(lines == "")
 				lines=lines thes;
 			else
 				lines=lines "\n|"thes;
 			getline;
 		}
-		if(nlines > 0)
+		if(nMeanings > 0)
 		{
-			print title"|"nlines;
-			print lines;
+			print title"|"nMeanings;
+			print "|"lines;
 		}
 	}
 } ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml >> dicts/th_is.dat
