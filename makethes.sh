@@ -36,10 +36,9 @@ LC_ALL=is_IS.utf8 gawk -F " " '
 		getline;
 		while(NF > 1)
 		{
-			nMeanings++;
 			thes = $0;
 			sub(/:+(\[([[:alnum:]]|,|-)+\])? */, "", thes);
-			gsub(/\[\[(([[:alnum:]]| )*\|)?|\]/, "", thes); #remove links
+			gsub(/\[(([[:alnum:]]| )*\|)?|\]/, "", thes); #remove links and brackets
 			gsub(/ *&lt;[[:alpha:]]+&gt;[^;]*&lt;\/[[:alpha:]]+&gt;/, "", thes); #remove html tags and text inside.
 			gsub(/, */, "|", thes); #todo: ekki skipta út í texta sem fer í sviga
 			while(match(thes, /\047|{|}|:/))
@@ -50,10 +49,14 @@ LC_ALL=is_IS.utf8 gawk -F " " '
 			gsub(/\(+/, "(", thes);
 			gsub(/\)+/, ")", thes);
 
-			if(lines == "")
-				lines=lines thes;
-			else
-				lines=lines "\n|"thes;
+			if(thes != "")
+			{
+				nMeanings++;
+				if(lines == "")
+					lines=lines thes;
+				else
+					lines=lines "\n|"thes;
+			}
 			getline;
 		}
 		if(nMeanings > 0)
