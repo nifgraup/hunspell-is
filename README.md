@@ -1,13 +1,13 @@
-Hunspell-is: The Icelandic spelling dictionary & thesaurus project
-==================================================================
+Hunspell-is: The Icelandic spelling dictionary & thesaurus
+==========================================================
 
 
 Introduction
 ------------
 
 Hunspell-is is a series of scripts to generate a spelling dictionary and a
-thesaurus based on [the Icelandic Wiktionary Project](http://is.wiktionary.org)
-and a word list.
+thesaurus based on [the Icelandic Wiktionary](http://is.wiktionary.org) and a
+word list.
 
 
 Download Pre-Built Packages
@@ -21,7 +21,7 @@ What if I spot an error?
 
 If you find a word that shouldn't be in the dictionary, you should:
 
-1.  Check if the word is in [the wordlist](https://raw.github.com/nifgraup/hunspell-is/master/langs/is/wordlist).
+1.  Check if the word is in [the word list](https://raw.github.com/nifgraup/hunspell-is/master/langs/is/wordlist).
 2.  If the offending word is there, [contact us](#contact) and have the word
 removed.
 3.  If it isn't there, look it up on [Wiktionary](http://is.wiktionary.org).
@@ -30,7 +30,7 @@ removed.
 If you want to add new words to the dictionary, please do so by adding it to
 [Wiktionary](http://is.wiktionary.org). Adding words to the word list is out of
 the scope of this project but if you would like to take over maintainance of
-the wordlist, please [contact us](#contact).
+the word list, please [contact us](#contact).
 
 
 Development instructions
