@@ -42,20 +42,7 @@ insertHead() {
   printf '%s\n' H 1i "$1" . w | ed -s "$2"
 }
 
-if [ "$1" = "clean" ]; then
-  rm -f ${TMP}/wiktionary.dic ${TMP}/wiktionary.aff ${TMP}/wiktionary.extracted ${TMP}/wordlist.diff
-  rm -f ${TMP}/huntest.aff ${TMP}/huntest.dic
-  rm -f dicts/*.dic dicts/*.aff
-#  rm -f ${TMP}/??wiktionary-latest-pages-articles.xml ${TMP}/??wiktionary-latest-pages-articles.xml.texts
-  rmdir dicts
-  rmdir tmp
-
-elif [ "$1" = "list" ]; then
-  for i in $( ls -d langs/*/ ); do
-    echo `basename $i`
-  done
-
-elif [ "$1" = "test" ]; then
+if [ "$1" = "test" ]; then
   if [ "$2" = "" ]; then
     echo "Usage: $0 test is"
     exit 1
@@ -160,6 +147,6 @@ elif [ "$1" != "" ]; then
 
 else
   echo "Usage:"
-  echo "        $0 is | packages is | test is | list | clean"
+  echo "        $0 is | packages is | test is"
 fi
 

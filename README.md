@@ -43,17 +43,16 @@ Development instructions
 *  GNU Bash                       http://www.gnu.org/software/bash/
 *  GNU ed                         http://www.gnu.org/software/ed/
 *  GNU Core Utilities             http://www.gnu.org/software/coreutils/
+*  GNU Make                       https://www.gnu.org/software/make/
 *  GNU Wget                       http://www.gnu.org/software/wget/
 *  Hunspell                       http://hunspell.sf.net/
 
 
 ### Usage Instructions ###
 
-	makedict.sh list				# lists supported languages
-	makedict.sh LANGUAGE			# generates a dictionary for LANGUAGE, e.g. is
-	makedict.sh packages LANGUAGE	# Creates spell checking extensions for applications
-	makedict.sh test LANGUAGE		# Runs test cases for wiktionary extraction rules
-	makedict.sh clean				# remove temporary files
+	make test                 # runs test cases on wiktionary declension rules
+	make                      # generates dictionary, thesaurus and packages
+	make clean                # removes output and temporary files
 
 
 Contributors
