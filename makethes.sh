@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Todo:
-#	Laga formatting villur í Wiktionary
+#	Ekki breyta , í | í texta í svigum, sjá "internet"
 #	Gera Makefile sem skilgreining dependencies, m.a. fyrir makedict.sh packages is
 #	Flokka eftir [1], [2] etc. (Viljum við gera það ef t.d. eru tvö [1] í sama *heiti eða bara á milli heita?)
 #	Bæta við orðskýringum
