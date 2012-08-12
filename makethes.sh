@@ -8,7 +8,7 @@
 #		ef þær eru fleiri en ein og eitt orð hver?
 #		ef þær eru ekki nafnorð, þ.á.m. sérnöfn, karlmanns- og kvenmannsnöfn, (og fleiri en eitt)?
 #	bæta við öðrum stafsetningum, andheitum, yfirheitum, undirheitum, "sjá einnig", (orðtök, "afleiddar merkingar" og orðsifjar).
-#		Hvað með orð í fleiri en einum orðflokki, t.d. dýr?
+#	Hvað með orð í fleiri en einum orðflokki, t.d. dýr?
 
 TMP=tmp
 LANG=is
@@ -66,6 +66,4 @@ LC_ALL=is_IS.utf8 gawk -F " " '
 		}
 	}
 } ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml >> dicts/th_is.dat
-
-LC_ALL=is_IS.utf8 /usr/share/mythes/th_gen_idx.pl -o dicts/th_is.idx < dicts/th_is.dat
 
