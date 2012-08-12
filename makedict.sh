@@ -86,17 +86,17 @@ elif [ "$1" = "packages" ]; then
   TODAY=`date +%Y.%m.%d`
 
   echo "Making Libreoffice extension..."
-  rm -f dicts/hunspell-is-$TODAY.oxt
+  rm -f dicts/is.oxt
   rm -rf tmp/libreoffice
   cp -rf packages/libreoffice ${TMP}/
   cd tmp/libreoffice
   sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' description.xml
-  zip -r ../../dicts/hunspell-is-$TODAY.oxt *
+  zip -r ../../dicts/is.oxt *
   cd ../../
-  zip dicts/hunspell-is-$TODAY.oxt dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
+  zip dicts/is.oxt dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
   echo "Making Mozilla extension..."
-  rm -f dicts/hunspell-is-$TODAY.xpi
+  rm -f dicts/is.xpi
   rm -rf tmp/mozilla
   cp -rf packages/mozilla ${TMP}/
   cd ${TMP}/mozilla
@@ -104,7 +104,7 @@ elif [ "$1" = "packages" ]; then
   sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' install.rdf
   mkdir dictionaries
   cp ../../dicts/is.dic ../../dicts/is.aff dictionaries/
-  zip -r ../../dicts/hunspell-is-$TODAY.xpi *
+  zip -r ../../dicts/is.xpi *
   cd ../../
 
 elif [ "$1" != "" ]; then
