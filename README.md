@@ -1,22 +1,42 @@
-Hunspell-is - The Icelandic spelling dictionary project
+Hunspell-is: The Icelandic spelling dictionary & thesaurus project
+==================================================================
 
 
 Introduction
 ------------
-This project aims to provide and maintain an Icelandic Hunspell spelling
-dictionary. It's based on two sources: The wordlist was developed by Orðabók
-Háskólans in cooperation with Reiknistofnun Háskóla Íslands in the early
-nineties and was released into the public domain. The declension rules are
-from the Icelandic Wiktionary Project, http://is.wiktionary.org. Hunspell-is
-provides scripts to merge the sources. The wordlist will continue to be static
-(maintainers are welcome to step forward) except for removal of non-word. All
-new entries are added from Wiktionary.
 
-Other languages can be added, see the langs/ folder.
+Hunspell-is is a series of scripts to generate a spelling dictionary and a
+thesaurus based on [the Icelandic Wiktionary Project](http://is.wiktionary.org)
+and a word list.
 
 
-Dependencies
-------------
+Download Pre-Built Packages
+---------------------------
+
+*  [Spelling dictionary extension for LibreOffice](http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project)
+
+
+What if I spot an error?
+------------------------
+
+If you find a word that shouldn't be in the dictionary, you should:
+
+1.  Check if the word is in [the wordlist](https://raw.github.com/nifgraup/hunspell-is/master/langs/is/wordlist).
+2.  If the offending word is there, [contact us](#contact) and have the word
+removed.
+3.  If it isn't there, look it up on [Wiktionary](http://is.wiktionary.org).
+4.  If you find it there, press the "Edit" tab and correct the mistake.
+
+If you want to add new words to the dictionary, please do so by adding it to
+[Wiktionary](http://is.wiktionary.org). Adding words to the word list is out of
+the scope of this project but if you would like to take over maintainance of
+the wordlist, please [contact us](#contact).
+
+
+Development instructions
+------------------------
+
+### Dependencies ###
 
 *  bzip2                          http://www.bzip.org/
 *  GNU awk                        http://www.gnu.org/software/gawk/
@@ -27,8 +47,7 @@ Dependencies
 *  Hunspell                       http://hunspell.sf.net/
 
 
-Usage Instructions
-------------------
+### Usage Instructions ###
 
 	makedict.sh list				# lists supported languages
 	makedict.sh LANGUAGE			# generates a dictionary for LANGUAGE, e.g. is
@@ -37,27 +56,15 @@ Usage Instructions
 	makedict.sh clean				# remove temporary files
 
 
-Download Packages
------------------
-This is a list of projects using hunspell-is
-
-*  Openoffice.org		http://extensions.services.openoffice.org/project/dict-is
-*  LibreOffice		http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project
-
-
-Project maintainer
-------------------
-Björgvin Ragnarsson
-
-
-Content contributors
+Contributors
 --------------------
+*  Development & project maintainer: Björgvin Ragnarsson,
 *  Contributors to the Icelandic Wiktionary,
-*  Orðabók Háskóla Íslands,
-*  Reiknistofnun Háskóla Íslands.
+*  Original word list was released into the public domain in the early nineties
+by Orðabók Háskóla Íslands & Reiknistofnun Háskóla Íslands.
 
 
 Contact
 -------
-https://groups.google.com/group/hunspell-is
+All correspondance should go through the [mailing list](https://groups.google.com/group/hunspell-is).
 
