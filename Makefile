@@ -37,14 +37,14 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../dicts/is.xpi *
 
 dicts/%.aff: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
-	./makedict.sh is
+	./$< is
 
 dicts/%.dic: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
-	./makedict.sh is
+	./$< is
 
-dicts/th_%.dat: %wiktionary-latest-pages-articles.xml makethes.awk
+dicts/th_%.dat: makethes.awk %wiktionary-latest-pages-articles.xml
 	echo "UTF-8" > $@
-	LC_ALL=is_IS.utf8 gawk -F " " -f makethes.awk < $< >> $@
+	LC_ALL=is_IS.utf8 gawk -F " " -f $< <iswiktionary-latest-pages-articles.xml >> $@
 
 %.idx: %.dat
 	LC_ALL=is_IS.utf8 ${TH_GEN_IDX} -o $@ < $<
