@@ -36,7 +36,7 @@ dicts/is.aff: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts
 dicts/is.dic: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts 
 	./makedict.sh is
 
-dicts/th_is.dat: makethes.sh
+dicts/th_is.dat: makethes.sh ${TMP}/iswiktionary-latest-pages-articles.xml
 	./makethes.sh
 
 %.idx: %.dat
