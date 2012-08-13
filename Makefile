@@ -37,14 +37,15 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	cp -rf packages/mozilla ${TMP}/
 	cd ${TMP}/mozilla && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../../dicts/is.dic ../../dicts/is.aff dictionaries/ && zip -r ../../dicts/is.xpi *
 
-dicts/is.aff: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts ${TMP}/iswiktionary-latest-pages-articles.xml
+dicts/%.aff: makedict.sh ${TMP}/%wiktionary-latest-pages-articles.xml.texts ${TMP}/%wiktionary-latest-pages-articles.xml
 	./makedict.sh is
 
-dicts/is.dic: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts ${TMP}/iswiktionary-latest-pages-articles.xml
+dicts/%.dic: makedict.sh ${TMP}/%wiktionary-latest-pages-articles.xml.texts ${TMP}/%wiktionary-latest-pages-articles.xml
 	./makedict.sh is
 
-dicts/th_is.dat: makethes.sh ${TMP}/iswiktionary-latest-pages-articles.xml
-	./makethes.sh
+dicts/th_%.dat: ${TMP}/%wiktionary-latest-pages-articles.xml makethes.awk
+	echo "UTF-8" > $@
+	LC_ALL=is_IS.utf8 gawk -F " " -f makethes.awk < $< >> $@
 
 %.idx: %.dat
 	LC_ALL=is_IS.utf8 ${TH_GEN_IDX} -o $@ < $<

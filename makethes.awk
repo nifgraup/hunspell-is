@@ -1,5 +1,3 @@
-#!/bin/sh
-
 #Todo:
 #	Ekki breyta , í | í texta í svigum, sjá "internet"
 #	Flokka eftir [1], [2] etc. (Viljum við gera það ef t.d. eru tvö [1] í sama *heiti eða bara á milli heita?)
@@ -9,13 +7,9 @@
 #	bæta við öðrum stafsetningum, andheitum, yfirheitum, undirheitum, "sjá einnig", (orðtök, "afleiddar merkingar" og orðsifjar).
 #	Hvað með orð í fleiri en einum orðflokki, t.d. dýr?
 
-TMP=tmp
-LANG=is
-
-echo "UTF-8" > dicts/th_is.dat
-
-LC_ALL=is_IS.utf8 gawk -F " " '
 {
+	TMP=tmp
+	LANG=is
 	if(match($0, /<title>.*<\/title>/))
 	{
 		word=substr($0, 12, length($0)-19);
@@ -63,5 +57,5 @@ LC_ALL=is_IS.utf8 gawk -F " " '
 			print "|"lines;
 		}
 	}
-} ' ${TMP}/${LANG}wiktionary-latest-pages-articles.xml >> dicts/th_is.dat
+}
 
