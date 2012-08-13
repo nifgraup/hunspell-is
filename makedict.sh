@@ -64,36 +64,6 @@ if [ "$1" = "test" ]; then
   done
   echo "All passed."
 
-elif [ "$1" = "packages" ]; then
-  if [ "$2" = "" ]; then
-    echo "Usage: $0 packages is"
-    exit 1
-  fi
-
-  TODAY=`date +%Y.%m.%d`
-
-  echo "Making Libreoffice extension..."
-  rm -f dicts/is.oxt
-  rm -rf tmp/libreoffice
-  cp -rf packages/libreoffice ${TMP}/
-  cd tmp/libreoffice
-  sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' description.xml
-  zip -r ../../dicts/is.oxt *
-  cd ../../
-  zip dicts/is.oxt dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
-
-  echo "Making Mozilla extension..."
-  rm -f dicts/is.xpi
-  rm -rf tmp/mozilla
-  cp -rf packages/mozilla ${TMP}/
-  cd ${TMP}/mozilla
-  sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' install.js
-  sed -i 's/TODAYPLACEHOLDER/'$TODAY'/g' install.rdf
-  mkdir dictionaries
-  cp ../../dicts/is.dic ../../dicts/is.aff dictionaries/
-  zip -r ../../dicts/is.xpi *
-  cd ../../
-
 elif [ "$1" != "" ]; then
   echo "Extracting valid words from the wiktionary dump..."
   rm -f ${TMP}/wiktionary.extracted
@@ -143,6 +113,6 @@ elif [ "$1" != "" ]; then
 
 else
   echo "Usage:"
-  echo "        $0 is | packages is | test is"
+  echo "        $0 is | test is"
 fi
 

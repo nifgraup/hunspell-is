@@ -22,13 +22,21 @@ dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
 		packages/libreoffice/description.xml \
 		packages/libreoffice/dictionaries.xcu \
 		packages/libreoffice/license.txt
-	./makedict.sh packages is
+	rm -f dicts/is.oxt
+	rm -rf tmp/libreoffice
+	cp -rf packages/libreoffice ${TMP}/
+	cd tmp/libreoffice && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' description.xml && zip -r ../../dicts/is.oxt *
+	zip dicts/is.oxt dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
 # Mozilla extension
-%.xpi: %.aff %.dic
+dicts/is.xpi: %.xpi: %.aff %.dic \
 		packages/mozilla/install.js \
-		packages/mozilla/install.rdf \
-	./makedict.sh packages is
+		packages/mozilla/install.rdf
+	echo "Making Mozilla extension..."
+	rm -f dicts/is.xpi
+	rm -rf tmp/mozilla
+	cp -rf packages/mozilla ${TMP}/
+	cd ${TMP}/mozilla && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../../dicts/is.dic ../../dicts/is.aff dictionaries/ && zip -r ../../dicts/is.xpi *
 
 dicts/is.aff: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts
 	./makedict.sh is
