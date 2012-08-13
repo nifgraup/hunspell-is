@@ -8,8 +8,6 @@
 #	Hvað með orð í fleiri en einum orðflokki, t.d. dýr?
 
 {
-	TMP=tmp
-	LANG=is
 	if(match($0, /<title>.*<\/title>/))
 	{
 		word=substr($0, 12, length($0)-19);

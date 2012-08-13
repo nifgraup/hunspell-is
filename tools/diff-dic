@@ -1,7 +1,6 @@
 #!/bin/sh
 
-TMP="tmp"
-mkdir -p ${TMP}
-cp $1 ${TMP}/diff-dic1
-sed -i 's/[0-9]//g' ${TMP}/diff-dic1
-sed 's/[0-9]//g' $2 | diff ${TMP}/diff-dic1 -
+cp $1 diff-dic1
+sed -i 's/[0-9]//g' diff-dic1
+sed 's/[0-9]//g' $2 | diff diff-dic1 -
+
