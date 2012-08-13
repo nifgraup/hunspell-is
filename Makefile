@@ -1,6 +1,8 @@
 TMP=tmp
 TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 
+.PHONY: all clean test packages
+
 all: packages
 
 clean:
@@ -35,10 +37,10 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	cp -rf packages/mozilla ${TMP}/
 	cd ${TMP}/mozilla && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../../dicts/is.dic ../../dicts/is.aff dictionaries/ && zip -r ../../dicts/is.xpi *
 
-dicts/is.aff: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts
+dicts/is.aff: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts ${TMP}/iswiktionary-latest-pages-articles.xml
 	./makedict.sh is
 
-dicts/is.dic: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts 
+dicts/is.dic: makedict.sh ${TMP}/iswiktionary-latest-pages-articles.xml.texts ${TMP}/iswiktionary-latest-pages-articles.xml
 	./makedict.sh is
 
 dicts/th_is.dat: makethes.sh ${TMP}/iswiktionary-latest-pages-articles.xml

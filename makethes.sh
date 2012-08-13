@@ -2,7 +2,6 @@
 
 #Todo:
 #	Ekki breyta , í | í texta í svigum, sjá "internet"
-#	Gera Makefile sem skilgreining dependencies, m.a. fyrir makedict.sh packages is
 #	Flokka eftir [1], [2] etc. (Viljum við gera það ef t.d. eru tvö [1] í sama *heiti eða bara á milli heita?)
 #	Bæta við orðskýringum
 #		ef þær eru fleiri en ein og eitt orð hver?
@@ -19,11 +18,10 @@ LC_ALL=is_IS.utf8 gawk -F " " '
 {
 	if(match($0, /<title>.*<\/title>/))
 	{
-		title=substr($0, 12, length($0)-19);
+		word=substr($0, 12, length($0)-19);
 		icelandic=0;
 	}
-
-	if(match($0, /{{-..-}}/))
+	else if(match($0, /{{-..-}}/))
 		if(match($0, /{{-is-}}/))
 			icelandic=1;
 		else
@@ -61,7 +59,7 @@ LC_ALL=is_IS.utf8 gawk -F " " '
 		}
 		if(nMeanings > 0)
 		{
-			print title"|"nMeanings;
+			print word"|"nMeanings;
 			print "|"lines;
 		}
 	}

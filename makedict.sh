@@ -9,7 +9,6 @@
 #	Remove words containing {{fornt}}
 #		remove skáldamál?
 #	rangfærslur á is.wiktionar.org? gera jafn- að -is-forskeyti-, rímnaflæði er hvk
-#	eð/ cover-ar eða, viljum við halda eða inni sem sér orði? (Sama á við sérnöfn)
 #	check if unconfirmed revision of pages end upp in the dictionary
 #Refactoring:
 #	move language specific extraction of words to langs/is
