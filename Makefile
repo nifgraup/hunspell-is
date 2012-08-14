@@ -23,18 +23,18 @@ dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
 		packages/libreoffice/description.xml \
 		packages/libreoffice/dictionaries.xcu \
 		packages/libreoffice/license.txt
-	rm -rf dicts/is.oxt libreoffice-tmp
+	rm -rf $@ libreoffice-tmp
 	cp -rf packages/libreoffice libreoffice-tmp
-	cd libreoffice-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' description.xml && zip -r ../dicts/is.oxt *
-	zip dicts/is.oxt dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
+	cd libreoffice-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' description.xml && zip -r ../$@ *
+	zip $@ dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
 # Mozilla extension
 dicts/is.xpi: %.xpi: %.aff %.dic \
 		packages/mozilla/install.js \
 		packages/mozilla/install.rdf
-	rm -rf dicts/is.xpi mozilla-tmp
+	rm -rf $@ mozilla-tmp
 	cp -rf packages/mozilla mozilla-tmp
-	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../dicts/is.xpi *
+	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../$@ *
 
 dicts/%.aff: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
 	./$< is
