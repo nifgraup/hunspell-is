@@ -36,23 +36,17 @@ the word list, please [contact us](#contact).
 Development instructions
 ------------------------
 
-### Dependencies ###
-
-*  bzip2                          http://www.bzip.org/
-*  GNU awk                        http://www.gnu.org/software/gawk/
-*  GNU Bash                       http://www.gnu.org/software/bash/
-*  GNU ed                         http://www.gnu.org/software/ed/
-*  GNU Core Utilities             http://www.gnu.org/software/coreutils/
-*  GNU Make                       https://www.gnu.org/software/make/
-*  GNU Wget                       http://www.gnu.org/software/wget/
-*  Hunspell                       http://hunspell.sf.net/
-
-
-### Usage Instructions ###
-
-	make test                 # runs test cases on wiktionary declension rules
-	make                      # generates dictionary, thesaurus and packages
-	make clean                # removes output and temporary files
+	# install dependencies
+	sudo apt-get install bzip2 gawk bash ed coreutils make wget hunspell libmythes-dev
+	
+	# run test cases on wiktionary declension rules
+	make test
+	
+	# generates dictionary, thesaurus and LibreOffice & Firefox extensions
+	make
+	
+	# removes generated & temporary files
+	make clean
 
 
 Contributors
