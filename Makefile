@@ -50,11 +50,11 @@ dicts/th_%.dat: makethes.awk %wiktionary-latest-pages-articles.xml
 	LC_ALL=is_IS.utf8 ${TH_GEN_IDX} -o $@ < $<
 
 iswiktionary-latest-pages-articles.xml.bz2:
-	wget http://dumps.wikimedia.org/iswiktionary/latest/iswiktionary-latest-pages-articles.xml.bz2 -O iswiktionary-latest-pages-articles.xml.bz2
+	wget http://dumps.wikimedia.org/iswiktionary/latest/$@ -O $@
 
 iswiktionary-latest-pages-articles.xml: iswiktionary-latest-pages-articles.xml.bz2
 	bunzip2 -kf $<
 
 iswiktionary-latest-pages-articles.xml.texts: iswiktionary-latest-pages-articles.xml
-	tr -d "\r\n" < iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.}][^ }]*[}|][^}]*" | sed "s/mynd=.*//g" | sed "s/lo.nf.et.ó=.*//g" | sort | uniq > iswiktionary-latest-pages-articles.xml.texts
+	tr -d "\r\n" < iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.}][^ }]*[}|][^}]*" | sed "s/mynd=.*//g" | sed "s/lo.nf.et.ó=.*//g" | sort | uniq > $@
 
