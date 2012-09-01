@@ -1,5 +1,4 @@
 #Todo:
-#	Ekki breyta , í | í texta í svigum, sjá "internet"
 #	Flokka eftir [1], [2] etc. (Viljum við gera það ef t.d. eru tvö [1] í sama *heiti eða bara á milli heita?)
 #	Bæta við orðskýringum
 #		ef þær eru fleiri en ein og eitt orð hver?
@@ -43,9 +42,6 @@
 			#remove html tags and text inside.
 			gsub(/ *&lt;[[:alpha:]]+&gt;[^;]*&lt;\/[[:alpha:]]+&gt;/, "", thes);
 
-			#todo: ekki skipta út í texta sem fer í sviga
-			gsub(/, */, "|", thes);
-
 			#replace quotes, and curly brackets with parenthesis.
 			while(match(thes, /\047|{|}|:/))
 			{
@@ -56,6 +52,10 @@
 			#remove double parenthesis possibly added by previous replacement.
 			gsub(/\(+/, "(", thes);
 			gsub(/\)+/, ")", thes);
+
+			#replace , with | unless the comma is inside parenthesis.
+			if(!match(thes, /\([^\)]+,/))
+				gsub(/, */, "|", thes);
 
 			if(thes != "")
 			{
