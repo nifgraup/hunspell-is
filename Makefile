@@ -5,7 +5,7 @@ TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 all: packages
 
 clean:
-	rm -f dicts/is.aff dicts/is.dic dicts/th_is.dat dicts/th_is.idx dicts/is.oxt dicts/is.xpi
+	rm -f dicts/is.aff dicts/is.dic dicts/th_is.dat dicts/th_is.idx dicts/is.oxt dicts/is.xpi dicts/hunspell-is.deb
 	rm -f wiktionary.dic wiktionary.aff wiktionary.extracted wordlist.diff
 	rm -f huntest.aff huntest.dic
 	#  rm -f ??wiktionary-latest-pages-articles.xml.bz2
@@ -23,9 +23,10 @@ dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
 		packages/libreoffice/META-INF/manifest.xml \
 		packages/libreoffice/description.xml \
 		packages/libreoffice/dictionaries.xcu \
-		packages/libreoffice/license.txt
+		license.txt
 	rm -rf $@ libreoffice-tmp
 	cp -rf packages/libreoffice libreoffice-tmp
+	cp license.txt libreoffice-tmp/
 	cd libreoffice-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' description.xml && zip -r ../$@ *
 	zip $@ dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
@@ -39,13 +40,16 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 
 # Debian package providing hunspell-dictionary-is
 dicts/hunspell-is.deb: dicts/is.aff dicts/is.dic \
-		packages/debian/control
+		packages/debian/control \
+		license.txt
 	rm -rf debian-tmp
 	mkdir -p debian-tmp/usr/share/hunspell
+	cp dicts/is.aff dicts/is.dic debian-tmp/usr/share/hunspell/
+	mkdir -p debian-tmp/usr/share/doc/hunspell-is
+	cp license.txt debian-tmp/usr/share/doc/hunspell-is/copyright
 	mkdir -p debian-tmp/DEBIAN
-	cp packages/debian/control debian-tmp/DEBIAN
+	cp packages/debian/control debian-tmp/DEBIAN/
 	sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' debian-tmp/DEBIAN/control
-	cp dicts/is.aff dicts/is.dic debian-tmp/usr/share/hunspell
 	dpkg-deb -b debian-tmp dicts/hunspell-is.deb
 
 dicts/%.aff: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
