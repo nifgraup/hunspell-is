@@ -42,7 +42,7 @@ Development instructions
 	# run test cases on wiktionary declension rules
 	make test
 	
-	# generates dictionary, thesaurus and LibreOffice & Firefox extensions
+	# generates a dictionary, thesaurus, LibreOffice & Firefox extensions and a debian package
 	make
 	
 	# removes generated & temporary files
