@@ -11,11 +11,12 @@ clean:
 	#  rm -f ??wiktionary-latest-pages-articles.xml.bz2
 	rm -f ??wiktionary-latest-pages-articles.xml ??wiktionary-latest-pages-articles.xml.texts
 	rmdir --ignore-fail-on-non-empty dicts/
+	rm -rf libreoffice-tmp/ mozilla-tmp/ debian-tmp/
 
 test:
 	./makedict.sh test is
 
-packages: dicts/is.oxt dicts/is.xpi
+packages: dicts/is.oxt dicts/is.xpi dicts/hunspell-is.deb
 
 # LibreOffice extension
 dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
@@ -35,6 +36,17 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	rm -rf $@ mozilla-tmp
 	cp -rf packages/mozilla mozilla-tmp
 	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../$@ *
+
+# Debian package providing hunspell-dictionary-is
+dicts/hunspell-is.deb: dicts/is.aff dicts/is.dic \
+		packages/debian/control
+	rm -rf debian-tmp
+	mkdir -p debian-tmp/usr/share/hunspell
+	mkdir -p debian-tmp/DEBIAN
+	cp packages/debian/control debian-tmp/DEBIAN
+	sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' debian-tmp/DEBIAN/control
+	cp dicts/is.aff dicts/is.dic debian-tmp/usr/share/hunspell
+	dpkg-deb -b debian-tmp dicts/hunspell-is.deb
 
 dicts/%.aff: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
 	./$< is
