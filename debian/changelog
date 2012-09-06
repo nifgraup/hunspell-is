@@ -1,0 +1,5 @@
+hunspell-is (2012.09.01) unstable; urgency=low
+
+  * Initial release. Based on corresponding release from http://extensions.libreoffice.org .
+
+ -- Björgvin Ragnarsson <nifgraup@gmail.com>  Thu, 06 Sep 2012 23:44:13 +0200

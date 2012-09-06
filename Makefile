@@ -40,7 +40,7 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 
 # Debian package providing hunspell-dictionary-is
 dicts/hunspell-is.deb: dicts/is.aff dicts/is.dic \
-		debian/control \
+		debian/control debian/changelog \
 		license.txt
 	rm -rf debian-tmp
 	mkdir -p debian-tmp/usr/share/hunspell
@@ -48,7 +48,7 @@ dicts/hunspell-is.deb: dicts/is.aff dicts/is.dic \
 	mkdir -p debian-tmp/usr/share/doc/hunspell-is
 	cp license.txt debian-tmp/usr/share/doc/hunspell-is/copyright
 	mkdir -p debian-tmp/DEBIAN
-	cp debian/control debian-tmp/DEBIAN/
+	cp debian/control debian/changelog debian-tmp/DEBIAN/
 	sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' debian-tmp/DEBIAN/control
 	dpkg-deb -b debian-tmp dicts/hunspell-is.deb
 
