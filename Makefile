@@ -47,8 +47,9 @@ dicts/hunspell-is.deb: dicts/is.aff dicts/is.dic \
 	cp dicts/is.aff dicts/is.dic debian-tmp/usr/share/hunspell/
 	mkdir -p debian-tmp/usr/share/doc/hunspell-is
 	cp license.txt debian-tmp/usr/share/doc/hunspell-is/copyright
+	gzip -c -9 debian/changelog > debian-tmp/usr/share/doc/hunspell-is/changelog.gz
 	mkdir -p debian-tmp/DEBIAN
-	cp debian/control debian/changelog debian-tmp/DEBIAN/
+	cp debian/control debian-tmp/DEBIAN/
 	sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' debian-tmp/DEBIAN/control
 	dpkg-deb -b debian-tmp dicts/hunspell-is.deb
 
