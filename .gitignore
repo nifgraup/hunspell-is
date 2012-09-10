@@ -14,4 +14,7 @@ wordlist.diff
 sed*
 diff-dic1
 *~
-hunspell-is_*.*
+hunspell-is_*.deb
+hunspell-is_*.dsc
+hunspell-is_*.tar.gz
+hunspell-is_*.changes

@@ -5,7 +5,8 @@ TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 all: packages
 
 clean:
-	rm -f dicts/is.aff dicts/is.dic dicts/th_is.dat dicts/th_is.idx dicts/is.oxt dicts/is.xpi dicts/hunspell-is.deb
+	rm -f dicts/is.aff dicts/is.dic dicts/th_is.dat dicts/th_is.idx dicts/is.oxt dicts/is.xpi
+	rm -f hunspell-is_*.deb hunspell-is_*.dsc hunspell-is_*.tar.gz hunspell-is_*.changes
 	rm -f wiktionary.dic wiktionary.aff wiktionary.extracted wordlist.diff
 	rm -f huntest.aff huntest.dic
 	#  rm -f ??wiktionary-latest-pages-articles.xml.bz2
@@ -45,7 +46,6 @@ debian-package: dicts/is.aff dicts/is.dic \
 	rm -rf debian-tmp
 	mkdir -p debian-tmp/usr/share/hunspell
 	cp dicts/is.aff dicts/is.dic debian-tmp/usr/share/hunspell/
-	mkdir -p debian-tmp/usr/share/doc/hunspell-is
 	cp -rf debian/ debian-tmp/
 	cp license.txt debian-tmp/debian/copyright
 	cd debian-tmp && dpkg-buildpackage
