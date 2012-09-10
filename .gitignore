@@ -6,7 +6,6 @@ iswiktionary-latest-pages-articles.xml.bz2
 iswiktionary-latest-pages-articles.xml.texts
 libreoffice-tmp/
 mozilla-tmp/
-debian-tmp/
 wiktionary.aff
 wiktionary.dic
 wiktionary.extracted
@@ -14,7 +13,7 @@ wordlist.diff
 sed*
 diff-dic1
 *~
-hunspell-is_*.deb
-hunspell-is_*.dsc
-hunspell-is_*.tar.gz
-hunspell-is_*.changes
+debian/files
+debian/hunspell-is.debhelper.log
+debian/hunspell-is.substvars
+debian/hunspell-is/

@@ -30,7 +30,7 @@
 
 
 # Check dependencies
-for i in hunspell gawk bash ed sort bunzip2 wget zip; do
+for i in hunspell gawk bash ed sort bunzip2 zip; do
   command -v $i &>/dev/null || { echo "I require $i but it's not installed. Aborting." >&2; exit 1; }
 done
 

@@ -2,7 +2,7 @@ TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 
 .PHONY: all clean test packages debian-package
 
-all: packages
+all: dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
 clean:
 	rm -f dicts/is.aff dicts/is.dic dicts/th_is.dat dicts/th_is.idx dicts/is.oxt dicts/is.xpi
@@ -11,23 +11,23 @@ clean:
 	rm -f huntest.aff huntest.dic
 	#  rm -f ??wiktionary-latest-pages-articles.xml.bz2
 	rm -f ??wiktionary-latest-pages-articles.xml ??wiktionary-latest-pages-articles.xml.texts
+	rm -rf libreoffice-tmp/ mozilla-tmp/
 	rmdir --ignore-fail-on-non-empty dicts/
-	rm -rf libreoffice-tmp/ mozilla-tmp/ debian-tmp/
 
 test:
 	./makedict.sh test is
 
-packages: dicts/is.oxt dicts/is.xpi debian-package
+packages: dicts/is.oxt dicts/is.xpi
 
 # LibreOffice extension
 dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
 		packages/libreoffice/META-INF/manifest.xml \
 		packages/libreoffice/description.xml \
 		packages/libreoffice/dictionaries.xcu \
-		license.txt
+		debian/copyright
 	rm -rf $@ libreoffice-tmp
 	cp -rf packages/libreoffice libreoffice-tmp
-	cp license.txt libreoffice-tmp/
+	cp debian/copyright libreoffice-tmp/license.txt
 	cd libreoffice-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' description.xml && zip -r ../$@ *
 	zip $@ dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
@@ -38,17 +38,6 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	rm -rf $@ mozilla-tmp
 	cp -rf packages/mozilla mozilla-tmp
 	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../$@ *
-
-# Debian package providing hunspell-dictionary-is
-debian-package: dicts/is.aff dicts/is.dic \
-		debian/control debian/changelog debian/rules debian/source/format debian/compat \
-		license.txt
-	rm -rf debian-tmp
-	mkdir -p debian-tmp/usr/share/hunspell
-	cp dicts/is.aff dicts/is.dic debian-tmp/usr/share/hunspell/
-	cp -rf debian/ debian-tmp/
-	cp license.txt debian-tmp/debian/copyright
-	cd debian-tmp && dpkg-buildpackage
 
 dicts/%.aff : makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
 	./$< is

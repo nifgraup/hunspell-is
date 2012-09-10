@@ -2,7 +2,7 @@ Source: hunspell-is
 Section: text
 Priority: optional
 Maintainer: Björgvin Ragnarsson <nifgraup@gmail.com>
-Build-Depends: debhelper (>= 7)
+Build-Depends: debhelper (>= 7), bzip2, gawk, bash (>= 4.1), ed, coreutils (>= 8.5), make (>= 3.81), hunspell, libmythes-dev
 Standards-Version: 3.9.3
 
 Package: hunspell-is

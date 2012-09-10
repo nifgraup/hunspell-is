@@ -42,8 +42,14 @@ Development instructions
 	# run test cases on wiktionary declension rules
 	make test
 	
-	# generates a dictionary, thesaurus, LibreOffice & Firefox extensions and a debian package
+	# generates a dictionary & thesaurus
 	make
+	
+	# generates a LibreOffice & Firefox extensions
+	make packages
+	
+	# generate a debian package
+	dpkg-buildpackages
 	
 	# removes generated & temporary files
 	make clean
