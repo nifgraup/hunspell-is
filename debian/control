@@ -1,8 +1,13 @@
-Package: hunspell-is
-Version: TODAYPLACEHOLDER
-Architecture: all
+Source: hunspell-is
+Section: text
+Priority: optional
 Maintainer: Björgvin Ragnarsson <nifgraup@gmail.com>
-Depends: dictionaries-common (>= 0.10)
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.9.3
+
+Package: hunspell-is
+Architecture: all
+Depends: ${misc:Depends}
 Suggests: hunspell
 Provides: hunspell-dictionary, hunspell-dictionary-is
 Section: text

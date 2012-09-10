@@ -1,6 +1,6 @@
 TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 
-.PHONY: all clean test packages
+.PHONY: all clean test packages debian-package
 
 all: packages
 
@@ -16,7 +16,7 @@ clean:
 test:
 	./makedict.sh test is
 
-packages: dicts/is.oxt dicts/is.xpi dicts/hunspell-is.deb
+packages: dicts/is.oxt dicts/is.xpi debian-package
 
 # LibreOffice extension
 dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
@@ -39,21 +39,18 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../$@ *
 
 # Debian package providing hunspell-dictionary-is
-dicts/hunspell-is.deb: dicts/is.aff dicts/is.dic \
-		debian/control debian/changelog \
+debian-package: dicts/is.aff dicts/is.dic \
+		debian/control debian/changelog debian/rules debian/source/format debian/compat \
 		license.txt
 	rm -rf debian-tmp
 	mkdir -p debian-tmp/usr/share/hunspell
 	cp dicts/is.aff dicts/is.dic debian-tmp/usr/share/hunspell/
 	mkdir -p debian-tmp/usr/share/doc/hunspell-is
-	cp license.txt debian-tmp/usr/share/doc/hunspell-is/copyright
-	gzip -c -9 debian/changelog > debian-tmp/usr/share/doc/hunspell-is/changelog.gz
-	mkdir -p debian-tmp/DEBIAN
-	cp debian/control debian-tmp/DEBIAN/
-	sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' debian-tmp/DEBIAN/control
-	dpkg-deb -b debian-tmp dicts/hunspell-is.deb
+	cp -rf debian/ debian-tmp/
+	cp license.txt debian-tmp/debian/copyright
+	cd debian-tmp && dpkg-buildpackage
 
-dicts/%.aff: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
+dicts/%.aff : makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
 	./$< is
 
 dicts/%.dic: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
