@@ -12,7 +12,7 @@ clean:
 	#  rm -f ??wiktionary-latest-pages-articles.xml.bz2
 	rm -f ??wiktionary-latest-pages-articles.xml ??wiktionary-latest-pages-articles.xml.texts
 	rm -rf libreoffice-tmp/ mozilla-tmp/
-	rmdir --ignore-fail-on-non-empty dicts/
+	rmdir --ignore-fail-on-non-empty dicts/ || true
 
 test:
 	./makedict.sh test is
