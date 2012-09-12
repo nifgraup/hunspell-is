@@ -1,2 +1,2 @@
-dicts/is.dic /usr/share/hunspell/is.dic
-dicts/is.aff /usr/share/hunspell/is.aff
+dicts/is.dic usr/share/hunspell
+dicts/is.aff usr/share/hunspell
