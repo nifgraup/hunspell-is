@@ -54,6 +54,7 @@ dicts/th_%.dat: makethes.awk %wiktionary-latest-pages-articles.xml
 
 iswiktionary-latest-pages-articles.xml.bz2:
 	wget http://dumps.wikimedia.org/iswiktionary/latest/$@ -O $@
+	touch $@
 
 iswiktionary-latest-pages-articles.xml: iswiktionary-latest-pages-articles.xml.bz2
 	bunzip2 -kf $<
