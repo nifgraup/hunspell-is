@@ -39,10 +39,12 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	cp -rf packages/mozilla mozilla-tmp
 	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../$@ *
 
-dicts/%.aff : makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
+dicts/is.aff: makedict.sh iswiktionary-latest-pages-articles.xml.texts iswiktionary-latest-pages-articles.xml \
+		$(wildcard langs/is/common-aff.d/*) $(wildcard "langs/is/rules/*/*")
 	./$< is
 
-dicts/%.dic: makedict.sh %wiktionary-latest-pages-articles.xml.texts %wiktionary-latest-pages-articles.xml
+dicts/is.dic: makedict.sh iswiktionary-latest-pages-articles.xml.texts iswiktionary-latest-pages-articles.xml \
+                $(wildcard langs/is/common-aff.d/*) $(wildcard "langs/is/rules/*/*")
 	./$< is
 
 dicts/th_%.dat: makethes.awk %wiktionary-latest-pages-articles.xml
