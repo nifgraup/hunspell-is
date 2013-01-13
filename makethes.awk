@@ -36,6 +36,9 @@
 				sub(/\|/, " (", thes);
 			}
 
+			#remove [1] after word
+			gsub(/ \[[0-9]\]/, "", thes);
+
 			#remove links and brackets
 			gsub(/\[(([[:alnum:]]| )*\|)?|\]/, "", thes);
 
