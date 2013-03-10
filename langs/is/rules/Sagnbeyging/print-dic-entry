@@ -1,0 +1,45 @@
+#!/bin/sh
+
+gawk -F "|" '
+
+function ltrim(s) { sub(/^[ \t\r\n]+/, "", s); return s }
+function rtrim(s) { sub(/[ \t\r\n]+$/, "", s); return s }
+function trim(s) { return rtrim(ltrim(s)); }
+
+{
+	#Find infinitive form
+	infinitive = "";
+        for(i=1; i<=NF; i++)
+	{
+		split($i, v, "=");
+		if(v[1] == "allar sagnbeygingar")
+		{
+			split(v[2], infi, "/");
+			if(infi[2] == "sagnbeyging")
+			{
+				infinitive = infi[1];
+				break;
+			}
+		}
+	}
+
+	#Print forms
+	if(infinitive != "")
+	{
+		print infinitive;
+		for(i=1; i<=NF; i++)
+		{
+			if(split($i, v, "=") && v[1] != "allar sagnbeygingar" && v[1] != "ópersónulegt" && v[2] != "" && v[2] != "-" && v[2] != infinitive)
+			{
+				split(v[2], t, "/");
+				printf "%s\tst:%s\n", trim(t[1]), infinitive;
+				if(t[2] != "")
+				{
+                                        printf "%s\tst:%s\n", trim(t[2]), infinitive;
+				}
+			}
+		}
+	}
+}
+'
+
