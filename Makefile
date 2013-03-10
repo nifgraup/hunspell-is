@@ -60,6 +60,7 @@ iswiktionary-latest-pages-articles.xml.bz2:
 
 iswiktionary-latest-pages-articles.xml: iswiktionary-latest-pages-articles.xml.bz2
 	bunzip2 -kf $<
+	touch $@
 
 iswiktionary-latest-pages-articles.xml.texts: iswiktionary-latest-pages-articles.xml
 	tr -d "\r\n" < iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.}][^ }]*[}|][^}]*" | sed "s/mynd=.*//g" | sed "s/lo.nf.et.ó=.*//g" | sort | uniq > $@
