@@ -40,7 +40,7 @@ Development instructions
 	sudo apt-get install bzip2 gawk bash ed coreutils make wget hunspell libmythes-dev
 	
 	# run test cases on wiktionary declension rules
-	make test
+	make check
 	
 	# generates a dictionary & thesaurus
 	make
@@ -56,7 +56,7 @@ Development instructions
 
 
 Contributors
---------------------
+------------
 *  Development & project maintainer: Björgvin Ragnarsson,
 *  Contributors to the Icelandic Wiktionary,
 *  Original word list was released into the public domain in the early nineties

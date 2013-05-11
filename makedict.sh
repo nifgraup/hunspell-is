@@ -87,6 +87,6 @@ if [ "$1" != "" ]; then
 
 else
   echo "Usage:"
-  echo "        $0 is | test is"
+  echo "        $0 is"
 fi
 

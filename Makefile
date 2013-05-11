@@ -1,8 +1,6 @@
-SHELL := /bin/bash
-
 TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 
-.PHONY: all clean test packages debian-package
+.PHONY: all clean check packages debian-package
 
 all: dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
@@ -16,7 +14,7 @@ clean:
 	rm -rf libreoffice-tmp/ mozilla-tmp/
 	rmdir --ignore-fail-on-non-empty dicts/ || true
 
-test:
+check:
 	echo "Testing rules..."
 	find langs/is/rules/* -type d | while read i; \
 	do \
