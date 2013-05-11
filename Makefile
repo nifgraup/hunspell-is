@@ -29,8 +29,8 @@ test:
 	  TESTNAME="`basename "$$i"`"; \
 	  echo "Testing rule $$TESTNAME"; \
 	  cp "$$i/dic" huntest.dic; \
-	  hunspell -l -d huntest < "$$i/good"; \
-	  hunspell -G -d huntest < "$$i/bad"; \
+	  test -z "`hunspell -l -d huntest < "$$i/good"`" || { echo "Good word test for $$TESTNAME failed: `hunspell -l -d huntest < "$$i/good"`"; exit 1; }; \
+	  test -z "`hunspell -G -d huntest < "$$i/bad"`" || { echo "Bad word test for $$TESTNAME failed: `hunspell -G -d huntest < "$$i/bad"`"; exit 1; }; \
 	done
 	echo "All passed."
 
