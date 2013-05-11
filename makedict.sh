@@ -38,29 +38,7 @@ insertHead() {
   printf '%s\n' H 1i "$1" . w | ed -s "$2"
 }
 
-if [ "$1" = "test" ]; then
-  if [ "$2" = "" ]; then
-    echo "Usage: $0 test is"
-    exit 1
-  fi
-  echo "Testing rules..."
-  find langs/$2/rules/* -type d | while read i
-  do
-    cat langs/$2/common-aff.d/*.aff > huntest.aff
-    if [ -f "$i/aff" ]; then
-      LINECOUNT="`grep -cve '^\s*$' "$i/aff"`"
-      echo "SFX X N $LINECOUNT" >> huntest.aff
-      cat "$i/aff" >> huntest.aff
-    fi
-    TESTNAME="`basename "$i"`"
-    echo "Testing rule $TESTNAME"
-    cp "$i/dic" huntest.dic
-    test -z "`hunspell -l -d huntest < "$i/good"`" || { echo "Good word test for $TESTNAME failed: `hunspell -l -d huntest < "$i/good"`"; exit 1; }
-    test -z "`hunspell -G -d huntest < "$i/bad"`" || { echo "Bad word test for $TESTNAME failed: `hunspell -G -d huntest < "$i/bad"`"; exit 1; }
-  done
-  echo "All passed."
-
-elif [ "$1" != "" ]; then
+if [ "$1" != "" ]; then
   echo "Extracting valid words from the wiktionary dump..."
   rm -f wiktionary.extracted
   mkdir -p dicts

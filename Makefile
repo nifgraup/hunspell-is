@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 
 .PHONY: all clean test packages debian-package
@@ -15,7 +17,22 @@ clean:
 	rmdir --ignore-fail-on-non-empty dicts/ || true
 
 test:
-	./makedict.sh test is
+	echo "Testing rules..."
+	find langs/is/rules/* -type d | while read i; \
+	do \
+	  cat langs/is/common-aff.d/*.aff > huntest.aff; \
+	  if [ -f "$$i/aff" ]; then \
+	    LINECOUNT="`grep -ce '^.' "$$i/aff"`"; \
+	    echo "SFX X N $$LINECOUNT" >> huntest.aff; \
+	    cat "$$i/aff" >> huntest.aff; \
+	  fi; \
+	  TESTNAME="`basename "$$i"`"; \
+	  echo "Testing rule $$TESTNAME"; \
+	  cp "$$i/dic" huntest.dic; \
+	  hunspell -l -d huntest < "$$i/good"; \
+	  hunspell -G -d huntest < "$$i/bad"; \
+	done
+	echo "All passed."
 
 packages: dicts/is.oxt dicts/is.xpi
 
