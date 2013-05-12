@@ -32,7 +32,7 @@ check:
 	done
 	echo "All passed."
 
-packages: dicts/is.oxt dicts/is.xpi
+packages: dicts/is.oxt dicts/is.xpi dicts/SentenceExceptList.xml
 
 # LibreOffice extension
 dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
@@ -45,6 +45,13 @@ dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
 	cp debian/copyright libreoffice-tmp/license.txt
 	cd libreoffice-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' description.xml && zip -r ../$@ *
 	zip $@ dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
+
+# LibreOffice autocorrect blocklist - not the end of a sentence
+dicts/SentenceExceptList.xml: iswiktionary-latest-pages-articles.xml
+	echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>"  > $@
+	echo "<block-list:block-list xmlns:block-list=\"http://openoffice.org/2001/block-list\">"  >> $@
+	grep -C 3 "{{-is-}}" iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''" | grep -o "[^']*\." | xargs printf "  <block-list:block block-list:abbreviated-name=\"%s\"/>\n" >> $@
+	echo "</block-list:block-list>" >> $@
 
 # Mozilla extension
 dicts/is.xpi: %.xpi: %.aff %.dic \
