@@ -50,7 +50,7 @@ dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
 dicts/SentenceExceptList.xml: iswiktionary-latest-pages-articles.xml
 	echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>"  > $@
 	echo "<block-list:block-list xmlns:block-list=\"http://openoffice.org/2001/block-list\">"  >> $@
-	grep -C 3 "{{-is-}}" iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''" | grep -o "[^']*\." | xargs printf "  <block-list:block block-list:abbreviated-name=\"%s\"/>\n" | sort >> $@
+	grep -C 3 "{{-is-}}" iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''[^ ]\+\.'''" | grep -o "[^']\+" | xargs printf "  <block-list:block block-list:abbreviated-name=\"%s\"/>\n" | sort >> $@
 	echo "</block-list:block-list>" >> $@
 
 # Mozilla extension
