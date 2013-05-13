@@ -6,6 +6,7 @@
 #	bæta við öðrum stafsetningum, andheitum, yfirheitum, undirheitum, "sjá einnig", (orðtök, "afleiddar merkingar" og orðsifjar).
 #	Hvað með orð í fleiri en einum orðflokki, t.d. dýr?
 
+BEGIN { print "UTF-8"; }
 {
 	if(match($0, /<title>.*<\/title>/))
 	{

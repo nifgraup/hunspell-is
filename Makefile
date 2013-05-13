@@ -35,8 +35,8 @@ check-rules:
 	echo "All passed."
 
 check-thes: dicts/th_is.dat
-	! grep -P "\xe2" $<
 	! grep "|[^\(]\+)" $<
+	! grep -P "\xe2" $<
 
 packages: dicts/is.oxt dicts/is.xpi dicts/SentenceExceptList.xml
 
@@ -76,8 +76,7 @@ dicts/is.dic: makedict.sh iswiktionary-latest-pages-articles.xml.texts iswiktion
 	./$< is
 
 dicts/th_%.dat: makethes.awk %wiktionary-latest-pages-articles.xml
-	echo "UTF-8" > $@
-	LC_ALL=is_IS.utf8 gawk -F " " -f $< <iswiktionary-latest-pages-articles.xml >> $@
+	LC_ALL=is_IS.utf8 gawk -F " " -f $< <iswiktionary-latest-pages-articles.xml | ./sortthes.py >> $@
 
 %.idx: %.dat
 	LC_ALL=is_IS.utf8 ${TH_GEN_IDX} -o $@ < $<
