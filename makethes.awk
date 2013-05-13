@@ -33,6 +33,8 @@
 			explaination = " (andheiti)";
                 else if(match($1, /{{-yfirheiti-}}/))
 			explaination = " (yfirheiti)";
+		else if(match($1, /{{-undirheiti-}}/))
+			explaination = " (undirheiti)";
 
 		if(RSTART)
 		{
