@@ -35,8 +35,13 @@
                         andheiti=1;
                 else
                         andheiti=0;
+                
+		if(match($1, /{{-yfirheiti-}}/))
+			yfirheiti=1;
+		else
+			yfirheiti=0;
 
-		if(samheiti || andheiti)
+		if(samheiti || andheiti || yfirheiti)
 		{
 			getline;
 			while(NF > 1)
@@ -76,6 +81,8 @@
 				if(!match(thes, /\([^\)]+,/))
 					if(andheiti)
 						gsub(/, */, " (andheiti)|", thes);
+					else if(yfirheiti)
+						gsub(/, */, " (yfirheiti)|", thes);
 					else
 						gsub(/, */, "|", thes);
 
@@ -83,6 +90,8 @@
 				{
 					if(andheiti)
 						thes=thes" (andheiti)";
+					else if(yfirheiti)
+						thes=thes" (yfirheiti)";
 					nMeanings++;
 					if(lines == "")
 						lines=lines thes;
