@@ -9,6 +9,13 @@
 {
 	if(match($0, /<title>.*<\/title>/))
 	{
+		if(nMeanings > 0)
+		{
+			print word"|"nMeanings;
+			print "|"lines;
+		}
+		nMeanings = 0;
+		lines = "";
 		word=substr($0, 12, length($0)-19);
 		icelandic=0;
 	}
@@ -31,8 +38,6 @@
 
 		if(samheiti || andheiti)
 		{
-			nMeanings = 0;
-			lines = "";
 			getline;
 			while(NF > 1)
 			{
@@ -85,11 +90,6 @@
 						lines=lines "\n|"thes;
 				}
 				getline;
-			}
-			if(nMeanings > 0)
-			{
-				print word"|"nMeanings;
-				print "|"lines;
 			}
 		}
 	}
