@@ -1,6 +1,6 @@
 TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 
-.PHONY: all clean check packages debian-package
+.PHONY: all clean check check-rules check-thes packages debian-package
 
 all: dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
@@ -14,7 +14,9 @@ clean:
 	rm -rf libreoffice-tmp/ mozilla-tmp/
 	rm -rf dicts/
 
-check:
+check: check-rules check-thes
+
+check-rules:
 	echo "Testing rules..."
 	find langs/is/rules/* -type d | while read i; \
 	do \
@@ -31,6 +33,9 @@ check:
 	  test -z "`hunspell -G -d huntest < "$$i/bad"`" || { echo "Bad word test for $$TESTNAME failed: `hunspell -G -d huntest < "$$i/bad"`"; exit 1; }; \
 	done
 	echo "All passed."
+
+check-thes: dicts/th_is.dat
+	! grep "|[^\(]\+)" $<
 
 packages: dicts/is.oxt dicts/is.xpi dicts/SentenceExceptList.xml
 
