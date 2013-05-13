@@ -18,62 +18,79 @@
 		else
 			icelandic=0;
 
-	if((icelandic == 1) && match($1, /{{-samheiti-}}/))
+	if(icelandic)
 	{
-		nMeanings = 0;
-		lines = "";
-		getline;
-		while(NF > 1)
+		if(match($1, /{{-samheiti-}}/))
+			samheiti=1;
+		else
+			samheiti=0;
+                if(match($1, /{{-andheiti-}}/))
+                        andheiti=1;
+                else
+                        andheiti=0;
+
+		if(samheiti || andheiti)
 		{
-			thes = $0;
-			# remove optinal listing at the beginning, eg. [1]:  todo: make use of this.
-			sub(/:+(\[([[:alnum:]]|,|-)+\])? */, "", thes);
-
-			# remove link template
-			if(match(thes, /{{tengill\|/))
-			{
-				sub(/{{tengill\|/, "", thes);
-				sub(/\|/, " (", thes);
-			}
-
-			#remove [1] after word
-			gsub(/ \[[0-9]\]/, "", thes);
-
-			#remove links and brackets
-			gsub(/\[(([[:alnum:]]| )*\|)?|\]/, "", thes);
-
-			#remove html tags and text inside.
-			gsub(/ *&lt;[[:alpha:]]+&gt;[^;]*&lt;\/[[:alpha:]]+&gt;/, "", thes);
-
-			#replace quotes, and curly brackets with parenthesis.
-			while(match(thes, /\047|{|}|:/))
-			{
-				sub(/(\047|{)+/, "(", thes);
-				sub(/(\047|}|:)+/, ")", thes);
-			}
-
-			#remove double parenthesis possibly added by previous replacement.
-			gsub(/\(+/, "(", thes);
-			gsub(/\)+/, ")", thes);
-
-			#replace , with | unless the comma is inside parenthesis.
-			if(!match(thes, /\([^\)]+,/))
-				gsub(/, */, "|", thes);
-
-			if(thes != "")
-			{
-				nMeanings++;
-				if(lines == "")
-					lines=lines thes;
-				else
-					lines=lines "\n|"thes;
-			}
+			nMeanings = 0;
+			lines = "";
 			getline;
-		}
-		if(nMeanings > 0)
-		{
-			print word"|"nMeanings;
-			print "|"lines;
+			while(NF > 1)
+			{
+				thes = $0;
+				# remove optinal listing at the beginning, eg. [1]:  todo: make use of this.
+				sub(/:+(\[([[:alnum:]]|,|-)+\])? */, "", thes);
+
+				# remove link template
+				if(match(thes, /{{tengill\|/))
+				{
+					sub(/{{tengill\|/, "", thes);
+					sub(/\|/, " (", thes);
+				}
+
+				#remove [1] after word
+				gsub(/ \[[0-9]\]/, "", thes);
+
+				#remove links and brackets
+				gsub(/\[(([[:alnum:]]| )*\|)?|\]/, "", thes);
+
+				#remove html tags and text inside.
+				gsub(/ *&lt;[[:alpha:]]+&gt;[^;]*&lt;\/[[:alpha:]]+&gt;/, "", thes);
+
+				#replace quotes, and curly brackets with parenthesis.
+				while(match(thes, /\047|{|}|:/))
+				{
+					sub(/(\047|{)+/, "(", thes);
+					sub(/(\047|}|:)+/, ")", thes);
+				}
+
+				#remove double parenthesis possibly added by previous replacement.
+				gsub(/\(+/, "(", thes);
+				gsub(/\)+/, ")", thes);
+
+				#replace , with | unless the comma is inside parenthesis.
+				if(!match(thes, /\([^\)]+,/))
+					if(andheiti)
+						gsub(/, */, " (andheiti)|", thes);
+					else
+						gsub(/, */, "|", thes);
+
+				if(thes != "")
+				{
+					if(andheiti)
+						thes=thes" (andheiti)";
+					nMeanings++;
+					if(lines == "")
+						lines=lines thes;
+					else
+						lines=lines "\n|"thes;
+				}
+				getline;
+			}
+			if(nMeanings > 0)
+			{
+				print word"|"nMeanings;
+				print "|"lines;
+			}
 		}
 	}
 }
