@@ -28,20 +28,13 @@
 	if(icelandic)
 	{
 		if(match($1, /{{-samheiti-}}/))
-			samheiti=1;
-		else
-			samheiti=0;
-                if(match($1, /{{-andheiti-}}/))
-                        andheiti=1;
-                else
-                        andheiti=0;
-                
-		if(match($1, /{{-yfirheiti-}}/))
-			yfirheiti=1;
-		else
-			yfirheiti=0;
+			explaination = "";
+		else if(match($1, /{{-andheiti-}}/))
+			explaination = " (andheiti)";
+                else if(match($1, /{{-yfirheiti-}}/))
+			explaination = " (yfirheiti)";
 
-		if(samheiti || andheiti || yfirheiti)
+		if(RSTART)
 		{
 			getline;
 			while(NF > 1)
@@ -79,24 +72,15 @@
 
 				#replace , with | unless the comma is inside parenthesis.
 				if(!match(thes, /\([^\)]+,/))
-					if(andheiti)
-						gsub(/, */, " (andheiti)|", thes);
-					else if(yfirheiti)
-						gsub(/, */, " (yfirheiti)|", thes);
-					else
-						gsub(/, */, "|", thes);
+					gsub(/, */, explaination"|", thes);
 
 				if(thes != "")
 				{
-					if(andheiti)
-						thes=thes" (andheiti)";
-					else if(yfirheiti)
-						thes=thes" (yfirheiti)";
 					nMeanings++;
 					if(lines == "")
-						lines=lines thes;
+						lines=lines thes explaination;
 					else
-						lines=lines "\n|"thes;
+						lines=lines "\n|"thes explaination;
 				}
 				getline;
 			}
