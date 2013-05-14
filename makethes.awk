@@ -3,7 +3,7 @@
 #	Bæta við orðskýringum
 #		ef þær eru fleiri en ein og eitt orð hver?
 #		ef þær eru ekki nafnorð, þ.á.m. sérnöfn, karlmanns- og kvenmannsnöfn, (og fleiri en eitt)?
-#	bæta við öðrum stafsetningum, andheitum, yfirheitum, undirheitum, "sjá einnig", (orðtök, "afleiddar merkingar" og orðsifjar).
+#	bæta við öðrum stafsetningum, "sjá einnig", (orðtök, "afleiddar merkingar" og orðsifjar).
 #	Hvað með orð í fleiri en einum orðflokki, t.d. dýr?
 
 BEGIN { print "UTF-8"; }
@@ -74,7 +74,7 @@ BEGIN { print "UTF-8"; }
 				gsub(/\)+/, ")", thes);
 
 				#replace , with | unless the comma is inside parenthesis.
-				if(!match(thes, /\([^\)]+,/))
+				if(!match(thes, /[^\)]+,/))
 					gsub(/, */, explaination"|", thes);
 
 				if(thes != "")
