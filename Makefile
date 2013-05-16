@@ -35,7 +35,7 @@ check-rules:
 	echo "All passed."
 
 check-thes: dicts/th_is.dat
-	! grep "|[^\(]\+)" $<
+	! grep "|[^\(]*)" $<
 	! grep -P "\xe2" $<
 
 packages: dicts/is.oxt dicts/is.xpi dicts/SentenceExceptList.xml

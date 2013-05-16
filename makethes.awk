@@ -74,8 +74,10 @@ BEGIN { print "UTF-8"; }
 				gsub(/\)+/, ")", thes);
 
 				#replace , with | unless the comma is inside parenthesis.
-				while(match(thes, /[ ^|][^\)]+,/))
-					sub(/, */, explaination"|", thes);
+				while(match(thes, /[^,\(\)]+, /) && substr(thes, RSTART-1, 1) != "(")
+				{
+					thes = substr(thes, 0, RSTART+RLENGTH-3) explaination"|" substr(thes, RSTART+RLENGTH);
+				}	
 
 				if(thes != "")
 				{
