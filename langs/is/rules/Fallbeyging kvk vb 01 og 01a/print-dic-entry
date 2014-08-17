@@ -1,3 +1,0 @@
-#!/bin/sh
-gawk -F "|" '{printf "%sa%s/%d\n", $2, $3, '$1'}'
-

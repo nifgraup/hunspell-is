@@ -32,7 +32,7 @@ BEGIN { print "UTF-8"; }
 			explaination = "";
 		else if(match($1, /{{-andheiti-}}/))
 			explaination = " (andheiti)";
-                else if(match($1, /{{-yfirheiti-}}/))
+		else if(match($1, /{{-yfirheiti-}}/))
 			explaination = " (yfirheiti)";
 		else if(match($1, /{{-undirheiti-}}/))
 			explaination = " (undirheiti)";
@@ -63,11 +63,15 @@ BEGIN { print "UTF-8"; }
 				gsub(/ *&lt;[[:alpha:]]+&gt;[^;]*&lt;\/[[:alpha:]]+&gt;/, "", thes);
 
 				#replace quotes, and curly brackets with parenthesis.
-				while(match(thes, /\047|{|}|:/))
+				while(match(thes, /[\047{}]/))
 				{
-					sub(/(\047|{)+/, "(", thes);
-					sub(/(\047|}|:)+/, ")", thes);
+					sub(/[\047{]+/, "(", thes);
+					sub(/[\047}]+/, ")", thes);
 				}
+
+				#remove colon
+				gsub(/:\)/, ")", thes);
+				sub(/[^:(]+: ?/, "", thes);
 
 				#remove double parenthesis possibly added by previous replacement.
 				gsub(/\(+/, "(", thes);

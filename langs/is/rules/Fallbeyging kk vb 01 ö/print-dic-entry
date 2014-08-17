@@ -1,3 +1,0 @@
-#!/bin/sh
-gawk -F "|" '{printf "%sö%sum\tst:%sa%si\n%sö%sunum\tst:%sa%si\n%sa%si/%d\n", $2, $3, $2, $3, $2, $3, $2, $3, $2, $3, '$1'}'
-

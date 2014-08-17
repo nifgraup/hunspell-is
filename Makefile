@@ -17,7 +17,7 @@ clean:
 check: check-rules check-thes
 
 check-rules:
-	echo "Testing rules..."
+	echo "Testing old rules..."
 	find langs/is/rules/* -type d | while read i; \
 	do \
 	  cat langs/is/common-aff.d/*.aff > huntest.aff; \
@@ -32,11 +32,15 @@ check-rules:
 	  test -z "`hunspell -l -d huntest < "$$i/good"`" || { echo "Good word test for $$TESTNAME failed: `hunspell -l -d huntest < "$$i/good"`"; exit 1; }; \
 	  test -z "`hunspell -G -d huntest < "$$i/bad"`" || { echo "Bad word test for $$TESTNAME failed: `hunspell -G -d huntest < "$$i/bad"`"; exit 1; }; \
 	done
+	echo "Testing new rules..."
+	test -z "`hunspell -l -d wiktionary < "langs/is/test.good"`" || { echo "Good word test failed: `hunspell -l -d wiktionary < "langs/is/test.good"`"; exit 1; };
+	test -z "`hunspell -G -d wiktionary < "langs/is/test.bad"`" || { echo "Bad word test failed: `hunspell -G -d wiktionary < "langs/is/test.bad"`"; exit 1; };
 	echo "All passed."
 
 check-thes: dicts/th_is.dat
 	! grep "|[^\(]*)" $<
 	! grep -P "\xe2" $<
+	! grep "([^)]\+(" $<
 
 packages: dicts/is.oxt dicts/is.xpi dicts/SentenceExceptList.xml
 
@@ -67,16 +71,16 @@ dicts/is.xpi: %.xpi: %.aff %.dic \
 	cp -rf packages/mozilla mozilla-tmp
 	cd mozilla-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.js && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' install.rdf && mkdir dictionaries && cp ../dicts/is.dic ../dicts/is.aff dictionaries/ && zip -r ../$@ *
 
-dicts/is.aff: makedict.sh iswiktionary-latest-pages-articles.xml.texts iswiktionary-latest-pages-articles.xml \
+dicts/is.aff: makedict.sh makedict.py iswiktionary-latest-pages-articles.xml.texts iswiktionary-latest-pages-articles.xml \
 		$(wildcard langs/is/common-aff.d/*) $(wildcard "langs/is/rules/*/*")
 	./$< is
 
-dicts/is.dic: makedict.sh iswiktionary-latest-pages-articles.xml.texts iswiktionary-latest-pages-articles.xml \
+dicts/is.dic: makedict.sh makedict.py iswiktionary-latest-pages-articles.xml.texts iswiktionary-latest-pages-articles.xml \
                 $(wildcard langs/is/common-aff.d/*) $(wildcard "langs/is/rules/*/*")
 	./$< is
 
-dicts/th_%.dat: makethes.awk %wiktionary-latest-pages-articles.xml
-	LC_ALL=is_IS.utf8 gawk -F " " -f $< <iswiktionary-latest-pages-articles.xml | ./sortthes.py > $@
+dicts/th_%.dat: makethes.awk %wiktionary-latest-pages-articles.xml sortthes.py
+	LC_ALL=is_IS.utf8 gawk -F " " -f $< <iswiktionary-latest-pages-articles.xml | LC_ALL=is_IS.utf8 ./sortthes.py > $@
 
 %.idx: %.dat
 	LC_ALL=is_IS.utf8 ${TH_GEN_IDX} -o $@ < $<

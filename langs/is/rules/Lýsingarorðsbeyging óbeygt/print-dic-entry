@@ -1,3 +1,0 @@
-#!/bin/sh
-gawk -F "|" '{ printf "%s\n", $2; }'
-
