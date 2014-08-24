@@ -134,7 +134,7 @@ def commonSuffix(list) : return os.path.commonprefix([l[::-1] for l in list])[::
 # Post: conditional contains suffixes of all words in matchingWords
 #       without any of them being suffixes of conflictingWords as well.
 def addConditions(conditional, matchingWords, conflictingWords):
-  common = commonSuffix(matchingWords) #TODO: use shortest common suffix instead of longest?
+  common = commonSuffix(matchingWords)
   if common == "" or any([c[-len(common):] == common for c in conflictingWords]):
     bucket = {}
     for word in matchingWords:
@@ -145,6 +145,8 @@ def addConditions(conditional, matchingWords, conflictingWords):
     for suff in sorted(bucket.keys()):
       addConditions(conditional, bucket[suff], conflictingWords)
   else:
+    while len(common) > 1 and not any([c[-len(common)+1:] == common[1:] for c in conflictingWords]):
+      common = common[1:] # shorten as long as it doesn't conflict
     conditional.append(common)
 
 for rule in ruleskeys:
