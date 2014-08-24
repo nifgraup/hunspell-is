@@ -71,6 +71,9 @@ if [ "$1" != "" ]; then
   #extracting prepositions
   grep -C 1 "{{-is-forsetning-}}" iswiktionary-latest-pages-articles.xml | grep -o "'''[^ ]*'''" | grep -o "[^']*" | xargs printf "%s\tpo:fs\n" >> wiktionary.extracted
 
+  #extracting conjunctions
+  grep -C 1 "{{-is-samtenging-}}" iswiktionary-latest-pages-articles.xml | grep -v fornt | tr -d "[]" | grep -o "'''[^ .]*'''" | grep -o "[^']*" | xargs printf "%s\tpo:st\n" >> wiktionary.extracted
+
   cp wiktionary.extracted wiktionary.dic
   insertHead `wc -l < wiktionary.dic` wiktionary.dic
   cp dicts/$1.aff wiktionary.aff
