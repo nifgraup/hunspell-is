@@ -131,6 +131,22 @@ print("done")
 print("Finding constraints on SFX entries in the .aff file")
 def commonSuffix(list) : return os.path.commonprefix([l[::-1] for l in list])[::-1]
 
+# Post: conditional has the same effect as before, except it is written in fewer lines.
+#       Example: xz and yz is combined to [xy]z
+def simplifyConditions(conditional):
+  newCond = []
+  condMap = {}
+  for suff in conditional:
+    if not suff[1:] in condMap:
+      condMap[suff[1:]] = ""
+    condMap[suff[1:]] += suff[0]
+  for c in sorted(condMap.keys()):
+    if len(condMap[c]) == 1:
+      newCond.append(condMap[c] + c)
+    else:
+      newCond.append("[" + condMap[c] + "]" + c)
+  return newCond
+
 # Post: conditional contains suffixes of all words in matchingWords
 #       without any of them being suffixes of conflictingWords as well.
 def addConditions(conditional, matchingWords, conflictingWords):
@@ -161,6 +177,7 @@ for rule in ruleskeys:
           if not "conditional" in sfx:
             sfx["conditional"] = []
           addConditions(sfx["conditional"], sfx["matchingWords"], conflictingWords)
+          sfx["conditional"] = simplifyConditions(sfx["conditional"])
 
 # Fourth "round":
 print("Printing .aff file.")
