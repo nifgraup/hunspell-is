@@ -24,7 +24,7 @@ print("parsing xml")
 tree = ET.ElementTree(file=sys.argv[1])
 root = tree.getroot()
 for elem in root.iter():
-  if elem.tag == "{http://www.mediawiki.org/xml/export-0.9/}text":
+  if elem.tag == "{http://www.mediawiki.org/xml/export-0.10/}text":
     wikicode = mwparserfromhell.parse(elem.text)
     templatesInPages.append(wikicode.filter_templates(recursive=False))
 print("done parsing xml, found", len(templatesInPages), "pages")
