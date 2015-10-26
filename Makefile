@@ -41,6 +41,9 @@ check-thes: dicts/th_is.dat
 	! grep "|[^\(]*)" $<
 	! grep -P "\xe2" $<
 	! grep "([^)]\+(" $<
+	! grep "<.*>" $< # no html-like tags
+	! grep "&lt;.*&gt;" $< # no html-like tags (encoded)
+	@echo "Thesaurus tests passed."
 
 packages: dicts/is.oxt dicts/is.xpi dicts/SentenceExceptList.xml
 

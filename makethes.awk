@@ -56,7 +56,7 @@ BEGIN { print "UTF-8"; }
         gsub(/\[(([[:alnum:]]| )*\|)?|\]/, "", thes);
 
         #remove html tags and text inside.
-        gsub(/ *&lt;[[:alpha:]]+&gt;[^;]*&lt;\/[[:alpha:]]+&gt;/, "", thes);
+        gsub(/ *&lt;[[:alpha:]]+&gt;.*&lt;\/[[:alpha:]]+&gt;/, "", thes);
 
         #replace quotes, and curly brackets with parenthesis.
         while (match(thes, /[\047{}]/)) {
