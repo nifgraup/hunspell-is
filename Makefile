@@ -38,7 +38,8 @@ check-rules:
 	echo "All passed."
 
 check-thes: dicts/th_is.dat
-	! grep "|[^\(]*)" $<
+	! grep ")," $< # pipe, not comma, should separate meanings
+	! grep "|[^\(]*)" $< # don't replace comma with pipe inside parentheses
 	! grep -P "\xe2" $<
 	! grep "([^)]\+(" $<
 	! grep "<.*>" $< # no html-like tags
