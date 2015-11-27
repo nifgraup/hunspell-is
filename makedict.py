@@ -111,18 +111,13 @@ for templates in templatesInPages:
         common = os.path.commonprefix([lemma, inflection])
         added = inflection[len(common):]
         removed = lemma[len(common):]
-        if removed == lemma:
-          assert(added == inflection)
-          # hunspell does not allow removal of the entire world, sidestep by adding inflection to .dic file
-          dicfile.write(inflection + " st:" + lemma + " po:"+po + " is:"+tag + "\n")
+        for sfx in ruleValues["SFX"][tag]:
+          #only add to rule if not there yet
+          if sfx["removed"] == removed and sfx["added"] == added:
+            sfx["matchingWords"].append(lemma)
+            break
         else:
-          for sfx in ruleValues["SFX"][tag]:
-            #only add to rule if not there yet
-            if sfx["removed"] == removed and sfx["added"] == added:
-              sfx["matchingWords"].append(lemma)
-              break
-          else:
-            ruleValues["SFX"][tag].append({"removed": removed, "added": added, "matchingWords": [lemma]})
+          ruleValues["SFX"][tag].append({"removed": removed, "added": added, "matchingWords": [lemma]})
 
 dicfile.close()
 print("done")
