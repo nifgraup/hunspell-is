@@ -108,9 +108,11 @@ for templates in templatesInPages:
     for tag in [t for t in ruleValues["SFX"] if t in tagset]:
       for formatstr in ruleValues["OTHER_FORMAT_STRINGS"][tag]:
         inflection = formatstr.format("", *unnamedParams, **namedParams)
-        common = os.path.commonprefix([lemma, inflection])
-        added = inflection[len(common):]
-        removed = lemma[len(common):]
+        lencommon = len(os.path.commonprefix([lemma, inflection]))
+        if lencommon == len(inflection):
+          lencommon -= 1 # Eliminate zero affixes for performance reasons
+        added = inflection[lencommon:]
+        removed = lemma[lencommon:]
         for sfx in ruleValues["SFX"][tag]:
           #only add to rule if not there yet
           if sfx["removed"] == removed and sfx["added"] == added:
@@ -194,8 +196,7 @@ for rule in ruleskeys:
       for sfx in rules[rule]["SFX"][tag]:
         if sfx["removed"] == "":
           sfx["removed"] = "0"
-        if sfx["added"] == "":
-          sfx["added"] = "0"
+        assert(not sfx["added"] == "")
         for cond in sfx["conditional"]:
           afffile.write("SFX " + str(count) + " " + sfx["removed"] + " " + sfx["added"] + " " + cond + " is:"+tag + "\n")
   afffile.write("\n")
