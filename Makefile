@@ -99,3 +99,16 @@ iswiktionary-latest-pages-articles.xml: iswiktionary-latest-pages-articles.xml.b
 iswiktionary-latest-pages-articles.xml.texts: iswiktionary-latest-pages-articles.xml
 	tr -d "\r\n" < iswiktionary-latest-pages-articles.xml | grep -o "{{[^.|{}]*|[^-.}][^ }]*[}|][^}]*" | sed "s/mynd=.*//g" | sed "s/lo.nf.et.ó=.*//g" | sort | uniq > $@
 
+# Performance test target: perf.txt
+randwordlist:
+	tr -cd '[:alpha:]' < /dev/urandom | fold -w12 | head -n 100 > randwordlist
+time=/usr/bin/time -o perf.txt -f "%E real\t%U user\t%S sys\t%M mem\t%C" --append
+perf.txt: dicts/is.dic dicts/is.aff randwordlist
+	hunspell -vv > perf.txt
+	${time} hunspell -d dicts/is -a langs/is/wordlist > /dev/null
+	${time} hunspell -d dicts/is -a randwordlist      > /dev/null
+	${time} hunspell -d dicts/is -m langs/is/wordlist > /dev/null
+	${time} hunspell -d dicts/is -m randwordlist      > /dev/null
+	${time} hunspell -d dicts/is -s langs/is/wordlist > /dev/null
+	${time} hunspell -d dicts/is -s randwordlist      > /dev/null
+	@cat perf.txt
