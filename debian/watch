@@ -1,2 +1,0 @@
-version=3
-http://dumps.wikimedia.org/iswiktionary/(\d+)/ iswiktionary-(\d+)-pages-articles\.xml\.bz2

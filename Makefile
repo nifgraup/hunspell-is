@@ -1,12 +1,11 @@
 TH_GEN_IDX=/usr/share/mythes/th_gen_idx.pl
 
-.PHONY: all clean check check-rules check-thes packages debian-package
+.PHONY: all clean check check-rules check-thes packages
 
 all: dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
 clean:
 	rm -f dicts/is.aff dicts/is.dic dicts/th_is.dat dicts/th_is.idx dicts/is.oxt dicts/is.xpi
-	rm -f hunspell-is_*.deb hunspell-is_*.dsc hunspell-is_*.tar.gz hunspell-is_*.changes
 	rm -f wiktionary.dic wiktionary.aff wiktionary.extracted wordlist.diff
 	rm -f huntest.aff huntest.dic
 	#  rm -f ??wiktionary-latest-pages-articles.xml.bz2
@@ -53,10 +52,10 @@ dicts/is.oxt: %.oxt: %.aff %.dic dicts/th_is.dat dicts/th_is.idx \
 		packages/libreoffice/META-INF/manifest.xml \
 		packages/libreoffice/description.xml \
 		packages/libreoffice/dictionaries.xcu \
-		debian/copyright
+		packages/copyright
 	rm -rf $@ libreoffice-tmp
 	cp -rf packages/libreoffice libreoffice-tmp
-	cp debian/copyright libreoffice-tmp/license.txt
+	cp packages/copyright libreoffice-tmp/license.txt
 	cd libreoffice-tmp && sed -i 's/TODAYPLACEHOLDER/'`date +%Y.%m.%d`'/g' description.xml && zip -r ../$@ *
 	zip $@ dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 

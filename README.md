@@ -12,7 +12,7 @@ Hunspell-is er samvinnuverkefni og samskipti fara fram á [póstlista](mailto:hu
 Sækja orðabækur
 ---------------
 
-Orðabækurnar fylgja með [LibreOffice](https://www.libreoffice.org/). Þær má einnig finna stakar í [kóðasafni LibreOffice](http://cgit.freedesktop.org/libreoffice/dictionaries/tree/is).
+Orðabækurnar fylgja með [LibreOffice](https://www.libreoffice.org/). Þær má einnig finna stakar í [kóðasafni LibreOffice](http://cgit.freedesktop.org/libreoffice/dictionaries/tree/is) eða í [pakkasafni Debian stýrikerfisins](https://packages.debian.org/sid/hunspell-is).
 
 
 Málfræðigreining

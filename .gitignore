@@ -13,7 +13,3 @@ wordlist.diff
 sed*
 diff-dic1
 *~
-debian/files
-debian/hunspell-is.debhelper.log
-debian/hunspell-is.substvars
-debian/hunspell-is/
