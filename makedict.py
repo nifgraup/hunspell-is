@@ -163,18 +163,18 @@ def addConditions(conditional, matchingWords, conflictingWords):
     conditional.append(common)
 
 for rule in ruleskeys:
-    # find if suffixes conflict with "sibling" suffixes.
-    for tag in [t for t in rules[rule]["SFX"] if t in tagset]:
-      for sfx in rules[rule]["SFX"][tag]:
-        wordsMatchingOtherSuffixes = []
-        for othersfx in [a for a in rules[rule]["SFX"][tag] if (not a == sfx)]:
-          wordsMatchingOtherSuffixes += othersfx["matchingWords"]
-        conflictingWords = [w for w in wordsMatchingOtherSuffixes if w not in sfx["matchingWords"] and (sfx["removed"] == "" or w[-len(sfx["removed"]):] == sfx["removed"])]
-        if len(conflictingWords) > 0:
-          if not "conditional" in sfx:
-            sfx["conditional"] = []
-          addConditions(sfx["conditional"], sfx["matchingWords"], conflictingWords)
-          sfx["conditional"] = simplifyConditions(sfx["conditional"])
+  # find if suffixes conflict with "sibling" suffixes.
+  for tag in [t for t in rules[rule]["SFX"] if t in tagset]:
+    for sfx in rules[rule]["SFX"][tag]:
+      wordsMatchingOtherSuffixes = []
+      for othersfx in [a for a in rules[rule]["SFX"][tag] if (not a == sfx)]:
+        wordsMatchingOtherSuffixes += othersfx["matchingWords"]
+      conflictingWords = [w for w in wordsMatchingOtherSuffixes if w not in sfx["matchingWords"] and (sfx["removed"] == "" or w[-len(sfx["removed"]):] == sfx["removed"])]
+      if len(conflictingWords) > 0:
+        if not "conditional" in sfx:
+          sfx["conditional"] = []
+        addConditions(sfx["conditional"], sfx["matchingWords"], conflictingWords)
+        sfx["conditional"] = simplifyConditions(sfx["conditional"])
 
 # Fourth "round":
 print("Printing .aff file.")
