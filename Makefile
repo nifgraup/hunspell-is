@@ -13,7 +13,7 @@ clean:
 	rm -rf libreoffice-tmp/ mozilla-tmp/
 	rm -rf dicts/
 
-check: check-rules check-thes
+check: check-rules check-thes check-morph
 
 check-rules:
 	echo "Testing old rules..."
@@ -44,6 +44,10 @@ check-thes: dicts/th_is.dat
 	! grep "<.*>" $< # no html-like tags
 	! grep "&lt;.*&gt;" $< # no html-like tags (encoded)
 	@echo "Thesaurus tests passed."
+check-morph: dicts/is.dic dicts/is.aff
+	@echo "Testing morphology..."
+	@test -z "`hunspell -m -d dicts/is < langs/is/test.good | diff -q langs/is/test.morph -`" || { echo "Morphology test failed: `hunspell -m -d dicts/is < langs/is/test.good | diff langs/is/test.morph -`"; exit 1; };
+	@echo "Morphology tests passed."
 
 packages: dicts/is.oxt dicts/is.xpi dicts/SentenceExceptList.xml
 
