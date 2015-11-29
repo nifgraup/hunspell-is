@@ -1,6 +1,6 @@
-SFX X   ur      s/526	ur
-SFX X   n       s/526	nn
-SFX X   0       s/526	u[^r]
-SFX X   0       s/526	n[^n]
-SFX X   0       s/526	[^un].
+SFX X ur s/526 ur
+SFX X n s/526 nn
+SFX X 0 s/526 u[^r]
+SFX X 0 s/526 n[^n]
+SFX X 0 s/526 [^un].
 

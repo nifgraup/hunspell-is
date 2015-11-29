@@ -1,5 +1,5 @@
-SFX X	0	s/526	[^u]r
-SFX X	0	s/526	[^u][^r]
-SFX X	0	s/526	u[^r]
-SFX X	ur	s/526	ur
+SFX X 0 s/526 [^u]r
+SFX X 0 s/526 [^u][^r]
+SFX X 0 s/526 u[^r]
+SFX X ur s/526 ur
 

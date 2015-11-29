@@ -104,7 +104,7 @@ for templates in templatesInPages:
     else:
       print(t.name)
       assert(False) # unknown part of speech category
-    dicfile.write(lemma + "/" + str(ruleskeys.index(t.name)+1) + " po:"+po + "\n")
+    dicfile.write(lemma + "/" + str(ruleskeys.index(t.name)+1) + "\tpo:"+po + "\n")
     for tag in [t for t in ruleValues["SFX"] if t in tagset]:
       for formatstr in ruleValues["OTHER_FORMAT_STRINGS"][tag]:
         inflection = formatstr.format("", *unnamedParams, **namedParams)
@@ -198,7 +198,7 @@ for rule in ruleskeys:
           sfx["removed"] = "0"
         assert(not sfx["added"] == "")
         for cond in sfx["conditional"]:
-          afffile.write("SFX " + str(count) + " " + sfx["removed"] + " " + sfx["added"] + " " + cond + " is:"+tag + "\n")
+          afffile.write("SFX " + str(count) + " " + sfx["removed"] + " " + sfx["added"] + " " + cond + "\tis:"+tag + "\n")
   afffile.write("\n")
   count += 1
 afffile.close()

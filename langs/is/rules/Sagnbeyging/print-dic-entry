@@ -26,17 +26,17 @@ function trim(s) { return rtrim(ltrim(s)); }
   #Print forms
   if(infinitive != "")
   {
-    printf "%s po:so\n", infinitive;
+    printf "%s\tpo:so\n", infinitive;
     for(i=1; i<=NF; i++)
     {
       if(split($i, v, "=") && v[1] != "allar sagnbeygingar" && v[1] != "ópersónulegt" && v[2] != "" && v[2] != "-" && v[2] != infinitive)
       {
         split(v[2], u, " ");
         split(u[1], t, "/");
-        printf "%s st:%s po:so\n", trim(t[1]), infinitive;
+        printf "%s\tst:%s po:so\n", trim(t[1]), infinitive;
         if(t[2] != "")
         {
-          printf "%s st:%s po:so\n", trim(t[2]), infinitive;
+          printf "%s\tst:%s po:so\n", trim(t[2]), infinitive;
         }
       }
     }
