@@ -33,11 +33,11 @@ insertHead() {
 if [ "$1" != "" ]; then
   echo "Extracting valid words from the wiktionary dump..."
   mkdir -p dicts
-  rm -rf wiktionary.extracted dicts/$1.aff
+  rm -rf wiktionary.dic wiktionary.aff
    # This is where the magic happens
-  ./makedict.py ${1}wiktionary-latest-pages-articles.xml wiktionary.extracted dicts/$1.aff
-  echo -e '0r langs/is/common-aff.d/22_fallbeyging_kk.aff\nw' | ed -s dicts/$1.aff
-  echo -e '0r langs/is/common-aff.d/10_header.aff\nw' | ed -s dicts/$1.aff
+  ./makedict.py ${1}wiktionary-latest-pages-articles.xml wiktionary.dic wiktionary.aff
+  echo -e '0r langs/is/common-aff.d/22_fallbeyging_kk.aff\nw' | ed -s wiktionary.aff
+  echo -e '0r langs/is/common-aff.d/10_header.aff\nw' | ed -s wiktionary.aff
 
   FLAG=600 # currently makedict.py extracts 333 rules
 
@@ -50,39 +50,38 @@ if [ "$1" != "" ]; then
     if [ -f "$i/aff" ]; then
            LINECOUNT="`grep -cve '^\s*$' "$i/aff"`"
            echo "   Extracting rule $RULE"
-           echo "#$RULE" >> dicts/$1.aff
-           echo "SFX $FLAG N $LINECOUNT" >> dicts/$1.aff
-           cat "$i/aff" | sed "s/SFX X/SFX $FLAG/g" >> dicts/$1.aff
+           echo "#$RULE" >> wiktionary.aff
+           echo "SFX $FLAG N $LINECOUNT" >> wiktionary.aff
+           cat "$i/aff" | sed "s/SFX X/SFX $FLAG/g" >> wiktionary.aff
     fi
 
     if [ -e "$i/print-dic-entry" ]; then
-        grep -o "^{{$RULE|[^}]\+" ${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | "./$i/print-dic-entry" $FLAG >> wiktionary.extracted
+        grep -o "^{{$RULE|[^}]\+" ${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | "./$i/print-dic-entry" $FLAG >> wiktionary.dic
     else
-        grep -o "^{{$RULE|[^}]\+" ${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{printf "%s%s%s\n", $1, $2, $3"/"'"$FLAG"'}' >> wiktionary.extracted
+        grep -o "^{{$RULE|[^}]\+" ${1}wiktionary-latest-pages-articles.xml.texts | grep -o "|.*" | gawk -F "|" '{printf "%s%s%s\n", $1, $2, $3"/"'"$FLAG"'}' >> wiktionary.dic
     fi
   done
 
   #extracting abbreviations
-  grep -C 3 "{{-is-}}" iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''" | grep -o "[^']*" >> wiktionary.extracted
+  grep -C 3 "{{-is-}}" iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-skammstöfun-}}" | grep "'''" | grep -o "[^']*" >> wiktionary.dic
 
   #extracting adverbs
-  grep -C 3 "{{-is-}}" iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-atviksorð-}}" | grep "'''[^ ]*'''$" | grep -o "[^']*" | xargs printf "%s\tpo:ao\n" >> wiktionary.extracted
+  grep -C 3 "{{-is-}}" iswiktionary-latest-pages-articles.xml | grep -C 2 "{{-is-atviksorð-}}" | grep "'''[^ ]*'''$" | grep -o "[^']*" | xargs printf "%s\tpo:ao\n" >> wiktionary.dic
 
   #extracting prepositions
-  grep -C 1 "{{-is-forsetning-}}" iswiktionary-latest-pages-articles.xml | grep -o "'''[^ ]*'''" | grep -o "[^']*" | xargs printf "%s\tpo:fs\n" >> wiktionary.extracted
+  grep -C 1 "{{-is-forsetning-}}" iswiktionary-latest-pages-articles.xml | grep -o "'''[^ ]*'''" | grep -o "[^']*" | xargs printf "%s\tpo:fs\n" >> wiktionary.dic
 
   #extracting conjunctions
-  grep -C 1 "{{-is-samtenging-}}" iswiktionary-latest-pages-articles.xml | grep -v fornt | tr -d "[]" | grep -o "'''[^ .]*'''" | grep -o "[^']*" | xargs printf "%s\tpo:st\n" >> wiktionary.extracted
+  grep -C 1 "{{-is-samtenging-}}" iswiktionary-latest-pages-articles.xml | grep -v fornt | tr -d "[]" | grep -o "'''[^ .]*'''" | grep -o "[^']*" | xargs printf "%s\tpo:st\n" >> wiktionary.dic
 
-  cp wiktionary.extracted wiktionary.dic
+  ./makealias.py  wiktionary dicts/is
   insertHead `wc -l < wiktionary.dic` wiktionary.dic
-  cp dicts/$1.aff wiktionary.aff
 
   echo "Finding extra words in the wordlist..."
   hunspell -i utf8 -l -d wiktionary < langs/$1/wordlist > wordlist.diff
 
   echo "Merging the wordlist and the wiktionary words..."
-  LC_ALL=$1.UTF-8 sort wiktionary.extracted wordlist.diff | uniq > dicts/$1.dic
+  LC_ALL=$1.UTF-8 sort dicts/$1.dic wordlist.diff -o dicts/$1.dic
   insertHead `wc -l < dicts/$1.dic` dicts/$1.dic
 
   echo "Done building dictionary, see dicts/$1.dic and dicts/$1.aff."

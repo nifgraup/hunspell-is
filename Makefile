@@ -6,7 +6,7 @@ all: dicts/is.dic dicts/is.aff dicts/th_is.dat dicts/th_is.idx
 
 clean:
 	rm -f dicts/is.aff dicts/is.dic dicts/th_is.dat dicts/th_is.idx dicts/is.oxt dicts/is.xpi
-	rm -f wiktionary.dic wiktionary.aff wiktionary.extracted wordlist.diff
+	rm -f wiktionary.dic wiktionary.aff wordlist.diff
 	rm -f huntest.aff huntest.dic
 	#  rm -f ??wiktionary-latest-pages-articles.xml.bz2
 	rm -f ??wiktionary-latest-pages-articles.xml ??wiktionary-latest-pages-articles.xml.texts

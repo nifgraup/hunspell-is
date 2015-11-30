@@ -1,8 +1,8 @@
 @(#) International Ispell Version 3.2.06 (but really Hunspell 1.3.2)
 
-0:01.45 real	1.40 user	0.04 sys	22132 mem	hunspell -d dicts/is -a langs/is/wordlist
-0:18.01 real	17.99 user	0.01 sys	22156 mem	hunspell -d dicts/is -a randwordlist
-0:07.59 real	7.58 user	0.01 sys	22332 mem	hunspell -d dicts/is -m langs/is/wordlist
-0:00.26 real	0.25 user	0.00 sys	22204 mem	hunspell -d dicts/is -m randwordlist
-0:07.67 real	7.66 user	0.01 sys	22312 mem	hunspell -d dicts/is -s langs/is/wordlist
-0:00.19 real	0.18 user	0.00 sys	22100 mem	hunspell -d dicts/is -s randwordlist
+0:01.48 real	1.38 user	0.09 sys	21776 mem	hunspell -d dicts/is -a langs/is/wordlist
+0:18.10 real	18.10 user	0.00 sys	21680 mem	hunspell -d dicts/is -a randwordlist
+0:07.54 real	7.54 user	0.00 sys	21768 mem	hunspell -d dicts/is -m langs/is/wordlist
+0:00.20 real	0.19 user	0.00 sys	21676 mem	hunspell -d dicts/is -m randwordlist
+0:07.62 real	7.62 user	0.00 sys	21780 mem	hunspell -d dicts/is -s langs/is/wordlist
+0:00.22 real	0.21 user	0.00 sys	21636 mem	hunspell -d dicts/is -s randwordlist
